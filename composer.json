@@ -1,0 +1,48 @@
+{
+    "name": "philippebeck/arithmancie",
+    "version": "0.1.0",
+    "type": "project",
+    "description": "Site Web de Numérologie",
+    "keywords": [
+      "arithmancy",
+      "numerology",
+      "twig",
+      "animadio",
+      "pam",
+      "sql",
+      "git"
+    ],
+    "homepage": "https://arithmancie.philippebeck.net",
+    "license": "Apache-2.0 License",
+    "authors": [
+      {
+        "name": "Philippe Beck",
+        "email": "philippe@philippebeck.net",
+        "homepage": "https://philippebeck.net",
+        "role": "Lead Developer"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "App\\": "src/"
+      }
+    },
+    "require": {
+      "php": "7.3",
+      "devsagency/pam": "^4.6.1"
+    },
+    "require-dev": {
+      "tracy/tracy": "^2.7.6"
+    },
+    "config": {
+      "platform": {
+        "php": "7.3"
+      }
+    },
+    "support": {
+      "email": "admin@philippebeck.net",
+      "issues": "https://github.com/philippebeck/arithmancie/issues",
+      "wiki": "https://github.com/philippebeck/arithmancie/wiki",
+      "source": "https://github.com/philippebeck/arithmancie"
+    }
+  }
