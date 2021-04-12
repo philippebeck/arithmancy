@@ -1,0 +1,5 @@
+.vscode/
+config/
+public/img/
+public/node_modules/
+vendor/
