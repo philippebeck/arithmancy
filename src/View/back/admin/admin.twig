@@ -1,0 +1,53 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Administration{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+<input id="menu-radio1" 
+    class="menu-radio1" 
+    type="radio" 
+    name="menu"
+    checked>
+<input id="menu-radio2" 
+    class="menu-radio2" 
+    type="radio" 
+    name="menu">
+<input id="menu-radio3" 
+    class="menu-radio3" 
+    type="radio" 
+    name="menu">
+
+<nav class="menu">
+    <label for="menu-radio1" 
+        title="Voir les Définitions des Catégories de Nombres">
+        <i class="far fa-star"></i>
+        <span>
+            Définitions
+        </span>
+    </label>
+    <label for="menu-radio2" 
+        title="Voir les Nombres & leurs Définitions">
+        <i class="fas fa-atlas"></i>
+        <span>
+            Nombres
+        </span>
+    </label>
+    <label for="menu-radio3" 
+        title="Voir les Utilisateurs">
+        <i class="fas fa-user"></i>
+        <span>
+            Utilisateurs
+        </span>
+    </label>
+</nav>
+
+<main class="menu-relay container-90lg-80xl-70wd">
+
+    {{ include("back/admin/listDefinitions.twig") }}
+    {{ include("back/admin/listNumbers.twig") }}
+    {{ include("back/admin/listUsers.twig") }}
+
+</main>
+{% endblock %}

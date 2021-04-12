@@ -1,0 +1,36 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Arithmancie{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+<main>
+    <ul class="flex">
+        <li>
+            <a class="btn-primary"
+                href="{{ url('number') }}" 
+                title="Connaître les 9 Nombres en Numérologie">
+                <i class="fas fa-sort-numeric-down fa-lg fa-fw"></i>
+                <span>Nombres</span>
+            </a>
+        </li>
+        <li>
+            <a class="btn-primary" 
+                href="{{ url('definition') }}" 
+                title="Comprendre les Types de Nombres en Numérologie">
+                <i class="fas fa-question-circle fa-lg fa-fw"></i>
+                <span>Définitions</span>
+            </a>
+        </li>
+        <li>
+            <a class="btn-primary"
+                href="{{ url('theme') }}" 
+                title="Obtenir son Thème Numérologique">
+                <i class="fab fa-readme fa-lg fa-fw"></i>
+                <span>Thème</span>
+            </a>
+        </li>
+    </ul>
+</main>
+{% endblock %}
