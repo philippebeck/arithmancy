@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Pam\Controller\MainController;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -11,7 +10,7 @@ use Twig\Error\SyntaxError;
  * Class ThemeController
  * @package App\Controller
  */
-class ThemeController extends MainController
+class ThemeController extends CalculationController
 {
     /**
      * @return string
