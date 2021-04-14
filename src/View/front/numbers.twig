@@ -7,5 +7,18 @@
 {% block main %}
 <main>
 
+    <header class="head">
+        Introduction Nombres !
+    </header>
+
+{% for number in numbers %}
+
+    <section class="card-primary">
+        <h2>Nombre {{ number.digit }}</h2>
+        <p>{{ number.description }}</p>
+    </section>
+
+{% endfor %}
+
 </main>
 {% endblock %}
