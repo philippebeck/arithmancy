@@ -7,5 +7,18 @@
 {% block main %}
 <main>
 
+    <header class="head">
+        Introduction Définitions !
+    </header>
+
+{% for definition in definitions %}
+
+    <section class="card-primary">
+        <h2>{{ definition.name }}</h2>
+        <p>{{ definition.description }}</p>
+    </section>
+
+{% endfor %}
+
 </main>
 {% endblock %}
