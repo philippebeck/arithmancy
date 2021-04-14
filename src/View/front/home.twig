@@ -6,6 +6,14 @@
 
 {% block main %}
 <main>
+    <header class="head">
+        L'arithmancie ou arithmomancie est une technique de divination basée sur les nombres de 1 à 9.
+        Le plus souvent, il s'agit de transformer le prénom & le nom des gens en une suite de chiffres pour obtenir ce qu'on appelle le nombre d'expression, le nombre intime & le nombre de réalisation.
+        Chacun de ces nombres est ensuite analysé.
+        Les origines de l'arithmancie semblent remonter à plus de 2000 ans, développées par les pythagoriciens.
+        Les personnes pratiquant l'arithmancie sont appelées des arithmanciens. 
+    </header>
+
     <ul class="flex">
         <li>
             <a class="btn-primary"
@@ -32,5 +40,37 @@
             </a>
         </li>
     </ul>
+
+    {% if astralNumber %}
+        <section class="card-primary">
+            <h2>Chemin de Vie #{{ astralNumber.number }}</h2>
+            <p>{{ astralNumber.astral }}</p>
+        </section>
+    {% endif %}
+    
+    <form class="form"
+        method="post" 
+        action={{ url('home') }}>
+        <fieldset>
+            <legend>
+                Votre Chemin de Vie
+            </legend>
+            <ul>
+                <li>
+                    <label for="birthdate">
+                        Votre Date de Naissance 
+                    </label>
+                    <input id="birthdate" 
+                        name="birthdate"
+                        type="date"
+                        value="2021-04-15">
+                </li>
+                <li>
+                    <input type="submit" 
+                        value="Interpréter">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
 </main>
 {% endblock %}

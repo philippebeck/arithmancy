@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
+
+:root {
+    --serif: 'Montaga', serif;
+    --sans-serif: 'Montaga', sans-serif;
+    --primary: rgb(36, 16, 0);
+    --primary-dark: rgba(36, 16, 0, var(--opacity-dark));
+    --primary-light: rgba(36, 16, 0, var(--opacity-light));
+    --secondary: rgb(200, 177, 133);
+    --secondary-dark: rgba(200, 177, 133, var(--opacity-dark));
+    --secondary-light: rgba(200, 177, 133, var(--opacity-light));
+}
+
+body {
+    --body-background-color: var(--secondary);
+}
+
+[class*="card"] {
+    --card-max-width: auto;
+    --card-hover-transform: none;
+}

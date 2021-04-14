@@ -47,7 +47,7 @@ class UserController extends MainController
             $this->setUserImage();
 
             if ($this->getPost()->getPostVar("pass") !== $this->getPost()->getPostVar("conf-pass")) {
-                $this->getSession()->createAlert("Passwords do not match !", "red");
+                $this->getSession()->createAlert("Les mots de passe ne correspondent pas !", "red");
 
                 $this->redirect("user!create");
             }
@@ -55,7 +55,7 @@ class UserController extends MainController
             $this->user["pass"] = password_hash($this->getPost()->getPostVar("pass"), PASSWORD_DEFAULT);
 
             ModelFactory::getModel("User")->createData($this->user);
-            $this->getSession()->createAlert("New user successfully created !", "green");
+            $this->getSession()->createAlert("Nouvel utilisateur créé avec succès !", "green");
 
             $this->redirect("admin");
         }
@@ -77,25 +77,6 @@ class UserController extends MainController
         $this->getImage()->makeThumbnail("img/user/" . $this->user["image"], 150);
     }
 
-    private function setUpdatePassword()
-    {
-        $user = ModelFactory::getModel("User")->readData($this->getGet()->getGetVar("id"));
-
-        if (!password_verify($this->getPost()->getPostVar("old-pass"), $user["pass"])) {
-            $this->getSession()->createAlert("Old Password does not match !", "red");
-
-            $this->redirect("admin");
-        }
-
-        if ($this->getPost()->getPostVar("new-pass") !== $this->getPost()->getPostVar("conf-pass")) {
-            $this->getSession()->createAlert("New Passwords do not match !", "red");
-
-            $this->redirect("admin");
-        }
-
-        $this->user["pass"] = password_hash($this->getPost()->getPostVar("new-pass"), PASSWORD_DEFAULT);
-    }
-
     /**
      * @return string
      * @throws LoaderError
@@ -109,25 +90,49 @@ class UserController extends MainController
         }
 
         if (!empty($this->getPost()->getPostArray())) {
-            $this->setUserData();
-
-            if (!empty($this->getFiles()->getFileVar("name"))) {
-                $this->setUserImage();
-            }
-
-            if (!empty($this->getPost()->getPostVar("old-pass"))) {
-                $this->setUpdatePassword();
-            }
-
-            ModelFactory::getModel("User")->updateData($this->getGet()->getGetVar("id"), $this->user);
-            $this->getSession()->createAlert("Successful modification of the user !", "blue");
-
-            $this->redirect("admin");
+            $this->setUpdateData();
         }
 
         $user = ModelFactory::getModel("User")->readData($this->getGet()->getGetVar("id"));
 
         return $this->render("back/user/updateUser.twig", ["user" => $user]);
+    }
+
+    private function setUpdateData()
+    {
+        $this->setUserData();
+
+        if (!empty($this->getFiles()->getFileVar("name"))) {
+            $this->setUserImage();
+        }
+
+        if (!empty($this->getPost()->getPostVar("old-pass"))) {
+            $this->setUpdatePassword();
+        }
+
+        ModelFactory::getModel("User")->updateData($this->getGet()->getGetVar("id"), $this->user);
+        $this->getSession()->createAlert("Modification de l'utilisateur réussie !", "blue");
+
+        $this->redirect("admin");
+    }
+
+    private function setUpdatePassword()
+    {
+        $user = ModelFactory::getModel("User")->readData($this->getGet()->getGetVar("id"));
+
+        if (!password_verify($this->getPost()->getPostVar("old-pass"), $user["pass"])) {
+            $this->getSession()->createAlert("Ancien mot de passe incorrect !", "red");
+
+            $this->redirect("admin");
+        }
+
+        if ($this->getPost()->getPostVar("new-pass") !== $this->getPost()->getPostVar("conf-pass")) {
+            $this->getSession()->createAlert("Les nouveaux mots de passe ne correspondent pas !", "red");
+
+            $this->redirect("admin");
+        }
+
+        $this->user["pass"] = password_hash($this->getPost()->getPostVar("new-pass"), PASSWORD_DEFAULT);
     }
 
     public function deleteMethod()
@@ -137,7 +142,7 @@ class UserController extends MainController
         }
 
         ModelFactory::getModel("User")->deleteData($this->getGet()->getGetVar("id"));
-        $this->getSession()->createAlert("User actually deleted !", "red");
+        $this->getSession()->createAlert("Suppression de l'utilisateur effectuée !", "red");
 
         $this->redirect("admin");
     }
