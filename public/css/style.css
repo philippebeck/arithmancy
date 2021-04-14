@@ -14,3 +14,8 @@
 body {
     --body-background-color: var(--secondary);
 }
+
+[class*="card"] {
+    --card-max-width: auto;
+    --card-hover-transform: none;
+}
