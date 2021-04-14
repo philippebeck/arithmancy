@@ -79,20 +79,75 @@ abstract class CalculationController extends MainController
         parent::__construct();
 
         if (!empty($this->getPost()->getPostArray())) {
-            $this->birthDate["day"]     = (int) trim($this->getPost()->getPostVar("day"));
-            $this->birthDate["month"]   = (int) trim($this->getPost()->getPostVar("month"));
-            $this->birthDate["year"]    = (int) trim($this->getPost()->getPostVar("year"));
+            $this->birthDate["day"] = (int) trim(
+                $this->getPost()->getPostVar("day")
+            );
+            $this->birthDate["month"] = (int) trim(
+                $this->getPost()->getPostVar("month")
+            );
+            $this->birthDate["year"] = (int) trim(
+                $this->getPost()->getPostVar("year")
+            );
 
             if ($this->getGet()->getGetVar("access") === "theme") {
-                $this->fullName["usual"]    = (string) trim($this->getPost()->getPostVar("usual-first-name"));
-                $this->fullName["middle"]   = (string) trim($this->getPost()->getPostVar("middle-name"));
-                $this->fullName["third"]    = (string) trim($this->getPost()->getPostVar("third-name"));
-                $this->fullName["last"]     = (string) trim($this->getPost()->getPostVar("last-name"));
+                $this->fullName["usual"] = (string) trim(
+                    $this->getPost()->getPostVar("usual-first-name")
+                );
+                $this->fullName["middle"] = (string) trim(
+                    $this->getPost()->getPostVar("middle-name")
+                );
+                $this->fullName["third"] = (string) trim(
+                    $this->getPost()->getPostVar("third-name")
+                );
+                $this->fullName["last"] = (string) trim(
+                    $this->getPost()->getPostVar("last-name")
+                );
             }
         }
     }
 
-    // ******************** BASIC CALCULATIONS ******************** \\
+     // *********************************************** \\
+    // ******************** SETTERS ******************** \\
+
+    private function setAstralNumber()
+    {
+        $birthDate = array_merge(
+            str_split($this->birthDate["day"]), 
+            str_split($this->birthDate["month"]), 
+            str_split($this->birthDate["year"])
+        );
+
+        for ($i = 0; $i < count($birthDate); $i++) {
+            $this->astralNumber += (int) $birthDate[$i];
+        }
+    }
+
+    private function setExpressionNumber()
+    {
+        $this->expressionNumber = $this->getNumberFromName(
+            implode($this->getFullNameLetters())
+        );
+    }
+
+    private function setSoulNumber()
+    {
+        $fullName   = $this->getFullNameLetters();
+        $vowels     = [];
+
+        for ($i = 0; $i < count($fullName); $i++) {
+
+            if (in_array($fullName[$i], self::VOWELS)) {
+                array_push($vowels, $fullName[$i]);    
+            }         
+        }
+
+        $this->soulNumber = $this->getNumberFromName(
+            implode($vowels)
+        );
+    }
+
+     // ********************************************** \\
+    // ********** BASIC CALCULATIONS GETTERS ********** \\
 
     /**
      * @param string $name
@@ -114,63 +169,60 @@ abstract class CalculationController extends MainController
      * @param int $number
      * @return int
      */
-    private function getReducedNumber($number)
+    private function getDigitFromNumber($number)
     {
-        $numbers = str_split((string) $number);
-        $digit  = 0;
+        do {
+            $number = $this->getReducedNumber($number);
 
-        for ($i = 0; $i < count($numbers); $i++) {
-            $digit += (int) $numbers[$i];            
-        }
+        } while ($number > 9);
 
-        return $digit;
+        return $number;
     }
 
     /**
      * @param int $number
      * @return int
      */
-    private function getDigitFromNumber($number)
+    private function getReducedNumber($number)
     {
-        do {
-            $numbers = str_split((string) $number);
-            $digit  = 0;
-    
-            for ($i = 0; $i < count($numbers); $i++) {
-                $digit += (int) $numbers[$i];            
-            }
+        $numbers = str_split((string) $number);
+        $number  = 0;
 
-            $number = $digit;
+        for ($i = 0; $i < count($numbers); $i++) {
+            $number += (int) $numbers[$i];            
+        }
 
-        } while ($number > 9);
-
-        return $digit;
+        return $number;
     }
 
-    // ******************** MAIN NUMBERS ******************** \\
+    /**
+     * @return array
+     */
+    private function getFullNameLetters()
+    {
+        return array_merge(
+            str_split($this->fullName["usual"]), 
+            str_split($this->fullName["middle"]), 
+            str_split($this->fullName["third"]), 
+            str_split($this->fullName["last"])
+        );
+    }
+
+     // **************************************** \\
+    // ********** MAIN NUMBERS GETTERS ********** \\
 
     /**
      * @return array
      */
     protected function getAstralNumbers()
     {
-        $birthDate = 
-            array_merge(
-                str_split($this->birthDate["day"]), 
-                str_split($this->birthDate["month"]), 
-                str_split($this->birthDate["year"])
-            );
+        $this->setAstralNumber();
 
-        for ($i = 0; $i < count($birthDate); $i++) {
-            $this->astralNumber += $birthDate[$i];
-        }
-
-        $astralReduceNumber = 
-            $this->getReducedNumber(
-                $this->birthDate["day"] + 
-                $this->birthDate["month"] + 
-                $this->birthDate["year"]
-            );
+        $astralReduceNumber = $this->getReducedNumber(
+            $this->birthDate["day"] + 
+            $this->birthDate["month"] + 
+            $this->birthDate["year"]
+        );
 
         $astralDigit = $this->getDigitFromNumber($this->astralNumber);
 
@@ -182,13 +234,8 @@ abstract class CalculationController extends MainController
      */
     protected function getExpressionNumbers()
     {
-        $usualFirstName = $this->getNumberFromName($this->fullName["usual"]);
-        $middleName     = $this->getNumberFromName($this->fullName["middle"]);
-        $thirdName      = $this->getNumberFromName($this->fullName["third"]);
-        $lastName       = $this->getNumberFromName($this->fullName["last"]);
-
-        $this->expressionNumber = $usualFirstName + $middleName + $thirdName + $lastName;
-        $expressionDigit        = $this->getDigitFromNumber($this->expressionNumber);
+        $this->setExpressionNumber();
+        $expressionDigit = $this->getDigitFromNumber($this->expressionNumber);
 
         return [$this->expressionNumber, $expressionDigit];
     }
@@ -198,27 +245,10 @@ abstract class CalculationController extends MainController
      */
     protected function getSoulNumbers() 
     {
-        $fullName = 
-            array_merge(
-                str_split($this->fullName["usual"]), 
-                str_split($this->fullName["middle"]), 
-                str_split($this->fullName["third"]), 
-                str_split($this->fullName["last"]), 
-            );
+        $this->setSoulNumber();
+        $soulDigit = $this->getDigitFromNumber($this->soulNumber);
 
-        $vowels = [];
-
-        for ($i = 0; $i < count($fullName); $i++) {
-
-            if (in_array($fullName[$i], self::VOWELS)) {
-                array_push($vowels, $fullName[$i]);    
-            }         
-        }
-
-        $soulNumber = $this->getNumberFromName(implode($vowels));
-        $soulDigit  = $this->getDigitFromNumber($soulNumber);
-
-        return [$soulNumber, $soulDigit];
+        return [$this->soulNumber, $soulDigit];
     }
 
     /**
@@ -229,21 +259,15 @@ abstract class CalculationController extends MainController
         return $this->birthDate["day"];
     }
 
-    // ******************** SECONDARY NUMBERS ******************** \\
+     // ********************************************* \\
+    // ********** SECONDARY NUMBERS GETTERS ********** \\
 
     /**
      * @return array
      */
     protected function getRealizationNumbers()
     {
-        $fullName = 
-            array_merge(
-                str_split($this->fullName["usual"]), 
-                str_split($this->fullName["middle"]), 
-                str_split($this->fullName["third"]), 
-                str_split($this->fullName["last"]), 
-            );
-
+        $fullName   = $this->getFullNameLetters();
         $consonants = [];
 
         for ($i = 0; $i < count($fullName); $i++) {
@@ -292,43 +316,16 @@ abstract class CalculationController extends MainController
         return [$goalNumber, $goalDigit];
     }
 
-    // ******************** PARTICULAR NUMBERS ******************** \\
-
-    /**
-     * @return array
-     */
-    protected function getChallengeNumbers()
-    {
-        // TODO: 1 -> remove month to day 
-        // TODO: 2 -> remove day to year
-        // TODO: 3 -> remove 1 to 2
-    }
-
-    /**
-     * @return array
-     */
-    protected function getKarmaNumbers()
-    {
-        // TODO: search missing number in the 2 first names + last name
-    }
-
-    /**
-     * @return array
-     */
-    protected function getPassionNumbers()
-    {
-        // TODO: search dominant number in the 2 first names + last name
-    }
-
-    // ******************** SYNTHESIS NUMBERS ******************** \\
+     // ********************************************* \\
+    // ********** SYNTHESIS NUMBERS GETTERS ********** \\
 
     /**
      * @return array
      */
     protected function getPowerNumbers()
     {
-        $this->getAstralNumbers();
-        $this->getExpressionNumbers();
+        $this->setAstralNumber();
+        $this->setExpressionNumber();
 
         $powerNumber    = $this->astralNumber + $this->expressionNumber;
         $powerDigit     = $this->getDigitFromNumber($powerNumber);
@@ -341,9 +338,9 @@ abstract class CalculationController extends MainController
      */
     protected function getSpiritualNumbers()
     {
-        $this->getAstralNumbers();
-        $this->getExpressionNumbers();
-        $this->getSoulNumbers();
+        $this->setAstralNumber();
+        $this->setExpressionNumber();
+        $this->setSoulNumber();
 
         $spiritualNumber = 
             $this->astralNumber + 
