@@ -90,6 +90,8 @@ abstract class CalculationController extends MainController
             $this->birthDate["month"]   = $birthDate->format("m");
             $this->birthDate["year"]    = $birthDate->format("Y");
 
+            $this->setAstralNumber();
+
             if ($this->getGet()->getGetVar("access") === "theme") {
                 $this->fullName["usual"] = (string) trim($this->getString()->cleanString(
                     $this->getPost()->getPostVar("usual-first-name")
@@ -103,6 +105,9 @@ abstract class CalculationController extends MainController
                 $this->fullName["last"] = (string) trim($this->getString()->cleanString(
                     $this->getPost()->getPostVar("last-name")
                 ));
+
+                $this->setExpressionNumber();
+                $this->setSoulNumber();
             }
         }
     }
@@ -221,7 +226,6 @@ abstract class CalculationController extends MainController
             $this->birthDate["year"]
         );
 
-        $this->setAstralNumber();
         $astralDigit = $this->getDigitFromNumber($this->astralNumber);
 
         return [$this->astralNumber, $astralReduceNumber, $astralDigit];
@@ -232,7 +236,6 @@ abstract class CalculationController extends MainController
      */
     protected function getExpressionNumbers()
     {
-        $this->setExpressionNumber();
         $expressionDigit = $this->getDigitFromNumber($this->expressionNumber);
 
         return [$this->expressionNumber, $expressionDigit];
@@ -243,7 +246,6 @@ abstract class CalculationController extends MainController
      */
     protected function getSoulNumbers() 
     {
-        $this->setSoulNumber();
         $soulDigit = $this->getDigitFromNumber($this->soulNumber);
 
         return [$this->soulNumber, $soulDigit];
@@ -322,9 +324,6 @@ abstract class CalculationController extends MainController
      */
     protected function getPowerNumbers()
     {
-        $this->setAstralNumber();
-        $this->setExpressionNumber();
-
         $powerNumber    = $this->astralNumber + $this->expressionNumber;
         $powerDigit     = $this->getDigitFromNumber($powerNumber);
 
@@ -336,10 +335,6 @@ abstract class CalculationController extends MainController
      */
     protected function getSpiritualNumbers()
     {
-        $this->setAstralNumber();
-        $this->setExpressionNumber();
-        $this->setSoulNumber();
-
         $spiritualNumber = 
             $this->astralNumber + 
             $this->expressionNumber + 
