@@ -1,0 +1,125 @@
+<section class="menu-target1">
+    <h2>
+        <i class="fas fa-sort-numeric-down"></i> 
+        Nombres
+    </h2>
+
+    <nav class="sidebar">
+        <input id="sidebar-number"
+            class="sidebar-check" 
+            type="checkbox">
+        <label for="sidebar-number"
+            class="sidebar-open" 
+            title="Show Sidebar">
+            <i class="far fa-eye fa-lg fa-fw"></i>
+        </label>
+        <label for="sidebar-number"
+            title="Hide Sidebar">
+            <i class="far fa-eye-slash fa-lg fa-fw"></i>
+        </label>
+
+        {% for number in numbers %}
+            <a href="#number{{ number.number }}" 
+                title="Nombre {{ number.number }}">
+                {{ number.number }}
+            </a>
+        {% endfor %}
+
+        <a href="#number-home" 
+            title="Numbers Home">
+            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
+        </a>
+    </nav>
+
+    <a class="btn-green btn-lg" 
+        href="{{ url('number!create') }}">
+        Nouveau Nombre
+    </a>
+
+    <table class="table">
+        <tbody>
+
+        {% for number in numbers %}
+            <tr>
+                <th id="number{{ number.number }}">
+                    Description #{{ number.number }}
+                    <a class="btn-blue" 
+                        href="{{ url('number!update', {'id': number.id}) }}"
+                        title="Modifier le Nombre">
+                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
+                    </a>
+                    <a class="btn-red" 
+                        href="{{ url('number!delete', {'id': number.id}) }}"
+                        title="Supprimer le Nombre">
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
+                    </a>
+                </th>
+            </tr>
+            <tr>
+                <td>{{ number.description }}</td>
+            </tr>
+            <tr>
+                <th>Nombre Astral #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.astral }}</td>
+            </tr>
+            <tr>
+                <th>Nombre d'Expression #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.expression }}</td>
+            </tr>
+            <tr>
+                <th>Nombre d'Âme #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.soul }}</td>
+            </tr>
+            <tr>
+                <th>Nombre du Jour #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.day }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de Réalisation #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.realization }}</td>
+            </tr>
+            <tr>
+                <th>Nombre Personnel #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.personal }}</td>
+            </tr>
+            <tr>
+                <th>Nombre Héréditaire #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.hereditary }}</td>
+            </tr>
+            <tr>
+                <th>Nombre du But #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.goal }}</td>
+            </tr>
+            <tr>
+                <th>Nombre de Pouvoir #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.power }}</td>
+            </tr>
+            <tr>
+                <th>Nombre Spirituel #{{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.spiritual }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</section>
