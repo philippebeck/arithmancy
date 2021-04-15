@@ -19,3 +19,8 @@ body {
     --card-max-width: auto;
     --card-hover-transform: none;
 }
+
+.sidebar {
+    --sidebar-child-margin: 0;
+    --sidebar-child-padding: 0;
+  }

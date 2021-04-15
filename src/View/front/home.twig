@@ -40,14 +40,7 @@
             </a>
         </li>
     </ul>
-
-    {% if astralNumber %}
-        <section class="card-primary">
-            <h2>Chemin de Vie #{{ astralNumber.number }}</h2>
-            <p>{{ astralNumber.astral }}</p>
-        </section>
-    {% endif %}
-    
+ 
     <form class="form"
         method="post" 
         action={{ url('home') }}>
@@ -63,7 +56,7 @@
                     <input id="birthdate" 
                         name="birthdate"
                         type="date"
-                        value="2021-04-15">
+                        required>
                 </li>
                 <li>
                     <input type="submit" 
@@ -72,5 +65,12 @@
             </ul>
         </fieldset>
     </form>
+
+    {% if number %}
+        <section class="card-primary">
+            <h2>Chemin de Vie #{{ number.number }}</h2>
+            <p>{{ number.astral }}</p>
+        </section>
+    {% endif %}
 </main>
 {% endblock %}
