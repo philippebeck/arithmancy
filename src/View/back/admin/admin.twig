@@ -21,22 +21,22 @@
 
 <nav class="menu">
     <label for="menu-radio1" 
-        title="Voir les Définitions des Catégories de Nombres">
-        <i class="far fa-star"></i>
-        <span>
-            Définitions
-        </span>
-    </label>
-    <label for="menu-radio2" 
         title="Voir les Nombres & leurs Définitions">
-        <i class="fas fa-atlas"></i>
+        <i class="fas fa-sort-numeric-down"></i>
         <span>
             Nombres
         </span>
     </label>
+    <label for="menu-radio2" 
+        title="Voir les Définitions des Catégories de Nombres">
+        <i class="far fa-question-circle"></i>
+        <span>
+            Définitions
+        </span>
+    </label>
     <label for="menu-radio3" 
         title="Voir les Utilisateurs">
-        <i class="fas fa-user"></i>
+        <i class="fas fa-users"></i>
         <span>
             Utilisateurs
         </span>
@@ -45,8 +45,8 @@
 
 <main class="menu-relay container-90lg-80xl-70wd">
 
-    {{ include("back/admin/listDefinitions.twig") }}
     {{ include("back/admin/listNumbers.twig") }}
+    {{ include("back/admin/listDefinitions.twig") }}
     {{ include("back/admin/listUsers.twig") }}
 
 </main>
