@@ -1,0 +1,45 @@
+<section class="menu-target2">
+    <h2>
+        <i class="fas fa-question-circle"></i> 
+        Définitions
+    </h2>
+
+    <a class="btn-green btn-lg" 
+        href="{{ url('definition!create') }}">
+        Nouvelle Définition
+    </a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for definition in definitions %}
+            <tr>
+                <td>
+                    {{ definition.name }}
+                    <br>
+                    <a class="btn-blue" 
+                        href="{{ url('user!update', {'id': user.id}) }}"
+                        title="Modifier l'Utilisateur">
+                        <i class="fas fa-pen-square fa-fw fa-lg"></i>
+                    </a>
+                    <a class="btn-red" 
+                        href="{{ url('user!delete', {'id': user.id}) }}"
+                        title="Supprimer l'Utilisateur">
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
+                    </a>
+                </td>
+                <td>
+                    {{ definition.description }}
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</section>
