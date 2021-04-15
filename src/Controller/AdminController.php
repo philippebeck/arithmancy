@@ -26,13 +26,13 @@ class AdminController extends MainController
             $this->redirect("home");
         }
 
-        $definitions    = ModelFactory::getModel("Definition")->listData();
         $numbers        = ModelFactory::getModel("Number")->listData();
+        $definitions    = ModelFactory::getModel("Definition")->listData();
         $users          = ModelFactory::getModel("User")->listData();
 
         return $this->render("back/admin/admin.twig", [
-            "definitions"   => $definitions,
             "numbers"       => $numbers,
+            "definitions"   => $definitions,
             "users"         => $users
         ]);
     }
