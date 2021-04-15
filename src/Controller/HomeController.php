@@ -22,11 +22,12 @@ class HomeController extends CalculationController
     public function defaultMethod()
     {
         if (!empty($this->getPost()->getPostArray())) {
+
             $astralNumbers  = $this->getAstralNumbers();
-            $astralNumber   = ModelFactory::getModel("Numbers")->readData($astralNumbers[2]);
+            $number         = ModelFactory::getModel("Number")->readData($astralNumbers[2]);
 
             return $this->render("front/home.twig", [
-                "astralNumber" => $astralNumber
+                "number" => $number
             ]);
         }
 
