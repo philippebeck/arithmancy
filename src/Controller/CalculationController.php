@@ -51,27 +51,27 @@ abstract class CalculationController extends MainController
     /**
      * @var array
      */
-    private $fullName = [];
+    private array $fullName = [];
 
     /**
      * @var array
      */
-    private $birthDate = [];
+    private array $birthDate = [];
 
     /**
      * @var int
      */
-    private $astralNumber = null;
+    private int $astralNumber = 0;
 
     /**
      * @var int
      */
-    private $expressionNumber = null;
+    private int $expressionNumber = 0;
 
     /**
      * @var int
      */
-    private $soulNumber = null;
+    private int $soulNumber = 0;
 
     /**
      * CalculationController constructor
@@ -81,35 +81,52 @@ abstract class CalculationController extends MainController
         parent::__construct();
 
         if (!empty($this->getPost()->getPostArray())) {
-            $birthDate = DateTime::createFromFormat(
-                "Y-m-d",
-                $this->getPost()->getPostVar("birthdate")
-            );
-
-            $this->birthDate["day"]     = $birthDate->format("d");
-            $this->birthDate["month"]   = $birthDate->format("m");
-            $this->birthDate["year"]    = $birthDate->format("Y");
-
-            $this->setAstralNumber();
+            $this->setBirthDate();
 
             if ($this->getGet()->getGetVar("access") === "theme") {
-                $this->fullName["usual"] = (string) trim($this->getString()->cleanString(
-                    $this->getPost()->getPostVar("usual-first-name")
-                ));
-                $this->fullName["middle"] = (string) trim($this->getString()->cleanString(
-                    $this->getPost()->getPostVar("middle-name")
-                ));
-                $this->fullName["third"] = (string) trim($this->getString()->cleanString(
-                    $this->getPost()->getPostVar("third-name")
-                ));
-                $this->fullName["last"] = (string) trim($this->getString()->cleanString(
-                    $this->getPost()->getPostVar("last-name")
-                ));
-
-                $this->setExpressionNumber();
-                $this->setSoulNumber();
+                $this->setFullName();
             }
         }
+    }
+
+    private function setBirthDate()
+    {
+        $birthDate = DateTime::createFromFormat(
+            "Y-m-d",
+            $this->getPost()->getPostVar("birthdate")
+        );
+
+        $this->birthDate["day"]     = $birthDate->format("d");
+        $this->birthDate["month"]   = $birthDate->format("m");
+        $this->birthDate["year"]    = $birthDate->format("Y");
+
+        $this->setAstralNumber();
+    }
+
+    private function setFullName()
+    {
+        $this->fullName["usual"] = $this->getString()->cleanString(
+            $this->getPost()->getPostVar("usual-first-name"), "alpha"
+        );
+
+        $this->fullName["last"] = $this->getString()->cleanString(
+            $this->getPost()->getPostVar("last-name"), "alpha"
+        );
+
+        if ($this->getPost()->getPostVar("middle-name") !== null) {
+            $this->fullName["middle"] = $this->getString()->cleanString(
+                $this->getPost()->getPostVar("middle-name"), "alpha"
+            );
+        }
+
+        if ($this->getPost()->getPostVar("third-name") !== null) {
+            $this->fullName["third"] = $this->getString()->cleanString(
+                $this->getPost()->getPostVar("third-name"), "alpha"
+            );
+        }
+
+        $this->setExpressionNumber();
+        $this->setSoulNumber();
     }
 
      // ****************************************************************** \\
