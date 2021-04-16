@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c6a79e37d307332ad757d2c31e9f103",
+    "content-hash": "59b625ee9a22925ce15943b01e3f2d3e",
     "packages": [
         {
             "name": "devsagency/pam",
-            "version": "4.6.1",
+            "version": "4.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/devsagency/pam.git",
-                "reference": "e58aab32584606bb134e34c482a8e4636ae6fd39"
+                "reference": "57f9aeed2c4713ef52b55847d92ca72d846475e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/devsagency/pam/zipball/e58aab32584606bb134e34c482a8e4636ae6fd39",
-                "reference": "e58aab32584606bb134e34c482a8e4636ae6fd39",
+                "url": "https://api.github.com/repos/devsagency/pam/zipball/57f9aeed2c4713ef52b55847d92ca72d846475e7",
+                "reference": "57f9aeed2c4713ef52b55847d92ca72d846475e7",
                 "shasum": ""
             },
             "require": {
@@ -28,11 +28,11 @@
                 "ext-pdo": "*",
                 "google/recaptcha": "^1.2.4",
                 "php": "^7.3",
-                "swiftmailer/swiftmailer": "^6.2.3",
-                "twig/twig": "^3.0.3"
+                "swiftmailer/swiftmailer": "^6.2.7",
+                "twig/twig": "^3.3.0"
             },
             "require-dev": {
-                "tracy/tracy": "^2.7.5"
+                "tracy/tracy": "^2.8.3"
             },
             "type": "library",
             "autoload": {
@@ -69,7 +69,7 @@
                 "superglobals",
                 "twig"
             ],
-            "time": "2021-02-03T17:09:01+00:00"
+            "time": "2021-04-16T17:50:56+00:00"
         },
         {
             "name": "doctrine/lexer",
