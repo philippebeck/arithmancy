@@ -1,0 +1,54 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Créer une Nouvelle Définition{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+<main>
+    <form class="form" 
+        method="post" 
+        action={{ url('definition!create') }}>
+        <fieldset>
+            <legend>
+                <i class="fas fa-question-circle fa-2x"></i>
+            </legend>
+            <ul>
+                <li>
+                    <label for="name">
+                        Nom
+                    </label>
+                    <input id="name" 
+                        name="name" 
+                        type="text" 
+                        maxlength="20" 
+                        placeholder="Insérer son Nom"
+                        required>
+                </li>
+                <li>
+                    <label for="description">
+                        Description
+                    </label>
+                    <textarea id="description" 
+                        name="description"
+                        rows="12" 
+                        placeholder="Insérer sa Description"
+                        required></textarea>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="reset" 
+                        value="Réinitialiser">
+                    <input type="submit" 
+                        value="Créer">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <a class="btn-black btn-lg" 
+        href="{{ url('admin') }}">
+        Quitter
+    </a>
+</main>
+{% endblock %}

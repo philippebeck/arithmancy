@@ -4,33 +4,6 @@
         Nombres
     </h2>
 
-    <nav class="sidebar">
-        <input id="sidebar-number"
-            class="sidebar-check" 
-            type="checkbox">
-        <label for="sidebar-number"
-            class="sidebar-open" 
-            title="Show Sidebar">
-            <i class="far fa-eye fa-lg fa-fw"></i>
-        </label>
-        <label for="sidebar-number"
-            title="Hide Sidebar">
-            <i class="far fa-eye-slash fa-lg fa-fw"></i>
-        </label>
-
-        {% for number in numbers %}
-            <a href="#number{{ number.number }}" 
-                title="Nombre {{ number.number }}">
-                {{ number.number }}
-            </a>
-        {% endfor %}
-
-        <a href="#number-home" 
-            title="Numbers Home">
-            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
-        </a>
-    </nav>
-
     <a class="btn-green btn-lg" 
         href="{{ url('number!create') }}">
         Nouveau Nombre
@@ -41,7 +14,7 @@
 
         {% for number in numbers %}
             <tr>
-                <th id="number{{ number.number }}">
+                <th>
                     Description #{{ number.number }}
                     <a class="btn-blue" 
                         href="{{ url('number!update', {'id': number.id}) }}"

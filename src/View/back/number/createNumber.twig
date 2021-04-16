@@ -1,0 +1,145 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Créer un Nouveau Nombre{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+<main>
+    <form class="form" 
+        method="post" 
+        action={{ url('number!create') }}>
+        <fieldset>
+            <legend>
+                <i class="fas fa-sort-numeric-down fa-2x"></i>
+            </legend>
+            <ul>
+                <li>
+                    <label for="number">
+                        Nombre
+                    </label>
+                    <input id="number" 
+                        name="number" 
+                        type="number" 
+                        min="1"
+                        max="78" 
+                        placeholder="0 < Nombre < 79"
+                        required>
+                </li>
+                <li>
+                    <label for="description">
+                        Description
+                    </label>
+                    <textarea id="description" 
+                        name="description"
+                        placeholder="Description Générale du Nombre"
+                        rows="6" 
+                        required></textarea>
+                </li>
+                <li>
+                    <label for="astral">
+                        Astral
+                    </label>
+                    <textarea id="astral" 
+                        name="astral" 
+                        placeholder="Interprétation du Nombre Astral"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="expression">
+                        Expression
+                    </label>
+                    <textarea id="expression" 
+                        name="expression" 
+                        placeholder="Interprétation du Nombre d'Expression"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="soul">
+                        Âme
+                    </label>
+                    <textarea id="soul" 
+                        name="soul"
+                        placeholder="Interprétation du Nombre d'Âme"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="day">
+                        Jour
+                    </label>
+                    <textarea id="day" 
+                        name="day"
+                        placeholder="Interprétation du Nombre du Jour"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="realization">
+                        Réalisation
+                    </label>
+                    <textarea id="realization" 
+                        name="realization"
+                        placeholder="Interprétation du Nombre de Réalisation"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="personal">
+                        Personnel
+                    </label>
+                    <textarea id="personal" 
+                        name="personal"
+                        placeholder="Interprétation du Nombre Personnel"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="hereditary">
+                        Héréditaire
+                    </label>
+                    <textarea id="hereditary" 
+                        name="hereditary"
+                        placeholder="Interprétation du Nombre Héréditaire"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="goal">
+                        But
+                    </label>
+                    <textarea id="goal" 
+                        name="goal"
+                        placeholder="Interprétation du Nombre du But"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="power">
+                        Pouvoir
+                    </label>
+                    <textarea id="power" 
+                        name="power"
+                        placeholder="Interprétation du Nombre de Pouvoir"
+                        rows="6"></textarea>
+                </li>
+                <li>
+                    <label for="spiritual">
+                        Spirituel
+                    </label>
+                    <textarea id="spiritual" 
+                        name="spiritual"
+                        placeholder="Interprétation du Nombre Spirituel"
+                        rows="6"></textarea>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="reset" 
+                        value="Réinitialiser">
+                    <input type="submit" 
+                        value="Créer">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <a class="btn-black btn-lg" 
+        href="{{ url('admin') }}">
+        Quitter
+    </a>
+</main>
+{% endblock %}

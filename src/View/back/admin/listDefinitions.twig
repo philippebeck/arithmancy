@@ -24,13 +24,13 @@
                     {{ definition.name }}
                     <br>
                     <a class="btn-blue" 
-                        href="{{ url('user!update', {'id': user.id}) }}"
-                        title="Modifier l'Utilisateur">
+                        href="{{ url('definition!update', {'id': definition.id}) }}"
+                        title="Modifier la Définition">
                         <i class="fas fa-pen-square fa-fw fa-lg"></i>
                     </a>
                     <a class="btn-red" 
-                        href="{{ url('user!delete', {'id': user.id}) }}"
-                        title="Supprimer l'Utilisateur">
+                        href="{{ url('definition!delete', {'id': definition.id}) }}"
+                        title="Supprimer la Définition">
                         <i class="fas fa-times-circle fa-fw fa-lg"></i>
                     </a>
                 </td>

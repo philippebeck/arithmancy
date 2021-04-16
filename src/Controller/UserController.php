@@ -65,8 +65,10 @@ class UserController extends MainController
 
     private function setUserData()
     {
-        $this->user["name"]     = (string) trim($this->getPost()->getPostVar("name"));
-        $this->user["email"]    = (string) trim($this->getPost()->getPostVar("email"));
+        $this->user["name"] = $this->getString()->cleanString(
+            $this->getPost()->getPostVar("name"), "name"
+        );
+        $this->user["email"] = (string) trim($this->getPost()->getPostVar("email"));
     }
 
     private function setUserImage()
