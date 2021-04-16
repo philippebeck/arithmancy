@@ -1,0 +1,134 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Modifier un Nombre{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+<main>
+    <form class="form" 
+        method="post" 
+        action={{ url('number!create', {'id': number.id}) }}>
+        <fieldset>
+            <legend>
+                <i class="fas fa-sort-numeric-down fa-2x"></i>
+            </legend>
+            <ul>
+                <li>
+                    <label for="number">
+                        Nombre
+                    </label>
+                    <input id="number" 
+                        name="number" 
+                        type="number" 
+                        min="1"
+                        max="78" 
+                        value="{{ number.number }}"
+                        required>
+                </li>
+                <li>
+                    <label for="description">
+                        Description
+                    </label>
+                    <textarea id="description" 
+                        name="description"
+                        rows="6" 
+                        required>{{ number.description }}</textarea>
+                </li>
+                <li>
+                    <label for="astral">
+                        Astral
+                    </label>
+                    <textarea id="astral" 
+                        name="astral"
+                        rows="6">{{ number.astral }}</textarea>
+                </li>
+                <li>
+                    <label for="expression">
+                        Expression
+                    </label>
+                    <textarea id="expression" 
+                        name="expression"
+                        rows="6">{{ number.expression }}</textarea>
+                </li>
+                <li>
+                    <label for="soul">
+                        Âme
+                    </label>
+                    <textarea id="soul" 
+                        name="soul"
+                        rows="6">{{ number.soul }}</textarea>
+                </li>
+                <li>
+                    <label for="day">
+                        Jour
+                    </label>
+                    <textarea id="day" 
+                        name="day"
+                        rows="6">{{ number.day }}</textarea>
+                </li>
+                <li>
+                    <label for="realization">
+                        Réalisation
+                    </label>
+                    <textarea id="realization" 
+                        name="realization"
+                        rows="6">{{ number.realization }}</textarea>
+                </li>
+                <li>
+                    <label for="personal">
+                        Personnel
+                    </label>
+                    <textarea id="personal" 
+                        name="personal"
+                        rows="6">{{ number.personal }}</textarea>
+                </li>
+                <li>
+                    <label for="hereditary">
+                        Héréditaire
+                    </label>
+                    <textarea id="hereditary" 
+                        name="hereditary"
+                        rows="6">{{ number.hereditary }}</textarea>
+                </li>
+                <li>
+                    <label for="goal">
+                        But
+                    </label>
+                    <textarea id="goal" 
+                        name="goal"
+                        rows="6">{{ number.goal }}</textarea>
+                </li>
+                <li>
+                    <label for="power">
+                        Pouvoir
+                    </label>
+                    <textarea id="power" 
+                        name="power"
+                        rows="6">{{ number.power }}</textarea>
+                </li>
+                <li>
+                    <label for="spiritual">
+                        Spirituel
+                    </label>
+                    <textarea id="spiritual" 
+                        name="spiritual"
+                        rows="6">{{ number.spiritual }}</textarea>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <input type="reset" 
+                        value="Réinitialiser">
+                    <input type="submit" 
+                        value="Créer">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <a class="btn-black btn-lg" 
+        href="{{ url('admin') }}">
+        Quitter
+    </a>
+</main>
+{% endblock %}
