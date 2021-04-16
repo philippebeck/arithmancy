@@ -1,6 +1,6 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Thème{% endblock %}
+{% block title %}Thème Numérologique{% endblock %}
 
 {% block description %}{% endblock %}
 
@@ -72,55 +72,69 @@
     </form>
 
     {% if numbers %}
-        <section class="card-primary">
-            <h2>Chemin de Vie #{{ numbers.astralNumber }}</h2>
-            <p>{{ numbers.astralText }}</p>
-        </section>
+        <article class="card-primary container-90lg-80xl-70wd">
+            <h2>Votre Thème Numérologique</h2>
 
-        <section class="card-primary">
-            <h2>Nombre d'Expression #{{ numbers.expressionNumber }}</h2>
-            <p>{{ numbers.expressionText }}</p>
-        </section>
+                <p>
+                    Chemin de Vie {{ numbers.astralNumber }} :
+                    <br>
+                    {{ numbers.astralText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre d'Âme #{{ numbers.soulNumber }}</h2>
-            <p>{{ numbers.soulText }}</p>
-        </section>
+                <p>
+                    Nombre d'Expression {{ numbers.expressionNumber }} :
+                    <br>
+                    {{ numbers.expressionText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre du Jour #{{ numbers.dayNumber }}</h2>
-            <p>{{ numbers.dayText }}</p>
-        </section>
+                <p>
+                    Nombre d'Âme {{ numbers.soulNumber }} :
+                    <br>
+                    {{ numbers.soulText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre de Réalisation #{{ numbers.realizationNumber }}</h2>
-            <p>{{ numbers.realizationText }}</p>
-        </section>
+                <p>
+                    Nombre du Jour {{ numbers.dayNumber }} :
+                    <br>
+                    {{ numbers.dayText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre Personnel #{{ numbers.personalNumber }}</h2>
-            <p>{{ numbers.personalText }}</p>
-        </section>
+                <p>
+                    Nombre de Réalisation {{ numbers.realizationNumber }}
+                    <br>
+                    {{ numbers.realizationText }}
+                </p>
+     
+                <p>
+                    Nombre Personnel {{ numbers.personalNumber }}
+                    <br>
+                    {{ numbers.personalText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre Héréditaire #{{ numbers.hereditaryNumber }}</h2>
-            <p>{{ numbers.hereditaryText }}</p>
-        </section>
+                <p>
+                    Nombre Héréditaire {{ numbers.hereditaryNumber }}
+                    <br>
+                    {{ numbers.hereditaryText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre du But #{{ numbers.goalNumber }}</h2>
-            <p>{{ numbers.goalText }}</p>
-        </section>
+                <p>
+                    Nombre du But {{ numbers.goalNumber }}
+                    <br>
+                    {{ numbers.goalText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre de Pouvoir #{{ numbers.powerNumber }}</h2>
-            <p>{{ numbers.powerText }}</p>
-        </section>
-
-        <section class="card-primary">
-            <h2>Nombre Spirituel #{{ numbers.spiritualNumber }}</h2>
-            <p>{{ numbers.spiritualText }}</p>
-        </section>
+                <p>
+                    Nombre de Pouvoir {{ numbers.powerNumber }}
+                    <br>
+                    {{ numbers.powerText }}
+                </p>
+ 
+                <p>
+                    Nombre Spirituel {{ numbers.spiritualNumber }}
+                    <br>
+                    {{ numbers.spiritualText }}
+                </p>
+            </article>
     {% endif %}
 
 </main>
