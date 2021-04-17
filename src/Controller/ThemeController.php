@@ -34,14 +34,14 @@ class ThemeController extends CalculationController
         if (!empty($this->getPost()->getPostArray())) {
             $this->allNumbers = ModelFactory::getModel("Number")->listData();
 
-            $this->setAstralData();
+            $this->setLifePathData();
             $this->setExpressionData();
-            $this->setSoulData();
-            $this->setDayData();       
+            $this->setIntimateData();
             $this->setRealizationData();       
+            $this->setDayData();       
+            $this->setGoalData();       
             $this->setPersonalData();       
             $this->setHereditaryData();       
-            $this->setGoalData();       
             $this->setPowerData();       
             $this->setSpiritualData();       
 
@@ -53,37 +53,112 @@ class ThemeController extends CalculationController
         return $this->render("front/theme.twig");
     }
 
-    private function setAstralData()
+    private function setLifePathData()
     {
-        $astralNumbers = $this->getAstralNumbers();
+        $lifePathNumbers = $this->getLifePathNumbers();
 
-        $this->numbers["astralNumber"] = 
-        $this->allNumbers[$astralNumbers[2] - 1]["number"];
+        $this->numbers["lifePathDigit"]     = $lifePathNumbers[2];
+        $this->numbers["lifePathNumber"]    = $lifePathNumbers[0];
 
-        $this->numbers["astralText"] = 
-        $this->allNumbers[$astralNumbers[2] - 1]["astral"];
+        $this->numbers["lifePathMainText"] = 
+        $this->allNumbers[$lifePathNumbers[2] - 1]["lifePath"];
+
+        if ($this->numbers["lifePathNumber"] < 79) {
+            if (
+                $this->numbers["lifePathNumber"] === 11
+                ||
+                $this->numbers["lifePathNumber"] === 22
+                ||
+                $this->numbers["lifePathNumber"] === 33
+                ||
+                $this->numbers["lifePathNumber"] === 44
+            ) {
+                $this->numbers["lifePathSecondText"] = 
+                $this->allNumbers[$lifePathNumbers[0] - 1]["lifePath"];
+
+            } else {
+                $this->numbers["lifePathSecondText"] = 
+                $this->allNumbers[$lifePathNumbers[0] - 1]["description"];
+            }
+        }
     }
 
     private function setExpressionData()
     {
         $expressionNumbers = $this->getExpressionNumbers();
 
-        $this->numbers["expressionNumber"] = 
-        $this->allNumbers[$expressionNumbers[1] - 1]["number"];
+        $this->numbers["expressionDigit"]   = $expressionNumbers[1];
+        $this->numbers["expressionNumber"]  = $expressionNumbers[0];
 
-        $this->numbers["expressionText"] = 
+        $this->numbers["expressionMainText"] = 
         $this->allNumbers[$expressionNumbers[1] - 1]["expression"];
+
+        if ($expressionNumbers[0] < 79) {
+            if (
+                $this->numbers["expressionNumber"] === 11
+                ||
+                $this->numbers["expressionNumber"] === 22
+            ) {
+                $this->numbers["expressionSecondText"] = 
+                $this->allNumbers[$expressionNumbers[0] - 1]["expression"];
+
+            } else {
+                $this->numbers["expressionSecondText"] = 
+                $this->allNumbers[$expressionNumbers[0] - 1]["description"];
+            }
+        }
     }
 
-    private function setSoulData()
+    private function setIntimateData()
     {
-        $soulNumbers = $this->getSoulNumbers();
+        $intimateNumbers = $this->getIntimateNumbers();
 
-        $this->numbers["soulNumber"] = 
-        $this->allNumbers[$soulNumbers[1] - 1]["number"];
+        $this->numbers["intimateDigit"]     = $intimateNumbers[1];
+        $this->numbers["intimateNumber"]    = $intimateNumbers[0];
 
-        $this->numbers["soulText"] = 
-        $this->allNumbers[$soulNumbers[1] - 1]["soul"];
+        $this->numbers["intimateMainText"] = 
+        $this->allNumbers[$intimateNumbers[1] - 1]["intimate"];
+
+        if ($this->numbers["intimateNumber"] < 79) {
+            if (
+                $this->numbers["intimateNumber"] === 11
+                ||
+                $this->numbers["intimateNumber"] === 22
+            ) {
+                $this->numbers["intimateSecondText"] = 
+                $this->allNumbers[$intimateNumbers[0] - 1]["intimate"];
+
+            } else {
+                $this->numbers["intimateSecondText"] = 
+                $this->allNumbers[$intimateNumbers[0] - 1]["description"];
+            }
+        }
+    }
+
+    private function setRealizationData()
+    {
+        $realizationNumbers = $this->getRealizationNumbers();
+
+        $this->numbers["realizationDigit"]  = $realizationNumbers[1];
+        $this->numbers["realizationNumber"] = $realizationNumbers[0];
+
+        $this->numbers["realizationMainText"] = 
+        $this->allNumbers[$realizationNumbers[1] - 1]["realization"];
+
+        if ($this->numbers["realizationNumber"] < 79) {
+            if (
+                $this->numbers["realizationNumber"] === 11
+                ||
+                $this->numbers["realizationNumber"] === 22
+            ) {
+                $this->numbers["realizationSecondText"] = 
+                $this->allNumbers[$realizationNumbers[0] - 1]["realization"];
+
+            } else {
+                $this->numbers["realizationSecondText"] = 
+                $this->allNumbers[$realizationNumbers[0] - 1]["description"];
+            }
+        }
     }
 
     private function setDayData()
@@ -97,69 +172,121 @@ class ThemeController extends CalculationController
         $this->allNumbers[$dayNumber - 1]["day"];
     }
 
-    private function setRealizationData()
+    private function setGoalData()
     {
-        $realizationNumbers = $this->getRealizationNumbers();
+        $goalNumbers = $this->getGoalNumbers();
 
-        $this->numbers["realizationNumber"] = 
-        $this->allNumbers[$realizationNumbers[1] - 1]["number"];
+        $this->numbers["goalDigit"]     = $goalNumbers[1];
+        $this->numbers["goalNumber"]    = $goalNumbers[0];
 
-        $this->numbers["realizationText"] = 
-        $this->allNumbers[$realizationNumbers[1] - 1]["realization"];
+        $this->numbers["goalMainText"] = 
+        $this->allNumbers[$goalNumbers[1] - 1]["goal"];
+
+        if ($this->numbers["goalNumber"] < 79) {
+            if (
+                $this->numbers["goalNumber"] === 11
+                ||
+                $this->numbers["goalNumber"] === 22
+                ||
+                $this->numbers["goalNumber"] === 33
+            ) {
+                $this->numbers["goalSecondText"] = 
+                $this->allNumbers[$goalNumbers[0] - 1]["goal"];
+
+            } else {
+                $this->numbers["goalSecondText"] = 
+                $this->allNumbers[$goalNumbers[0] - 1]["description"];
+            }
+        }
     }
 
     private function setPersonalData()
     {
         $personalNumbers = $this->getPersonalNumbers();
 
-        $this->numbers["personalNumber"] = 
-        $this->allNumbers[$personalNumbers[1] - 1]["number"];
+        $this->numbers["personalDigit"]     = $personalNumbers[1];
+        $this->numbers["personalNumber"]    = $personalNumbers[0];
 
-        $this->numbers["personalText"] = 
+        $this->numbers["personalMainText"] = 
         $this->allNumbers[$personalNumbers[1] - 1]["personal"];
+
+        if ($this->numbers["personalNumber"] < 79) {
+
+            $this->numbers["personalSecondText"] = 
+            $this->allNumbers[$personalNumbers[0] - 1]["description"];
+        }        
     }
 
     private function setHereditaryData()
     {
         $hereditaryNumbers = $this->getHereditaryNumbers();
 
-        $this->numbers["hereditaryNumber"] = 
-        $this->allNumbers[$hereditaryNumbers[1] - 1]["number"];
+        $this->numbers["hereditaryDigit"]   = $hereditaryNumbers[1];
+        $this->numbers["hereditaryNumber"]  = $hereditaryNumbers[0];
 
-        $this->numbers["hereditaryText"] = 
+        $this->numbers["hereditaryMainText"] = 
         $this->allNumbers[$hereditaryNumbers[1] - 1]["hereditary"];
-    }
 
-    private function setGoalData()
-    {
-        $goalNumbers = $this->getGoalNumbers();
+        if ($this->numbers["hereditaryNumber"] < 79) {
 
-        $this->numbers["goalNumber"] = 
-        $this->allNumbers[$goalNumbers[1] - 1]["number"];
-
-        $this->numbers["goalText"] = 
-        $this->allNumbers[$goalNumbers[1] - 1]["goal"];
+            $this->numbers["hereditarySecondText"] = 
+            $this->allNumbers[$hereditaryNumbers[0] - 1]["description"];
+        } 
     }
 
     private function setPowerData()
     {
         $powerNumbers = $this->getPowerNumbers();
 
-        $this->numbers["powerNumber"] = 
-        $this->allNumbers[$powerNumbers[1] - 1]["number"];
+        $this->numbers["powerDigit"]    = $powerNumbers[1];
+        $this->numbers["powerNumber"]   = $powerNumbers[0];
 
-        $this->numbers["powerText"] = 
+        $this->numbers["powerMainText"] = 
         $this->allNumbers[$powerNumbers[1] - 1]["power"];
+
+        if ($this->numbers["powerNumber"] < 79) {
+            if (
+                $this->numbers["powerNumber"] === 11
+                ||
+                $this->numbers["powerNumber"] === 22
+            ) {
+                $this->numbers["powerSecondText"] = 
+                $this->allNumbers[$powerNumbers[0] - 1]["power"];
+
+            } else {
+                $this->numbers["powerSecondText"] = 
+                $this->allNumbers[$powerNumbers[0] - 1]["description"];
+            }
+        }
     }
 
     private function setSpiritualData()
     {
         $spiritualNumbers = $this->getSpiritualNumbers();
 
-        $this->numbers["spiritualNumber"] = 
-        $this->allNumbers[$spiritualNumbers[1] - 1]["number"];
+        $this->numbers["spiritualDigit"]    = $spiritualNumbers[1];
+        $this->numbers["spiritualNumber"]   = $spiritualNumbers[0];
 
-        $this->numbers["spiritualText"] = 
+        $this->numbers["spiritualMainText"] = 
         $this->allNumbers[$spiritualNumbers[1] - 1]["spiritual"];
+
+        if ($this->numbers["spiritualNumber"] < 79) {
+            if (
+                $this->numbers["spiritualNumber"] === 11
+                ||
+                $this->numbers["spiritualNumber"] === 22
+                ||
+                $this->numbers["spiritualNumber"] === 33
+                ||
+                $this->numbers["spiritualNumber"] === 44
+            ) {
+                $this->numbers["spiritualSecondText"] = 
+                $this->allNumbers[$spiritualNumbers[0] - 1]["spiritual"];
+
+            } else {
+                $this->numbers["spiritualSecondText"] = 
+                $this->allNumbers[$spiritualNumbers[0] - 1]["description"];
+            }
+        }
     }
 }
