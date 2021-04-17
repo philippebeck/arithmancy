@@ -31,68 +31,98 @@
             <tr>
                 <td>{{ number.description }}</td>
             </tr>
+
+        {% if number.lifePath %}
             <tr>
-                <th>Nombre Astral #{{ number.number }}</th>
+                <th>Chemin de Vie {{ number.number }}</th>
             </tr>
             <tr>
-                <td>{{ number.astral }}</td>
+                <td>{{ number.lifePath }}</td>
             </tr>
+        {% endif %}
+
+        {% if number.expression %}
             <tr>
-                <th>Nombre d'Expression #{{ number.number }}</th>
+                <th>Nombre d'Expression {{ number.number }}</th>
             </tr>
             <tr>
                 <td>{{ number.expression }}</td>
             </tr>
+        {% endif %}
+
+        {% if number.intimate %}
             <tr>
-                <th>Nombre d'Âme #{{ number.number }}</th>
+                <th>Nombre Intime {{ number.number }}</th>
             </tr>
             <tr>
-                <td>{{ number.soul }}</td>
+                <td>{{ number.intimate }}</td>
             </tr>
+        {% endif %}
+
+        {% if number.realization %}
             <tr>
-                <th>Nombre du Jour #{{ number.number }}</th>
-            </tr>
-            <tr>
-                <td>{{ number.day }}</td>
-            </tr>
-            <tr>
-                <th>Nombre de Réalisation #{{ number.number }}</th>
+                <th>Nombre de Réalisation {{ number.number }}</th>
             </tr>
             <tr>
                 <td>{{ number.realization }}</td>
             </tr>
+        {% endif %}
+
+        {% if number.day %}
             <tr>
-                <th>Nombre Personnel #{{ number.number }}</th>
+                <th>Nombre du Jour {{ number.number }}</th>
             </tr>
             <tr>
-                <td>{{ number.personal }}</td>
+                <td>{{ number.day }}</td>
             </tr>
+        {% endif %}
+
+        {% if number.goal %}
             <tr>
-                <th>Nombre Héréditaire #{{ number.number }}</th>
-            </tr>
-            <tr>
-                <td>{{ number.hereditary }}</td>
-            </tr>
-            <tr>
-                <th>Nombre du But #{{ number.number }}</th>
+                <th>Nombre du But {{ number.number }}</th>
             </tr>
             <tr>
                 <td>{{ number.goal }}</td>
             </tr>
+        {% endif %}
+
+        {% if number.personal %}
             <tr>
-                <th>Nombre de Pouvoir #{{ number.number }}</th>
+                <th>Nombre Personnel {{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.personal }}</td>
+            </tr>
+        {% endif %}
+
+        {% if number.hereditary %}
+            <tr>
+                <th>Nombre Héréditaire {{ number.number }}</th>
+            </tr>
+            <tr>
+                <td>{{ number.hereditary }}</td>
+            </tr>
+        {% endif %}
+
+        {% if number.power %}
+            <tr>
+                <th>Nombre de Pouvoir {{ number.number }}</th>
             </tr>
             <tr>
                 <td>{{ number.power }}</td>
             </tr>
+        {% endif %}
+
+        {% if number.spiritual %}
             <tr>
-                <th>Nombre Spirituel #{{ number.number }}</th>
+                <th>Nombre Spirituel {{ number.number }}</th>
             </tr>
             <tr>
                 <td>{{ number.spiritual }}</td>
             </tr>
-        {% endfor %}
-
+        {% endif %}
+    {% endfor %}
+    
         </tbody>
     </table>
 </section>

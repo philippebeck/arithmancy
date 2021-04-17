@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Pam\Model\Factory\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -11,7 +10,7 @@ use Twig\Error\SyntaxError;
  * Class HomeController
  * @package App\Controller
  */
-class HomeController extends CalculationController
+class HomeController extends InterpretationManager
 {
     /**
      * @return string
@@ -23,11 +22,8 @@ class HomeController extends CalculationController
     {
         if (!empty($this->getPost()->getPostArray())) {
 
-            $astralNumbers  = $this->getAstralNumbers();
-            $number         = ModelFactory::getModel("Number")->readData($astralNumbers[2]);
-
             return $this->render("front/home.twig", [
-                "number" => $number
+                "numbers" => $this->numbers
             ]);
         }
 

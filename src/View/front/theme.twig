@@ -76,17 +76,24 @@
             <h2>Votre Thème Numérologique</h2>
 
                 <p>
-                    Chemin de Vie {{ numbers.lifePathDigit }}/{{ numbers.lifePathNumber }} :
+                    Chemin de Vie {{ numbers.lifePathDigit }} /
+                    {{ numbers.lifePathNumber }} /
+                    {{ numbers.lifePathSecondNumber }} :
                     <br>
                     {{ numbers.lifePathMainText }}
                     <br>
                     {% if numbers.lifePathSecondText %}
                         {{ numbers.lifePathSecondText }}
                     {% endif %}
+                    <br>
+                    {% if numbers.lifePathThirdText %}
+                        {{ numbers.lifePathThirdText }}
+                    {% endif %}
                 </p>
 
                 <p>
-                    Nombre d'Expression {{ numbers.expressionDigit }}/{{ numbers.expressionNumber }} :
+                    Nombre d'Expression {{ numbers.expressionDigit }} /
+                    {{ numbers.expressionNumber }} :
                     <br>
                     {{ numbers.expressionMainText }}
                     <br>
@@ -96,7 +103,8 @@
                 </p>
 
                 <p>
-                    Nombre Intime {{ numbers.intimateDigit }}/{{ numbers.intimateNumber }} :
+                    Nombre Intime {{ numbers.intimateDigit }} /
+                    {{ numbers.intimateNumber }} :
                     <br>
                     {{ numbers.intimateMainText }}
                     <br>
@@ -106,7 +114,8 @@
                 </p>
 
                 <p>
-                    Nombre de Réalisation {{ numbers.realizationDigit }}/{{ numbers.realizationNumber }}
+                    Nombre de Réalisation {{ numbers.realizationDigit }} /
+                    {{ numbers.realizationNumber }}
                     <br>
                     {{ numbers.realizationMainText }}
                     <br>
@@ -122,7 +131,8 @@
                 </p>
 
                 <p>
-                    Nombre du But {{ numbers.goalDigit }}/{{ numbers.goalNumber }}
+                    Nombre du But {{ numbers.goalDigit }} /
+                    {{ numbers.goalNumber }}
                     <br>
                     {{ numbers.goalMainText }}
                     <br>
@@ -132,7 +142,8 @@
                 </p>
      
                 <p>
-                    Nombre Personnel {{ numbers.personalDigit }}/{{ numbers.personalNumber }}
+                    Nombre Personnel {{ numbers.personalDigit }} /
+                    {{ numbers.personalNumber }}
                     <br>
                     {{ numbers.personalMainText }}
                     <br>
@@ -142,7 +153,8 @@
                 </p>
 
                 <p>
-                    Nombre Héréditaire {{ numbers.hereditaryDigit }}/{{ numbers.hereditaryNumber }}
+                    Nombre Héréditaire {{ numbers.hereditaryDigit }} /
+                    {{ numbers.hereditaryNumber }}
                     <br>
                     {{ numbers.hereditaryMainText }}
                     <br>
@@ -152,7 +164,8 @@
                 </p>
 
                 <p>
-                    Nombre de Pouvoir {{ numbers.powerDigit }}/{{ numbers.powerNumber }}
+                    Nombre de Pouvoir {{ numbers.powerDigit }} /
+                    {{ numbers.powerNumber }}
                     <br>
                     {{ numbers.powerMainText }}
                     <br>
@@ -162,7 +175,8 @@
                 </p>
  
                 <p>
-                    Nombre Spirituel {{ numbers.spiritualDigit }}/{{ numbers.spiritualNumber }}
+                    Nombre Spirituel {{ numbers.spiritualDigit }} /
+                    {{ numbers.spiritualNumber }}
                     <br>
                     {{ numbers.spiritualMainText }}
                     <br>
