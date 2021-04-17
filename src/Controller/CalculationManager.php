@@ -6,10 +6,10 @@ use DateTime;
 use Pam\Controller\MainController;
 
 /**
- * Class CalculationController
+ * Class CalculationManager
  * @package App\Controller
  */
-abstract class CalculationController extends MainController
+abstract class CalculationManager extends MainController
 {
     /**
      * @var array
@@ -74,7 +74,7 @@ abstract class CalculationController extends MainController
     private int $intimateNumber = 0;
 
     /**
-     * CalculationController constructor
+     * CalculationManager constructor
      */
     public function __construct()
     {
@@ -88,6 +88,9 @@ abstract class CalculationController extends MainController
             }
         }
     }
+
+     // ***************************************************************** \\
+    // ******************** BASIC CALCULATION SETTERS ******************** \\
 
     private function setBirthDate()
     {
@@ -191,8 +194,8 @@ abstract class CalculationController extends MainController
         return $number;
     }
 
-     // ******************************************************************* \\
-    // ****************************** SETTERS ****************************** \\
+     // ****************************************************************** \\
+    // ******************** CALCULATED NUMBERS SETTERS ******************** \\
 
     private function setLifePathNumber()
     {
