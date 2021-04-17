@@ -1,6 +1,6 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Définitions{% endblock %}
+{% block title %}Définitions des Nombres{% endblock %}
 
 {% block description %}{% endblock %}
 
@@ -13,7 +13,7 @@
 
 {% for definition in definitions %}
 
-    <section class="card-primary">
+    <section class="card-primary container-90lg-80xl-70wd">
         <h2>{{ definition.name }}</h2>
         <p>{{ definition.description }}</p>
     </section>

@@ -17,5 +17,6 @@ body {
 
 [class*="card"] {
     --card-max-width: auto;
+    --card-child-text-align: justify;
     --card-hover-transform: none;
 }

@@ -7,11 +7,8 @@
 {% block main %}
 <main>
     <header class="head">
-        L'arithmancie ou arithmomancie est une technique de divination basée sur les nombres de 1 à 9.
-        Le plus souvent, il s'agit de transformer le prénom & le nom des gens en une suite de chiffres pour obtenir ce qu'on appelle le nombre d'expression, le nombre intime & le nombre de réalisation.
-        Chacun de ces nombres est ensuite analysé.
-        Les origines de l'arithmancie semblent remonter à plus de 2000 ans, développées par les pythagoriciens.
-        Les personnes pratiquant l'arithmancie sont appelées des arithmanciens. 
+        L'arithmancie ou numérologie traditionnelle est une technique de divination basée sur les nombres de 1 à 9.
+        Ces origines remontent à Pythagore, il y a plus de 2000 ans.
     </header>
 
     <ul class="flex">
@@ -67,8 +64,8 @@
     </form>
 
     {% if number %}
-        <section class="card-primary">
-            <h2>Chemin de Vie #{{ number.number }}</h2>
+        <section class="card-primary container-90lg-80xl-70wd">
+            <h2>Chemin de Vie {{ number.number }}</h2>
             <p>{{ number.astral }}</p>
         </section>
     {% endif %}

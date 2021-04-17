@@ -61,7 +61,7 @@ abstract class CalculationController extends MainController
     /**
      * @var int
      */
-    private int $astralNumber = 0;
+    private int $lifePathNumber = 0;
 
     /**
      * @var int
@@ -71,7 +71,7 @@ abstract class CalculationController extends MainController
     /**
      * @var int
      */
-    private int $soulNumber = 0;
+    private int $intimateNumber = 0;
 
     /**
      * CalculationController constructor
@@ -100,7 +100,7 @@ abstract class CalculationController extends MainController
         $this->birthDate["month"]   = $birthDate->format("m");
         $this->birthDate["year"]    = $birthDate->format("Y");
 
-        $this->setAstralNumber();
+        $this->setLifePathNumber();
     }
 
     private function setFullName()
@@ -126,7 +126,7 @@ abstract class CalculationController extends MainController
         }
 
         $this->setExpressionNumber();
-        $this->setSoulNumber();
+        $this->setIntimateNumber();
     }
 
      // ****************************************************************** \\
@@ -194,7 +194,7 @@ abstract class CalculationController extends MainController
      // ******************************************************************* \\
     // ****************************** SETTERS ****************************** \\
 
-    private function setAstralNumber()
+    private function setLifePathNumber()
     {
         $birthDate = array_merge(
             str_split($this->birthDate["day"]), 
@@ -203,7 +203,7 @@ abstract class CalculationController extends MainController
         );
 
         for ($i = 0; $i < count($birthDate); $i++) {
-            $this->astralNumber += (int) $birthDate[$i];
+            $this->lifePathNumber += (int) $birthDate[$i];
         }
     }
 
@@ -214,7 +214,7 @@ abstract class CalculationController extends MainController
         );
     }
 
-    private function setSoulNumber()
+    private function setIntimateNumber()
     {
         $fullName   = $this->getFullNameLetters();
         $vowels     = [];
@@ -226,7 +226,7 @@ abstract class CalculationController extends MainController
             }         
         }
 
-        $this->soulNumber = $this->getNumberFromName(implode($vowels));
+        $this->intimateNumber = $this->getNumberFromName(implode($vowels));
     }
 
      // ************************************************************ \\
@@ -235,17 +235,17 @@ abstract class CalculationController extends MainController
     /**
      * @return array
      */
-    protected function getAstralNumbers()
+    protected function getLifePathNumbers()
     {
-        $astralReduceNumber = $this->getReducedNumber(
+        $lifePathReduceNumber = $this->getReducedNumber(
             $this->birthDate["day"] + 
             $this->birthDate["month"] + 
             $this->birthDate["year"]
         );
 
-        $astralDigit = $this->getDigitFromNumber($this->astralNumber);
+        $lifePathDigit = $this->getDigitFromNumber($this->lifePathNumber);
 
-        return [$this->astralNumber, $astralReduceNumber, $astralDigit];
+        return [$this->lifePathNumber, $lifePathReduceNumber, $lifePathDigit];
     }
 
     /**
@@ -258,26 +258,18 @@ abstract class CalculationController extends MainController
         return [$this->expressionNumber, $expressionDigit];
     }
 
+     // ***************************************************************** \\
+    // ******************** SECONDARY NUMBERS GETTERS ******************** \\
+
     /**
      * @return array
      */
-    protected function getSoulNumbers() 
+    protected function getIntimateNumbers() 
     {
-        $soulDigit = $this->getDigitFromNumber($this->soulNumber);
+        $intimateDigit = $this->getDigitFromNumber($this->intimateNumber);
 
-        return [$this->soulNumber, $soulDigit];
+        return [$this->intimateNumber, $intimateDigit];
     }
-
-    /**
-     * @return int
-     */
-    protected function getDayNumber()
-    {
-        return $this->birthDate["day"];
-    }
-
-     // ***************************************************************** \\
-    // ******************** SECONDARY NUMBERS GETTERS ******************** \\
 
     /**
      * @return array
@@ -298,6 +290,25 @@ abstract class CalculationController extends MainController
         $realizationDigit   = $this->getDigitFromNumber($realizationNumber);
 
         return [$realizationNumber, $realizationDigit];
+    }
+
+    /**
+     * @return int
+     */
+    protected function getDayNumber()
+    {
+        return $this->birthDate["day"];
+    }
+
+    /**
+     * @return array
+     */
+    protected function getGoalNumbers()
+    {
+        $goalNumber = $this->birthDate["day"] + $this->birthDate["month"];
+        $goalDigit  = $this->getDigitFromNumber($goalNumber);
+
+        return [$goalNumber, $goalDigit];
     }
 
     /**
@@ -322,17 +333,6 @@ abstract class CalculationController extends MainController
         return [$hereditaryNumber, $hereditaryDigit];
     }
 
-    /**
-     * @return array
-     */
-    protected function getGoalNumbers()
-    {
-        $goalNumber = $this->birthDate["day"] + $this->birthDate["month"];
-        $goalDigit  = $this->getDigitFromNumber($goalNumber);
-
-        return [$goalNumber, $goalDigit];
-    }
-
      // ***************************************************************** \\
     // ******************** SYNTHESIS NUMBERS GETTERS ******************** \\
 
@@ -341,7 +341,7 @@ abstract class CalculationController extends MainController
      */
     protected function getPowerNumbers()
     {
-        $powerNumber    = $this->astralNumber + $this->expressionNumber;
+        $powerNumber    = $this->lifePathNumber + $this->expressionNumber;
         $powerDigit     = $this->getDigitFromNumber($powerNumber);
 
         return [$powerNumber, $powerDigit];
@@ -353,9 +353,9 @@ abstract class CalculationController extends MainController
     protected function getSpiritualNumbers()
     {
         $spiritualNumber = 
-            $this->astralNumber + 
+            $this->lifePathNumber + 
             $this->expressionNumber + 
-            $this->soulNumber + 
+            $this->intimateNumber + 
             $this->birthDate["day"];
 
         $spiritualDigit = $this->getDigitFromNumber($spiritualNumber);

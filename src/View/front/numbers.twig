@@ -1,6 +1,6 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Nombres{% endblock %}
+{% block title %}Description des Nombres{% endblock %}
 
 {% block description %}{% endblock %}
 
@@ -11,9 +11,9 @@
         Introduction Nombres !
     </header>
 
-{% for number in numbers %}
+{% for number in numbers|slice(0, 9) %}
 
-    <section class="card-primary">
+    <section class="card-primary container-90lg-80xl-70wd">
         <h2>Nombre {{ number.number }}</h2>
         <p>{{ number.description }}</p>
     </section>

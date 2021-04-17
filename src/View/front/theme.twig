@@ -1,6 +1,6 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Thème{% endblock %}
+{% block title %}Thème Numérologique{% endblock %}
 
 {% block description %}{% endblock %}
 
@@ -72,55 +72,105 @@
     </form>
 
     {% if numbers %}
-        <section class="card-primary">
-            <h2>Chemin de Vie #{{ numbers.astralNumber }}</h2>
-            <p>{{ numbers.astralText }}</p>
-        </section>
+        <article class="card-primary container-90lg-80xl-70wd">
+            <h2>Votre Thème Numérologique</h2>
 
-        <section class="card-primary">
-            <h2>Nombre d'Expression #{{ numbers.expressionNumber }}</h2>
-            <p>{{ numbers.expressionText }}</p>
-        </section>
+                <p>
+                    Chemin de Vie {{ numbers.lifePathDigit }}/{{ numbers.lifePathNumber }} :
+                    <br>
+                    {{ numbers.lifePathMainText }}
+                    <br>
+                    {% if numbers.lifePathSecondText %}
+                        {{ numbers.lifePathSecondText }}
+                    {% endif %}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre d'Âme #{{ numbers.soulNumber }}</h2>
-            <p>{{ numbers.soulText }}</p>
-        </section>
+                <p>
+                    Nombre d'Expression {{ numbers.expressionDigit }}/{{ numbers.expressionNumber }} :
+                    <br>
+                    {{ numbers.expressionMainText }}
+                    <br>
+                    {% if numbers.expressionSecondText %}
+                        {{ numbers.expressionSecondText }}
+                    {% endif %}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre du Jour #{{ numbers.dayNumber }}</h2>
-            <p>{{ numbers.dayText }}</p>
-        </section>
+                <p>
+                    Nombre Intime {{ numbers.intimateDigit }}/{{ numbers.intimateNumber }} :
+                    <br>
+                    {{ numbers.intimateMainText }}
+                    <br>
+                    {% if numbers.intimateSecondText %}
+                        {{ numbers.intimateSecondText }}
+                    {% endif %}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre de Réalisation #{{ numbers.realizationNumber }}</h2>
-            <p>{{ numbers.realizationText }}</p>
-        </section>
+                <p>
+                    Nombre de Réalisation {{ numbers.realizationDigit }}/{{ numbers.realizationNumber }}
+                    <br>
+                    {{ numbers.realizationMainText }}
+                    <br>
+                    {% if numbers.realizationSecondText %}
+                        {{ numbers.realizationSecondText }}
+                    {% endif %}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre Personnel #{{ numbers.personalNumber }}</h2>
-            <p>{{ numbers.personalText }}</p>
-        </section>
+                <p>
+                    Nombre du Jour {{ numbers.dayNumber }} :
+                    <br>
+                    {{ numbers.dayText }}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre Héréditaire #{{ numbers.hereditaryNumber }}</h2>
-            <p>{{ numbers.hereditaryText }}</p>
-        </section>
+                <p>
+                    Nombre du But {{ numbers.goalDigit }}/{{ numbers.goalNumber }}
+                    <br>
+                    {{ numbers.goalMainText }}
+                    <br>
+                    {% if numbers.goalSecondText %}
+                        {{ numbers.goalSecondText }}
+                    {% endif %}
+                </p>
+     
+                <p>
+                    Nombre Personnel {{ numbers.personalDigit }}/{{ numbers.personalNumber }}
+                    <br>
+                    {{ numbers.personalMainText }}
+                    <br>
+                    {% if numbers.personalSecondText %}
+                        {{ numbers.personalSecondText }}
+                    {% endif %}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre du But #{{ numbers.goalNumber }}</h2>
-            <p>{{ numbers.goalText }}</p>
-        </section>
+                <p>
+                    Nombre Héréditaire {{ numbers.hereditaryDigit }}/{{ numbers.hereditaryNumber }}
+                    <br>
+                    {{ numbers.hereditaryMainText }}
+                    <br>
+                    {% if numbers.hereditarySecondText %}
+                        {{ numbers.hereditarySecondText }}
+                    {% endif %}
+                </p>
 
-        <section class="card-primary">
-            <h2>Nombre de Pouvoir #{{ numbers.powerNumber }}</h2>
-            <p>{{ numbers.powerText }}</p>
-        </section>
-
-        <section class="card-primary">
-            <h2>Nombre Spirituel #{{ numbers.spiritualNumber }}</h2>
-            <p>{{ numbers.spiritualText }}</p>
-        </section>
+                <p>
+                    Nombre de Pouvoir {{ numbers.powerDigit }}/{{ numbers.powerNumber }}
+                    <br>
+                    {{ numbers.powerMainText }}
+                    <br>
+                    {% if numbers.powerSecondText %}
+                        {{ numbers.powerSecondText }}
+                    {% endif %}
+                </p>
+ 
+                <p>
+                    Nombre Spirituel {{ numbers.spiritualDigit }}/{{ numbers.spiritualNumber }}
+                    <br>
+                    {{ numbers.spiritualMainText }}
+                    <br>
+                    {% if numbers.spiritualSecondText %}
+                        {{ numbers.spiritualSecondText }}
+                    {% endif %}
+                </p>
+            </article>
     {% endif %}
 
 </main>
