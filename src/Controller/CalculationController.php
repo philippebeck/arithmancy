@@ -165,7 +165,7 @@ abstract class CalculationController extends MainController
      * @param int $number
      * @return int
      */
-    private function getReducedNumber($number)
+    private function getReducedNumber(int $number)
     {
         $numbers = str_split((string) $number);
         $number  = 0;
@@ -181,7 +181,7 @@ abstract class CalculationController extends MainController
      * @param int $number
      * @return int
      */
-    private function getDigitFromNumber($number)
+    private function getDigitFromNumber(int $number)
     {
         do {
             $number = $this->getReducedNumber($number);
@@ -196,15 +196,11 @@ abstract class CalculationController extends MainController
 
     private function setLifePathNumber()
     {
-        $birthDate = array_merge(
-            str_split($this->birthDate["day"]), 
-            str_split($this->birthDate["month"]), 
-            str_split($this->birthDate["year"])
+        $this->lifePathNumber = $this->getReducedNumber(
+            $this->birthDate["day"] + 
+            $this->birthDate["month"] + 
+            $this->birthDate["year"]
         );
-
-        for ($i = 0; $i < count($birthDate); $i++) {
-            $this->lifePathNumber += (int) $birthDate[$i];
-        }
     }
 
     private function setExpressionNumber()
@@ -237,15 +233,21 @@ abstract class CalculationController extends MainController
      */
     protected function getLifePathNumbers()
     {
-        $lifePathReduceNumber = $this->getReducedNumber(
-            $this->birthDate["day"] + 
-            $this->birthDate["month"] + 
-            $this->birthDate["year"]
+        $birthDate = array_merge(
+            str_split($this->birthDate["day"]), 
+            str_split($this->birthDate["month"]), 
+            str_split($this->birthDate["year"])
         );
+
+        $lifePathNumber = 0;
+
+        for ($i = 0; $i < count($birthDate); $i++) {
+            $lifePathNumber += (int) $birthDate[$i];
+        }
 
         $lifePathDigit = $this->getDigitFromNumber($this->lifePathNumber);
 
-        return [$this->lifePathNumber, $lifePathReduceNumber, $lifePathDigit];
+        return [$lifePathDigit, $this->lifePathNumber, $lifePathNumber];
     }
 
     /**
@@ -255,7 +257,7 @@ abstract class CalculationController extends MainController
     {
         $expressionDigit = $this->getDigitFromNumber($this->expressionNumber);
 
-        return [$this->expressionNumber, $expressionDigit];
+        return [$expressionDigit, $this->expressionNumber];
     }
 
      // ***************************************************************** \\
@@ -268,7 +270,7 @@ abstract class CalculationController extends MainController
     {
         $intimateDigit = $this->getDigitFromNumber($this->intimateNumber);
 
-        return [$this->intimateNumber, $intimateDigit];
+        return [$intimateDigit, $this->intimateNumber];
     }
 
     /**
@@ -289,7 +291,7 @@ abstract class CalculationController extends MainController
         $realizationNumber  = $this->getNumberFromName(implode($consonants));
         $realizationDigit   = $this->getDigitFromNumber($realizationNumber);
 
-        return [$realizationNumber, $realizationDigit];
+        return [$realizationDigit, $realizationNumber];
     }
 
     /**
@@ -308,7 +310,7 @@ abstract class CalculationController extends MainController
         $goalNumber = $this->birthDate["day"] + $this->birthDate["month"];
         $goalDigit  = $this->getDigitFromNumber($goalNumber);
 
-        return [$goalNumber, $goalDigit];
+        return [$goalDigit, $goalNumber];
     }
 
     /**
@@ -319,7 +321,7 @@ abstract class CalculationController extends MainController
         $personalNumber = $this->getNumberFromName($this->fullName["usual"]);
         $personalDigit  = $this->getDigitFromNumber($personalNumber);
 
-        return [$personalNumber, $personalDigit];
+        return [$personalDigit, $personalNumber];
     }
 
     /**
@@ -330,7 +332,7 @@ abstract class CalculationController extends MainController
         $hereditaryNumber   = $this->getNumberFromName($this->fullName["last"]);
         $hereditaryDigit    = $this->getDigitFromNumber($hereditaryNumber);
 
-        return [$hereditaryNumber, $hereditaryDigit];
+        return [$hereditaryDigit, $hereditaryNumber];
     }
 
      // ***************************************************************** \\
@@ -344,7 +346,7 @@ abstract class CalculationController extends MainController
         $powerNumber    = $this->lifePathNumber + $this->expressionNumber;
         $powerDigit     = $this->getDigitFromNumber($powerNumber);
 
-        return [$powerNumber, $powerDigit];
+        return [$powerDigit, $powerNumber];
     }
 
     /**
@@ -360,6 +362,6 @@ abstract class CalculationController extends MainController
 
         $spiritualDigit = $this->getDigitFromNumber($spiritualNumber);
 
-        return [$spiritualNumber, $spiritualDigit];
+        return [$spiritualDigit, $spiritualNumber];
     }
 }
