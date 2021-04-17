@@ -15,7 +15,7 @@
         <li>
             <a class="btn-primary"
                 href="{{ url('number') }}" 
-                title="Connaître les 9 Nombres en Numérologie">
+                title="Les 9 Nombres en Arithmancie">
                 <i class="fas fa-sort-numeric-down fa-3x fa-fw"></i>
                 <span>Nombres</span>
             </a>
@@ -23,15 +23,15 @@
         <li>
             <a class="btn-primary" 
                 href="{{ url('definition') }}" 
-                title="Comprendre les Types de Nombres en Numérologie">
-                <i class="fas fa-question-circle fa-3x fa-fw"></i>
-                <span>Définitions</span>
+                title="Les Nombres Calculés en Arithmancie">
+                <i class="fas fa-equals fa-3x fa-fw"></i>
+                <span>Calculs</span>
             </a>
         </li>
         <li>
             <a class="btn-primary"
                 href="{{ url('theme') }}" 
-                title="Obtenir son Thème Numérologique">
+                title="Votre Thème Numérologique">
                 <i class="fab fa-readme fa-3x fa-fw"></i>
                 <span>Thème</span>
             </a>
@@ -63,10 +63,25 @@
         </fieldset>
     </form>
 
-    {% if number %}
+    {% if numbers %}
         <section class="card-primary container-90lg-80xl-70wd">
-            <h2>Chemin de Vie {{ number.number }}</h2>
-            <p>{{ number.astral }}</p>
+            <h2>
+                Chemin de Vie {{ numbers.lifePathDigit }} /
+                {{ numbers.lifePathNumber }} /
+                {{ numbers.lifePathSecondNumber }}
+            </h2>
+            
+            <p>
+                {{ numbers.lifePathMainText }}
+                <br>
+                {% if numbers.lifePathSecondText %}
+                    {{ numbers.lifePathSecondText }}
+                {% endif %}
+                <br>
+                {% if numbers.lifePathThirdText %}
+                    {{ numbers.lifePathThirdText }}
+                {% endif %}
+            </p>
         </section>
     {% endif %}
 </main>
