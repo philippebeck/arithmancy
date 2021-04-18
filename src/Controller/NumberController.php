@@ -29,7 +29,7 @@ class NumberController extends MainController
     {
         $numbers = ModelFactory::getModel("Number")->listData();
 
-        return $this->render("front/numbers.twig", [
+        return $this->render("front/number.twig", [
             "numbers" => $numbers
         ]);
     }

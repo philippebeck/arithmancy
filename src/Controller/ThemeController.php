@@ -32,11 +32,11 @@ class ThemeController extends InterpretationManager
 
         if (!empty($this->getPost()->getPostArray())) {
 
-            return $this->render("front/theme.twig", [
+            return $this->render("front/theme/theme.twig", [
                 "numbers" => $this->numbers
             ]);
         }
 
-        return $this->render("front/theme.twig");
+        return $this->render("front/theme/theme.twig");
     }
 }

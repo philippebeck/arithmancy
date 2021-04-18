@@ -3,12 +3,15 @@
 :root {
   --serif: 'Montaga', serif;
   --sans-serif: 'Montaga', sans-serif;
-  --primary: rgb(36, 16, 0);
-  --primary-dark: rgba(36, 16, 0, var(--opacity-dark));
-  --primary-light: rgba(36, 16, 0, var(--opacity-light));
-  --secondary: rgb(230, 209, 182);
-  --secondary-dark: rgba(230, 209, 182, var(--opacity-dark));
-  --secondary-light: rgba(230, 209, 182, var(--opacity-light));
+  --primary: rgb(47, 79, 79);
+  --primary-dark: rgba(47, 79, 79, var(--opacity-dark));
+  --primary-light: rgba(47, 79, 79, var(--opacity-light));
+  --secondary: rgb(250, 235, 215);
+  --secondary-dark: rgba(250, 235, 215, var(--opacity-dark));
+  --secondary-light: rgba(250, 235, 215, var(--opacity-light));
+  --green: rgb(34, 139, 34);
+  --green-dark: rgba(34, 139, 34, var(--opacity-dark));
+  --green-light: rgba(34, 139, 34, var(--opacity-light));
 }
 
 body {

@@ -29,7 +29,7 @@ class CalculationController extends MainController
     {
         $calculations = ModelFactory::getModel("Calculation")->listData();
 
-        return $this->render("front/calculations.twig", [
+        return $this->render("front/calculation/calculation.twig", [
             "calculations" => $calculations
         ]);
     }

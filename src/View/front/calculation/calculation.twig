@@ -1,0 +1,28 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Les Nombres Calculés{% endblock %}
+
+{% block description %}
+    Les Nombres Calculés en Arithmancie,
+    sont obtenus à partir des Prénoms, 
+    des Noms & des Dates de Naissance
+    d'Individus afin d'obtenir des Interprétations.
+{% endblock %}
+
+{% block main %}
+<main>
+    <header class="head">
+        Les Nombres Calculés en Arithmancie,
+        sont obtenus à partir des Prénoms, 
+        des Noms & des Dates de Naissance d'Individus,
+        afin d'obtenir des Interprétations.
+        2 Éléments sont à la base de ces Calculs Numérologiques, 
+        l'Alphabet de Tripoli & la Réduction Théosophique.
+    </header>
+
+    {{ include("front/calculation/tripoli.twig") }}
+    {{ include("front/calculation/reduct.twig") }}
+    {{ include("front/calculation/signification.twig") }}
+
+</main>
+{% endblock %}
