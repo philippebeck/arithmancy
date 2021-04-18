@@ -2,11 +2,12 @@
 
 {% block title %}Thème Numérologique{% endblock %}
 
-{% block description %}{% endblock %}
+{% block description %}
+
+{% endblock %}
 
 {% block main %}
 <main>
-
     <form class="form"
         method="post" 
         action={{ url('theme') }}>
@@ -72,119 +73,119 @@
     </form>
 
     {% if numbers %}
-        <article class="card-primary container-90lg-80xl-70wd">
-            <h2>Votre Thème Numérologique</h2>
+    <article class="card-primary container-90lg-80xl-70wd">
+        <h2>Votre Thème Numérologique</h2>
 
-                <p>
-                    Chemin de Vie {{ numbers.lifePathDigit }} /
-                    {{ numbers.lifePathNumber }} /
-                    {{ numbers.lifePathSecondNumber }} :
-                    <br>
-                    {{ numbers.lifePathMainText }}
-                    <br>
-                    {% if numbers.lifePathSecondText %}
-                        {{ numbers.lifePathSecondText }}
-                    {% endif %}
-                    <br>
-                    {% if numbers.lifePathThirdText %}
-                        {{ numbers.lifePathThirdText }}
-                    {% endif %}
-                </p>
+        <p>
+            Chemin de Vie {{ numbers.lifePathDigit }} /
+            {{ numbers.lifePathNumber }} /
+            {{ numbers.lifePathSecondNumber }} :
+            <br>
+            {{ numbers.lifePathMainText }}
+            <br>
+            {% if numbers.lifePathSecondText %}
+                {{ numbers.lifePathSecondText }}
+            {% endif %}
+            <br>
+            {% if numbers.lifePathThirdText %}
+                {{ numbers.lifePathThirdText }}
+            {% endif %}
+        </p>
 
-                <p>
-                    Nombre d'Expression {{ numbers.expressionDigit }} /
-                    {{ numbers.expressionNumber }} :
-                    <br>
-                    {{ numbers.expressionMainText }}
-                    <br>
-                    {% if numbers.expressionSecondText %}
-                        {{ numbers.expressionSecondText }}
-                    {% endif %}
-                </p>
+        <p>
+            Nombre d'Expression {{ numbers.expressionDigit }} /
+            {{ numbers.expressionNumber }} :
+            <br>
+            {{ numbers.expressionMainText }}
+            <br>
+            {% if numbers.expressionSecondText %}
+                {{ numbers.expressionSecondText }}
+            {% endif %}
+        </p>
 
-                <p>
-                    Nombre Intime {{ numbers.intimateDigit }} /
-                    {{ numbers.intimateNumber }} :
-                    <br>
-                    {{ numbers.intimateMainText }}
-                    <br>
-                    {% if numbers.intimateSecondText %}
-                        {{ numbers.intimateSecondText }}
-                    {% endif %}
-                </p>
+        <p>
+            Nombre Intime {{ numbers.intimateDigit }} /
+            {{ numbers.intimateNumber }} :
+            <br>
+            {{ numbers.intimateMainText }}
+            <br>
+            {% if numbers.intimateSecondText %}
+                {{ numbers.intimateSecondText }}
+            {% endif %}
+        </p>
 
-                <p>
-                    Nombre de Réalisation {{ numbers.realizationDigit }} /
-                    {{ numbers.realizationNumber }}
-                    <br>
-                    {{ numbers.realizationMainText }}
-                    <br>
-                    {% if numbers.realizationSecondText %}
-                        {{ numbers.realizationSecondText }}
-                    {% endif %}
-                </p>
+        <p>
+            Nombre de Réalisation {{ numbers.realizationDigit }} /
+            {{ numbers.realizationNumber }}
+            <br>
+            {{ numbers.realizationMainText }}
+            <br>
+            {% if numbers.realizationSecondText %}
+                {{ numbers.realizationSecondText }}
+            {% endif %}
+        </p>
 
-                <p>
-                    Nombre du Jour {{ numbers.dayNumber }} :
-                    <br>
-                    {{ numbers.dayText }}
-                </p>
+        <p>
+            Nombre du Jour {{ numbers.dayNumber }} :
+            <br>
+            {{ numbers.dayText }}
+        </p>
 
-                <p>
-                    Nombre du But {{ numbers.goalDigit }} /
-                    {{ numbers.goalNumber }}
-                    <br>
-                    {{ numbers.goalMainText }}
-                    <br>
-                    {% if numbers.goalSecondText %}
-                        {{ numbers.goalSecondText }}
-                    {% endif %}
-                </p>
-     
-                <p>
-                    Nombre Personnel {{ numbers.personalDigit }} /
-                    {{ numbers.personalNumber }}
-                    <br>
-                    {{ numbers.personalMainText }}
-                    <br>
-                    {% if numbers.personalSecondText %}
-                        {{ numbers.personalSecondText }}
-                    {% endif %}
-                </p>
+        <p>
+            Nombre du But {{ numbers.goalDigit }} /
+            {{ numbers.goalNumber }}
+            <br>
+            {{ numbers.goalMainText }}
+            <br>
+            {% if numbers.goalSecondText %}
+                {{ numbers.goalSecondText }}
+            {% endif %}
+        </p>
 
-                <p>
-                    Nombre Héréditaire {{ numbers.hereditaryDigit }} /
-                    {{ numbers.hereditaryNumber }}
-                    <br>
-                    {{ numbers.hereditaryMainText }}
-                    <br>
-                    {% if numbers.hereditarySecondText %}
-                        {{ numbers.hereditarySecondText }}
-                    {% endif %}
-                </p>
+        <p>
+            Nombre Personnel {{ numbers.personalDigit }} /
+            {{ numbers.personalNumber }}
+            <br>
+            {{ numbers.personalMainText }}
+            <br>
+            {% if numbers.personalSecondText %}
+                {{ numbers.personalSecondText }}
+            {% endif %}
+        </p>
 
-                <p>
-                    Nombre de Pouvoir {{ numbers.powerDigit }} /
-                    {{ numbers.powerNumber }}
-                    <br>
-                    {{ numbers.powerMainText }}
-                    <br>
-                    {% if numbers.powerSecondText %}
-                        {{ numbers.powerSecondText }}
-                    {% endif %}
-                </p>
- 
-                <p>
-                    Nombre Spirituel {{ numbers.spiritualDigit }} /
-                    {{ numbers.spiritualNumber }}
-                    <br>
-                    {{ numbers.spiritualMainText }}
-                    <br>
-                    {% if numbers.spiritualSecondText %}
-                        {{ numbers.spiritualSecondText }}
-                    {% endif %}
-                </p>
-            </article>
+        <p>
+            Nombre Héréditaire {{ numbers.hereditaryDigit }} /
+            {{ numbers.hereditaryNumber }}
+            <br>
+            {{ numbers.hereditaryMainText }}
+            <br>
+            {% if numbers.hereditarySecondText %}
+                {{ numbers.hereditarySecondText }}
+            {% endif %}
+        </p>
+
+        <p>
+            Nombre de Pouvoir {{ numbers.powerDigit }} /
+            {{ numbers.powerNumber }}
+            <br>
+            {{ numbers.powerMainText }}
+            <br>
+            {% if numbers.powerSecondText %}
+                {{ numbers.powerSecondText }}
+            {% endif %}
+        </p>
+
+        <p>
+            Nombre Spirituel {{ numbers.spiritualDigit }} /
+            {{ numbers.spiritualNumber }}
+            <br>
+            {{ numbers.spiritualMainText }}
+            <br>
+            {% if numbers.spiritualSecondText %}
+                {{ numbers.spiritualSecondText }}
+            {% endif %}
+        </p>
+    </article>
     {% endif %}
 
 </main>
