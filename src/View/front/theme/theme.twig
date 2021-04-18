@@ -1,0 +1,29 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Thème Numérologique{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block main %}
+<main>
+    <header class="head">
+        Nous proposons ici la Création Instantanée
+        de votre Thème Numérologique Personnalisé.
+        Il vous suffit de renseigner les Informations suivantes:
+        votre Prénom Usuel, vos autres Prénoms (si vous en avez),
+        votre Nom de Famille & votre Date de Naissance.
+    </header>
+
+    <section>
+        <h2>Obtenir son Thème Numérologique</h2>
+
+        {% if numbers %}
+            {{ include("front/theme/interpretation.twig") }}
+        {% endif %}
+
+        {{ include("front/theme/form.twig") }}
+    </section>
+</main>
+{% endblock %}

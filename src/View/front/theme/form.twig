@@ -1,0 +1,63 @@
+<form class="form"
+    method="post" 
+    action={{ url('theme') }}>
+
+    <fieldset>
+        <legend>Découvrez tout votre Potentiel</legend>
+        <ul>
+            <li>
+                <label for="usual-first-name">
+                Prénom Usuel
+                </label>
+                <input id="usual-first-name" 
+                    name="usual-first-name"
+                    type="text" 
+                    placeholder="Prénom-Usuel"
+                    required>
+            </li>
+            <li>
+                <label for="middle-name">
+                Second Prénom
+                </label>
+                <input id="middle-name" 
+                    name="middle-name"
+                    type="text" 
+                    placeholder="Optionnel">
+            </li>
+            <li>
+                <label for="third-name">
+                Troisième Prénom
+                </label>
+                <input id="third-name" 
+                    name="third-name"
+                    type="text" 
+                    placeholder="Optionnel">
+            </li>
+            <li>
+                <label for="last-name">
+                Nom de Famille
+                </label>
+                <input id="last-name" 
+                    name="last-name"
+                    type="text" 
+                    placeholder="Nom-de-Famille"
+                    required>
+            </li>
+            <li>
+                <label for="birthdate">
+                    Votre Date de Naissance 
+                </label>
+                <input id="birthdate" 
+                    name="birthdate"
+                    type="date"
+                    required>
+            </li>
+        </ul>
+        <ul>
+        <li>
+            <input type="submit" 
+                value="Interpréter">
+        </li>
+        </ul>
+    </fieldset>
+</form>
