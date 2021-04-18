@@ -11,17 +11,31 @@
 {% block main %}
 <main>
     <header class="head">
-        L'Arithmancie ou 
         <a class="button-primary"
             href="https://fr.wikipedia.org/wiki/Num%C3%A9rologie"
-            title="Voir la page Wikipedia expliquant la Numérologie">
-            Numérologie
+            title="Voir la page Wikipedia sur la Numérologie">
+            <strong>L'Arithmancie</strong>
         </a>
-        traditionnelle est une technique de Divination
-        basée sur les chiffres de 1 à 9,
+        ou <strong>Numérologie</strong> traditionnelle,
+        permet d'obtenir des Interprétations sur 
+        certains Éléments de la Vie d'un Individu,
+        en se servant de sa Date de Naissance 
+        & de son Nom.
+        Cette technique de 
+        <a class="button-primary"
+            href="https://fr.wikipedia.org/wiki/Divination"
+            title="Voir la page Wikipedia sur la Divination">
+            <strong>Divination</strong>
+        </a>
+        est basée sur les chiffres de 1 à 9,
         appelés Nombres.
-        <br>
-        Ses origines remontent à Pythagore, il y a plus de 2000 ans.
+        Ses origines remontent à 
+        <a class="button-primary"
+            href="https://fr.wikipedia.org/wiki/Pythagore"
+            title="Voir la page Wikipedia sur Pythagore">
+            <strong>Pythagore</strong>
+        </a>, 
+        il y a plus de 2000 ans.
     </header>
 
     <ul class="flex">
@@ -86,26 +100,27 @@
         </form>
 
         {% if numbers %}
-            <section class="card-primary container-90lg-80xl-70wd">
-                <h2>
-                    Chemin de Vie {{ numbers.lifePathDigit }} /
-                    {{ numbers.lifePathNumber }} /
-                    {{ numbers.lifePathSecondNumber }}
-                </h2>
-                
-                <p>
-                    {{ numbers.lifePathMainText }}
-                    <br>
-                    {% if numbers.lifePathSecondText %}
-                        {{ numbers.lifePathSecondText }}
-                    {% endif %}
-                    <br>
-                    {% if numbers.lifePathThirdText %}
-                        {{ numbers.lifePathThirdText }}
-                    {% endif %}
-                </p>
-            </section>
+        <section class="card-primary container-90lg-80xl-70wd">
+            <h2>
+                Chemin de Vie {{ numbers.lifePathDigit }} /
+                {{ numbers.lifePathNumber }} /
+                {{ numbers.lifePathSecondNumber }}
+            </h2>
+            
+            <p>
+                {{ numbers.lifePathMainText }}
+                <br>
+                {% if numbers.lifePathSecondText %}
+                    {{ numbers.lifePathSecondText }}
+                {% endif %}
+                <br>
+                {% if numbers.lifePathThirdText %}
+                    {{ numbers.lifePathThirdText }}
+                {% endif %}
+            </p>
+        </section>
         {% endif %}
+
     </section>
 </main>
 {% endblock %}
