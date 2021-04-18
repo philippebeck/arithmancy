@@ -17,7 +17,7 @@ class CalculationController extends MainController
     /**
      * @var array
      */
-    private array $calculation = [];
+    private $calculation = [];
 
     /**
      * @return string

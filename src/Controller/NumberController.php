@@ -17,7 +17,7 @@ class NumberController extends MainController
     /**
      * @var array
      */
-    private array $number = [];
+    private $number = [];
 
     /**
      * @return string
