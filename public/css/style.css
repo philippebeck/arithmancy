@@ -1,31 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Montaga&display=swap');
 
 :root {
-    --serif: 'Montaga', serif;
-    --sans-serif: 'Montaga', sans-serif;
-    --primary: rgb(36, 16, 0);
-    --primary-dark: rgba(36, 16, 0, var(--opacity-dark));
-    --primary-light: rgba(36, 16, 0, var(--opacity-light));
-    --secondary: rgb(200, 177, 133);
-    --secondary-dark: rgba(200, 177, 133, var(--opacity-dark));
-    --secondary-light: rgba(200, 177, 133, var(--opacity-light));
+  --serif: 'Montaga', serif;
+  --sans-serif: 'Montaga', sans-serif;
+  --primary: rgb(36, 16, 0);
+  --primary-dark: rgba(36, 16, 0, var(--opacity-dark));
+  --primary-light: rgba(36, 16, 0, var(--opacity-light));
+  --secondary: rgb(200, 177, 133);
+  --secondary-dark: rgba(200, 177, 133, var(--opacity-dark));
+  --secondary-light: rgba(200, 177, 133, var(--opacity-light));
 }
 
 body {
-    --body-background-color: var(--secondary);
+  --body-background-color: var(--secondary);
 }
 
 .head {
-    --head-border: solid thin var(--primary);
-    --head-border-radius: 2px;
+  --head-border: solid thin var(--primary);
+  --head-border-radius: 2px;
 }
 
 [class*="card"] {
-    --card-border-radius: 5px;
-    --card-max-width: auto;
-    --card-box-shadow: unset;
-    --card-title-text-shadow: unset;
-    --card-child-border-radius: 5px;
-    --card-child-text-align: justify;
-    --card-hover-transform: unset;
+  --card-border-radius: 5px;
+  --card-max-width: auto;
+  --card-box-shadow: unset;
+  --card-title-text-shadow: unset;
+  --card-child-border-radius: 5px;
+  --card-child-text-align: justify;
+  --card-hover-transform: unset;
 }
