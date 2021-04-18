@@ -46,52 +46,62 @@
             </a>
         </li>
     </ul>
- 
-    <form class="form"
-        method="post" 
-        action={{ url('home') }}>
-        <fieldset>
-            <legend>
-                Connaître votre Chemin de Vie
-            </legend>
-            <ul>
-                <li>
-                    <label for="birthdate">
-                        Date de Naissance 
-                    </label>
-                    <input id="birthdate" 
-                        name="birthdate"
-                        type="date"
-                        required>
-                </li>
-                <li>
-                    <input type="submit" 
-                        value="Interpréter">
-                </li>
-            </ul>
-        </fieldset>
-    </form>
 
-    {% if numbers %}
-        <section class="card-primary container-90lg-80xl-70wd">
-            <h2>
-                Chemin de Vie {{ numbers.lifePathDigit }} /
-                {{ numbers.lifePathNumber }} /
-                {{ numbers.lifePathSecondNumber }}
-            </h2>
-            
-            <p>
-                {{ numbers.lifePathMainText }}
-                <br>
-                {% if numbers.lifePathSecondText %}
-                    {{ numbers.lifePathSecondText }}
-                {% endif %}
-                <br>
-                {% if numbers.lifePathThirdText %}
-                    {{ numbers.lifePathThirdText }}
-                {% endif %}
-            </p>
-        </section>
-    {% endif %}
+    <section>
+        <h2>
+            Le Chemin de Vie
+        </h2>
+
+        <header class="head">
+            Le Chemin de Vie révèle la destinée d'une personne & vous pouvez ici en prendre connaissance!
+        </header>
+ 
+        <form class="form"
+            method="post" 
+            action={{ url('home') }}>
+            <fieldset>
+                <legend>
+                    Découvrez votre Chemin de Vie
+                </legend>
+                <ul>
+                    <li>
+                        <label for="birthdate">
+                            Date de Naissance 
+                        </label>
+                        <input id="birthdate" 
+                            name="birthdate"
+                            type="date"
+                            required>
+                    </li>
+                    <li>
+                        <input type="submit" 
+                            value="Interpréter">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+
+        {% if numbers %}
+            <section class="card-primary container-90lg-80xl-70wd">
+                <h2>
+                    Chemin de Vie {{ numbers.lifePathDigit }} /
+                    {{ numbers.lifePathNumber }} /
+                    {{ numbers.lifePathSecondNumber }}
+                </h2>
+                
+                <p>
+                    {{ numbers.lifePathMainText }}
+                    <br>
+                    {% if numbers.lifePathSecondText %}
+                        {{ numbers.lifePathSecondText }}
+                    {% endif %}
+                    <br>
+                    {% if numbers.lifePathThirdText %}
+                        {{ numbers.lifePathThirdText }}
+                    {% endif %}
+                </p>
+            </section>
+        {% endif %}
+    </section>
 </main>
 {% endblock %}
