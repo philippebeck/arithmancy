@@ -23,11 +23,11 @@ class HomeController extends InterpretationManager
     {
         if (!empty($this->getPost()->getPostArray())) {
 
-            return $this->render("front/home.twig", [
+            return $this->render("front/home/home.twig", [
                 "numbers" => $this->numbers
             ]);
         }
 
-        return $this->render("front/home.twig");
+        return $this->render("front/home/home.twig");
     }
 }
