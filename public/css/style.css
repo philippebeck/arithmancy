@@ -15,8 +15,17 @@ body {
     --body-background-color: var(--secondary);
 }
 
+.head {
+    --head-border: solid thin var(--primary);
+    --head-border-radius: 2px;
+}
+
 [class*="card"] {
+    --card-border-radius: 5px;
     --card-max-width: auto;
+    --card-box-shadow: unset;
+    --card-title-text-shadow: unset;
+    --card-child-border-radius: 5px;
     --card-child-text-align: justify;
-    --card-hover-transform: none;
+    --card-hover-transform: unset;
 }
