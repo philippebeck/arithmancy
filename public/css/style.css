@@ -6,9 +6,9 @@
   --primary: rgb(36, 16, 0);
   --primary-dark: rgba(36, 16, 0, var(--opacity-dark));
   --primary-light: rgba(36, 16, 0, var(--opacity-light));
-  --secondary: rgb(200, 177, 133);
-  --secondary-dark: rgba(200, 177, 133, var(--opacity-dark));
-  --secondary-light: rgba(200, 177, 133, var(--opacity-light));
+  --secondary: rgb(230, 209, 182);
+  --secondary-dark: rgba(230, 209, 182, var(--opacity-dark));
+  --secondary-light: rgba(230, 209, 182, var(--opacity-light));
 }
 
 body {
