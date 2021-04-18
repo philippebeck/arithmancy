@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Service;
 
 use Pam\Model\Factory\ModelFactory;
 
 /**
  * Class InterpretationManager
- * @package App\Controller
+ * @package App\Controller\Service
  */
 abstract class InterpretationManager extends CalculationManager
 {

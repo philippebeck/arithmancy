@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Service;
 
 use DateTime;
 use Pam\Controller\MainController;
 
 /**
  * Class CalculationManager
- * @package App\Controller
+ * @package App\Controller\Service
  */
 abstract class CalculationManager extends MainController
 {
