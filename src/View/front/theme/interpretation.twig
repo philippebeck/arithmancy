@@ -3,15 +3,23 @@
 
     <p>
         Chemin de Vie {{ numbers.lifePathDigit }} /
-        {{ numbers.lifePathNumber }} /
-        {{ numbers.lifePathSecondNumber }} :
+        {{ numbers.lifePathNumber }}
+        
+        {% if numbers.lifePathNumber != numbers.lifePathSecondNumber %}
+            / {{ numbers.lifePathSecondNumber }}
+        {% endif %}
+
+        :
         <br>
         {{ numbers.lifePathMainText }}
         <br>
+
         {% if numbers.lifePathSecondText %}
             {{ numbers.lifePathSecondText }}
         {% endif %}
+
         <br>
+
         {% if numbers.lifePathThirdText %}
             {{ numbers.lifePathThirdText }}
         {% endif %}
@@ -23,6 +31,7 @@
         <br>
         {{ numbers.expressionMainText }}
         <br>
+
         {% if numbers.expressionSecondText %}
             {{ numbers.expressionSecondText }}
         {% endif %}
@@ -34,6 +43,7 @@
         <br>
         {{ numbers.intimateMainText }}
         <br>
+
         {% if numbers.intimateSecondText %}
             {{ numbers.intimateSecondText }}
         {% endif %}
@@ -45,6 +55,7 @@
         <br>
         {{ numbers.realizationMainText }}
         <br>
+
         {% if numbers.realizationSecondText %}
             {{ numbers.realizationSecondText }}
         {% endif %}
@@ -62,6 +73,7 @@
         <br>
         {{ numbers.goalMainText }}
         <br>
+
         {% if numbers.goalSecondText %}
             {{ numbers.goalSecondText }}
         {% endif %}
@@ -73,6 +85,7 @@
         <br>
         {{ numbers.personalMainText }}
         <br>
+
         {% if numbers.personalSecondText %}
             {{ numbers.personalSecondText }}
         {% endif %}
@@ -84,6 +97,7 @@
         <br>
         {{ numbers.hereditaryMainText }}
         <br>
+
         {% if numbers.hereditarySecondText %}
             {{ numbers.hereditarySecondText }}
         {% endif %}
@@ -95,6 +109,7 @@
         <br>
         {{ numbers.powerMainText }}
         <br>
+
         {% if numbers.powerSecondText %}
             {{ numbers.powerSecondText }}
         {% endif %}
@@ -106,6 +121,7 @@
         <br>
         {{ numbers.spiritualMainText }}
         <br>
+        
         {% if numbers.spiritualSecondText %}
             {{ numbers.spiritualSecondText }}
         {% endif %}

@@ -11,8 +11,11 @@
     <section class="card-primary container-90lg-80xl-70wd">
         <h2>
             Chemin de Vie {{ numbers.lifePathDigit }} /
-            {{ numbers.lifePathNumber }} /
-            {{ numbers.lifePathSecondNumber }}
+            {{ numbers.lifePathNumber }} 
+            
+            {% if numbers.lifePathNumber != numbers.lifePathSecondNumber %}
+                / {{ numbers.lifePathSecondNumber }}
+            {% endif %}
         </h2>
         
         <p>
