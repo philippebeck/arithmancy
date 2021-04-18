@@ -1,0 +1,18 @@
+<article>
+    <h2>Signification des Nombres Calculés</h2>
+
+    <header class="head">
+        Une dizaine de Nombres Calculés 
+        sont couramment utilisés
+        pour comprendre la personnalité des individus.
+        Vous trouverez ci-dessous leur nom & leur signification...
+    </header>
+
+    {% for calculation in calculations %}
+    <section class="card-primary container-90lg-80xl-70wd">
+        <h3>{{ calculation.name }}</h3>
+        <p>{{ calculation.description }}</p>
+    </section>
+    {% endfor %}
+    
+</article>
