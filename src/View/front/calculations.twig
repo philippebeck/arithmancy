@@ -11,13 +11,13 @@
 
 {% block main %}
 <main>
-
     <header class="head">
-        Les 2 Éléments à la base des Calculs en Arithmancie 
-        sont l'Alphabet de Tripoli & la Réduction Théosophique.
-        <br>
-        Des Calculs peuvent être effectués sur les Prénoms, 
-        le Nom & la Date de Naissance afin d'obtenir des Interprétations.
+        Les Nombres Calculés en Arithmancie,
+        sont obtenus à partir des Prénoms, 
+        des Noms & des Dates de Naissance d'Individus,
+        afin d'obtenir des Interprétations.
+        2 Éléments sont à la base de ces Calculs Numérologiques, 
+        l'Alphabet de Tripoli & la Réduction Théosophique.
     </header>
 
     <section>
@@ -28,7 +28,7 @@
         <header class="head">
             <a class="button-primary"
                 href="https://fr.wikipedia.org/wiki/Arithmancie"
-                title="Voir la page Wikipedia expliquant l'Alphabet de Tripoli">
+                title="Voir la page Wikipedia sur l'Alphabet de Tripoli">
                 L'Alphabet de Tripoli
             </a>
             inventé en 1350 par Septimus Tripoli,
@@ -37,18 +37,17 @@
         </header>
 
         <section class="card-primary container-90lg-80xl-70wd">
-            <h3>Correspondances de l'Alphabet de Tripoli</h3>
+            <h3>Transformer des Lettres</h3>
 
             <img src="img/tripoli.jpg"
                 alt="Alphabet de Tripoli">
 
             <p>
-                Les Correspondances entre les Lettres & les Chiffres
-                s'obtiennent en se référant à leurs Vibrations.
-            </p>
-            <p>
-                Ces Correspondances sont indiqués dans ce tableau,
-                lui-même nommé Alphabet de Tripoli.
+                La Transformation des Lettres en Chiffres
+                s'obtient en se référant à ce tableau,
+                nommé Alphabet de Tripoli.
+                Celui-ci met en évidence les Correspondances
+                Vibratoires entre les Lettres & les Chiffres.
             </p>
         </section>
     </section>
@@ -61,7 +60,7 @@
         <header class="head"> 
             <a class="button-primary"
                 href="https://fr.wikipedia.org/wiki/R%C3%A9sidu_d%27un_entier_naturel"
-                title="Voir la page Wikipedia expliquant la Réduction Théosophique">
+                title="Voir la page Wikipedia sur la Réduction Théosophique">
                 La Réduction Théosophique
             </a>
             ou Racine Numérique d'un entier naturel
@@ -69,13 +68,14 @@
         </header>
 
         <section class="card-primary container-90lg-80xl-70wd">
-            <h3>Principe du Calcul par Réduction Théosophique</h3>
+            <h3>Réduire un Nombre</h3>
 
             <p>
                 Une Somme par Réduction Théosophique s'obtient
-                en additionnant tous les Chiffres d'un Nombre initial, 
-                puis en additionnant les Chiffres du Résultat,
-                jusqu'à l'obtention d'un Résultat composé d'un seul Chiffre.
+                en additionnant tous les Chiffres d'un Nombre Initial, 
+                puis en additionnant les Chiffres du Nombre Résultant,
+                autant de fois que nécessaire,
+                jusqu'à l'obtention d'un Nombre Final composé d'un seul Chiffre.
             </p>
         </section>
     </section>
@@ -87,18 +87,16 @@
             Une dizaine de Nombres Calculés 
             sont couramment utilisés
             pour comprendre la personnalité des individus.
-            <br>
             Vous trouverez ci-dessous leur nom & leur signification...
         </header>
 
-    {% for calculation in calculations %}
-
+        {% for calculation in calculations %}
         <section class="card-primary container-90lg-80xl-70wd">
             <h3>{{ calculation.name }}</h3>
             <p>{{ calculation.description }}</p>
         </section>
-
-    {% endfor %}
+        {% endfor %}
+        
     </section>
 </main>
 {% endblock %}
