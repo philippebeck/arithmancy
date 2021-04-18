@@ -1,0 +1,99 @@
+{% extends 'layout/layout.twig' %}
+
+{% block title %}Les Nombres Calculés{% endblock %}
+
+{% block description %}{% endblock %}
+
+{% block main %}
+<main>
+
+    <header class="head">
+        Les 2 Éléments à la base des Calculs en Arithmancie 
+        sont l'Alphabet de Tripoli & la Réduction Théosophique.
+        <br>
+        Des Calculs peuvent être effectués sur les Prénoms, 
+        le Nom & la Date de Naissance afin d'obtenir des Interprétations.
+    </header>
+
+    <section>
+        <h2>
+            L'Alphabet de Tripoli
+        </h2>
+
+        <header class="head">
+            <a class="button-primary"
+                href="https://fr.wikipedia.org/wiki/Arithmancie"
+                title="Voir la page Wikipedia expliquant l'Alphabet de Tripoli">
+                L'Alphabet de Tripoli
+            </a>
+            inventé en 1350 par Septimus Tripoli,
+            est un Système permettant de Transformer
+            les Lettres en Chiffres.
+        </header>
+
+        <section class="card-primary container-90lg-80xl-70wd">
+            <h3>Correspondances de l'Alphabet de Tripoli</h3>
+
+            <img src="img/tripoli.jpg"
+                alt="Alphabet de Tripoli">
+
+            <p>
+                Les Correspondances entre les Lettres & les Chiffres
+                s'obtiennent en se référant à leurs Vibrations.
+            </p>
+            <p>
+                Ces Correspondances sont indiqués dans ce tableau,
+                lui-même nommé Alphabet de Tripoli.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>
+            La Réduction Théosophique
+        </h2>
+
+        <header class="head"> 
+            <a class="button-primary"
+                href="https://fr.wikipedia.org/wiki/R%C3%A9sidu_d%27un_entier_naturel"
+                title="Voir la page Wikipedia expliquant la Réduction Théosophique">
+                La Réduction Théosophique
+            </a>
+            ou Racine Numérique d'un entier naturel
+            est la Somme des Chiffres itérés de ce Nombre.
+        </header>
+
+        <section class="card-primary container-90lg-80xl-70wd">
+            <h3>Principe du Calcul par Réduction Théosophique</h3>
+
+            <p>
+                Une Somme par Réduction Théosophique s'obtient
+                en additionnant tous les Chiffres d'un Nombre initial, 
+                puis en additionnant les Chiffres du Résultat,
+                jusqu'à l'obtention d'un Résultat composé d'un seul Chiffre.
+            </p>
+        </section>
+    </section>
+
+    <section>
+        <h2>Signification des Nombres Calculés</h2>
+
+        <header class="head">
+            Une dizaine de Nombres Calculés 
+            sont couramment utilisés
+            pour comprendre la personnalité des individus.
+            <br>
+            Vous trouverez ci-dessous leur nom & leur signification...
+        </header>
+
+    {% for calculation in calculations %}
+
+        <section class="card-primary container-90lg-80xl-70wd">
+            <h3>{{ calculation.name }}</h3>
+            <p>{{ calculation.description }}</p>
+        </section>
+
+    {% endfor %}
+    </section>
+</main>
+{% endblock %}
