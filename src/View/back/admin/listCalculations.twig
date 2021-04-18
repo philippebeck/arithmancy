@@ -1,12 +1,12 @@
 <section class="menu-target2">
     <h2>
-        <i class="fas fa-question-circle"></i> 
-        Définitions
+        <i class="fas fa-equals"></i> 
+        Nombres calculés
     </h2>
 
     <a class="btn-green btn-lg" 
-        href="{{ url('definition!create') }}">
-        Nouvelle Définition
+        href="{{ url('calculation!create') }}">
+        Nouveau Nombre Calculé
     </a>
 
     <table class="table">
@@ -18,24 +18,24 @@
         </thead>
         <tbody>
 
-        {% for definition in definitions %}
+        {% for calculation in calculations %}
             <tr>
                 <td>
-                    {{ definition.name }}
+                    {{ calculation.name }}
                     <br>
                     <a class="btn-blue" 
-                        href="{{ url('definition!update', {'id': definition.id}) }}"
-                        title="Modifier la Définition">
+                        href="{{ url('calculation!update', {'id': calculation.id}) }}"
+                        title="Modifier le Nombre Calculé">
                         <i class="fas fa-pen-square fa-fw fa-lg"></i>
                     </a>
                     <a class="btn-red" 
-                        href="{{ url('definition!delete', {'id': definition.id}) }}"
-                        title="Supprimer la Définition">
+                        href="{{ url('calculation!delete', {'id': calculation.id}) }}"
+                        title="Supprimer le Nombre Calculé">
                         <i class="fas fa-times-circle fa-fw fa-lg"></i>
                     </a>
                 </td>
                 <td>
-                    {{ definition.description }}
+                    {{ calculation.description }}
                 </td>
             </tr>
         {% endfor %}

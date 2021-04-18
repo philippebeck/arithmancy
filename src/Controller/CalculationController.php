@@ -9,15 +9,15 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
 /**
- * Class DefinitionController
+ * Class CalculationController
  * @package App\Controller
  */
-class DefinitionController extends MainController
+class CalculationController extends MainController
 {
     /**
      * @var array
      */
-    private array $definition = [];
+    private array $calculation = [];
 
     /**
      * @return string
@@ -27,10 +27,10 @@ class DefinitionController extends MainController
      */
     public function defaultMethod()
     {
-        $definitions = ModelFactory::getModel("Definition")->listData();
+        $calculations = ModelFactory::getModel("Calculation")->listData();
 
-        return $this->render("front/definitions.twig", [
-            "definitions" => $definitions
+        return $this->render("front/calculations.twig", [
+            "calculations" => $calculations
         ]);
     }
 
@@ -47,29 +47,29 @@ class DefinitionController extends MainController
         }
 
         if (!empty($this->getPost()->getPostArray())) {
-            $this->setDefinitionData();
+            $this->setCalculationData();
 
-            ModelFactory::getModel("Definition")->createData(
-                $this->definition
+            ModelFactory::getModel("Calculation")->createData(
+                $this->calculation
             );
 
             $this->getSession()->createAlert(
-                "Nouvelle Définition créée !", "green"
+                "Nouveau Nombre Calculé créé !", "green"
             );
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/definition/createDefinition.twig");
+        return $this->render("back/calculation/createCalculation.twig");
     }
 
-    private function setDefinitionData()
+    private function setCalculationData()
     {
-        $this->definition["name"] = (string) trim(
+        $this->calculation["name"] = (string) trim(
             $this->getPost()->getPostVar("name")
         );
 
-        $this->definition["description"] = (string) trim(
+        $this->calculation["description"] = (string) trim(
             $this->getPost()->getPostVar("description")
         );
     }
@@ -86,26 +86,26 @@ class DefinitionController extends MainController
             $this->redirect("home");
         }
 
-        $definition = ModelFactory::getModel("Definition")->readData(
+        $calculation = ModelFactory::getModel("Calculation")->readData(
             $this->getGet()->getGetVar("id")
         );
 
         if (!empty($this->getPost()->getPostArray())) {
-            $this->setDefinitionData();
+            $this->setCalculationData();
 
-            ModelFactory::getModel("Definition")->updateData(
-                $this->getGet()->getGetVar("id"), $this->definition
+            ModelFactory::getModel("Calculation")->updateData(
+                $this->getGet()->getGetVar("id"), $this->calculation
             );
 
             $this->getSession()->createAlert(
-                "Définition sélectionnée modifiée !", "blue"
+                "Nombre Calculé sélectionné modifié !", "blue"
             );
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/definition/updateDefinition.twig", [
-            "definition" => $definition
+        return $this->render("back/calculation/updateCalculation.twig", [
+            "calculation" => $calculation
         ]);
     }
 
@@ -115,12 +115,12 @@ class DefinitionController extends MainController
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Definition")->deleteData(
+        ModelFactory::getModel("Calculation")->deleteData(
             $this->getGet()->getGetVar("id")
         );
 
         $this->getSession()->createAlert(
-            "Définition sélectionnée supprimée !", "red"
+            "Nombre Calculé sélectionné supprimé !", "red"
         );
 
         $this->redirect("admin");
