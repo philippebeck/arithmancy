@@ -9,6 +9,9 @@
   --secondary: rgb(230, 209, 182);
   --secondary-dark: rgba(230, 209, 182, var(--opacity-dark));
   --secondary-light: rgba(230, 209, 182, var(--opacity-light));
+  --green: rgb(34, 139, 34);
+  --green-dark: rgba(34, 139, 34, var(--opacity-dark));
+  --green-light: rgba(34, 139, 34, var(--opacity-light));
 }
 
 body {
