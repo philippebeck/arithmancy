@@ -1,6 +1,6 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Modifier une Définition{% endblock %}
+{% block title %}Modifier un Nombre Calculé{% endblock %}
 
 {% block description %}{% endblock %}
 
@@ -8,10 +8,10 @@
 <main>
     <form class="form" 
         method="post" 
-        action={{ url('definition!update', {'id': definition.id}) }}>
+        action={{ url('calculation!update', {'id': calculation.id}) }}>
         <fieldset>
             <legend>
-                <i class="fas fa-question-circle fa-2x"></i>
+                <i class="fas fa-equals fa-2x"></i>
             </legend>
             <ul>
                 <li>
@@ -22,7 +22,7 @@
                         name="name" 
                         type="text" 
                         maxlength="20" 
-                        value="{{ definition.name }}"
+                        value="{{ calculation.name }}"
                         required>
                 </li>
                 <li>
@@ -32,7 +32,7 @@
                     <textarea id="description" 
                         name="description"
                         rows="12" 
-                        required>{{ definition.description }}</textarea>
+                        required>{{ calculation.description }}</textarea>
                 </li>
                 </li>
             </ul>

@@ -1,6 +1,6 @@
 {% extends 'layout/layout.twig' %}
 
-{% block title %}Créer une Nouvelle Définition{% endblock %}
+{% block title %}Créer un Nombre Calculé{% endblock %}
 
 {% block description %}{% endblock %}
 
@@ -8,10 +8,10 @@
 <main>
     <form class="form" 
         method="post" 
-        action={{ url('definition!create') }}>
+        action={{ url('calculation!create') }}>
         <fieldset>
             <legend>
-                <i class="fas fa-question-circle fa-2x"></i>
+                <i class="fas fa-equals fa-2x"></i>
             </legend>
             <ul>
                 <li>

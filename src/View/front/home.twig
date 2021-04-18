@@ -2,13 +2,40 @@
 
 {% block title %}Arithmancie{% endblock %}
 
-{% block description %}{% endblock %}
+{% block description %}
+    L'Arithmancie, ou Numérologie traditionnelle,
+    permet d'obtenir une Interprétation du Caractère d'un Individu,
+    en se servant de sa Date de Naissance & de son Nom.
+{% endblock %}
 
 {% block main %}
 <main>
     <header class="head">
-        L'arithmancie ou numérologie traditionnelle est une technique de divination basée sur les nombres de 1 à 9.
-        Ces origines remontent à Pythagore, il y a plus de 2000 ans.
+        <a class="button-primary"
+            href="https://fr.wikipedia.org/wiki/Num%C3%A9rologie"
+            title="Voir la page Wikipedia sur la Numérologie">
+            <strong>L'Arithmancie</strong>
+        </a>
+        ou <strong>Numérologie</strong> traditionnelle,
+        permet d'obtenir des Interprétations sur 
+        certains Éléments de la Vie d'un Individu,
+        en se servant de sa Date de Naissance 
+        & de son Nom.
+        Cette technique de 
+        <a class="button-primary"
+            href="https://fr.wikipedia.org/wiki/Divination"
+            title="Voir la page Wikipedia sur la Divination">
+            <strong>Divination</strong>
+        </a>
+        est basée sur les chiffres de 1 à 9,
+        appelés Nombres.
+        Ses origines remontent à 
+        <a class="button-primary"
+            href="https://fr.wikipedia.org/wiki/Pythagore"
+            title="Voir la page Wikipedia sur Pythagore">
+            <strong>Pythagore</strong>
+        </a>, 
+        il y a plus de 2000 ans.
     </header>
 
     <ul class="flex">
@@ -22,7 +49,7 @@
         </li>
         <li>
             <a class="btn-primary" 
-                href="{{ url('definition') }}" 
+                href="{{ url('calculation') }}" 
                 title="Les Nombres Calculés en Arithmancie">
                 <i class="fas fa-equals fa-3x fa-fw"></i>
                 <span>Calculs</span>
@@ -31,39 +58,23 @@
         <li>
             <a class="btn-primary"
                 href="{{ url('theme') }}" 
-                title="Votre Thème Numérologique">
+                title="Votre Thème Numérologique (en construction)">
                 <i class="fab fa-readme fa-3x fa-fw"></i>
                 <span>Thème</span>
             </a>
         </li>
     </ul>
- 
-    <form class="form"
-        method="post" 
-        action={{ url('home') }}>
-        <fieldset>
-            <legend>
-                Connaître votre Chemin de Vie
-            </legend>
-            <ul>
-                <li>
-                    <label for="birthdate">
-                        Date de Naissance 
-                    </label>
-                    <input id="birthdate" 
-                        name="birthdate"
-                        type="date"
-                        required>
-                </li>
-                <li>
-                    <input type="submit" 
-                        value="Interpréter">
-                </li>
-            </ul>
-        </fieldset>
-    </form>
 
-    {% if numbers %}
+    <section>
+        <h2>
+            Le Chemin de Vie
+        </h2>
+
+        <header class="head">
+            Le Chemin de Vie révèle la destinée d'une personne & vous pouvez ici en prendre connaissance!
+        </header>
+ 
+        {% if numbers %}
         <section class="card-primary container-90lg-80xl-70wd">
             <h2>
                 Chemin de Vie {{ numbers.lifePathDigit }} /
@@ -83,6 +94,32 @@
                 {% endif %}
             </p>
         </section>
-    {% endif %}
+        {% endif %}
+
+        <form class="form"
+            method="post" 
+            action={{ url('home') }}>
+            <fieldset>
+                <legend>
+                    Découvrez votre Chemin de Vie
+                </legend>
+                <ul>
+                    <li>
+                        <label for="birthdate">
+                            Date de Naissance 
+                        </label>
+                        <input id="birthdate" 
+                            name="birthdate"
+                            type="date"
+                            required>
+                    </li>
+                    <li>
+                        <input type="submit" 
+                            value="Interpréter">
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </section>
 </main>
 {% endblock %}

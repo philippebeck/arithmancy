@@ -1,6 +1,6 @@
 {
     "name": "philippebeck/arithmancie",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "type": "project",
     "description": "Site Web de Numérologie",
     "keywords": [
@@ -29,7 +29,7 @@
     },
     "require": {
       "php": "7.3",
-      "devsagency/pam": "^4.7.0"
+      "devsagency/pam": "^4.7.1"
     },
     "require-dev": {
       "tracy/tracy": "^2.7.6"
@@ -40,7 +40,7 @@
       }
     },
     "support": {
-      "email": "admin@philippebeck.net",
+      "email": "admin@arithmancie.com",
       "issues": "https://github.com/philippebeck/arithmancie/issues",
       "wiki": "https://github.com/philippebeck/arithmancie/wiki",
       "source": "https://github.com/philippebeck/arithmancie"

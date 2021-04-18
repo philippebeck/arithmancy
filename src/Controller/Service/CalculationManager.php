@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Service;
 
 use DateTime;
 use Pam\Controller\MainController;
 
 /**
  * Class CalculationManager
- * @package App\Controller
+ * @package App\Controller\Service
  */
 abstract class CalculationManager extends MainController
 {
@@ -51,27 +51,27 @@ abstract class CalculationManager extends MainController
     /**
      * @var array
      */
-    private array $fullName = [];
+    private $fullName = [];
 
     /**
      * @var array
      */
-    private array $birthDate = [];
+    private $birthDate = [];
 
     /**
      * @var int
      */
-    private int $lifePathNumber = 0;
+    private $lifePathNumber = 0;
 
     /**
      * @var int
      */
-    private int $expressionNumber = 0;
+    private $expressionNumber = 0;
 
     /**
      * @var int
      */
-    private int $intimateNumber = 0;
+    private $intimateNumber = 0;
 
     /**
      * CalculationManager constructor

@@ -5,7 +5,7 @@ namespace App\Model;
 use Pam\Model\MainModel;
 
 /**
- * Class DefinitionModel
+ * Class CalculationModel
  * @package App\Model
  */
-class DefinitionModel extends MainModel {}
+class CalculationModel extends MainModel {}

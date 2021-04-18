@@ -2,23 +2,32 @@
 
 {% block title %}Les 9 Nombres{% endblock %}
 
-{% block description %}{% endblock %}
+{% block description %}
+    Les 9 Nombres en Arthmancie,
+    permettent de définir 9 Archétypes "Primodiaux",
+    dont découlent des Interprétations spécifiques.
+{% endblock %}
 
 {% block main %}
 <main>
-
     <header class="head">
-        Introduction 9 Nombres !
+        Les 9 Nombres en Arthmancie,
+        permettent de définir 9 Archétypes "Primodiaux",
+        dont découlent des Interprétations spécifiques.
+        Ces 9 Nombres,
+        c'est-à-dire les Chiffres de 1 à 9,
+        sont à la fois la base & le résultat final
+        des Calculs Numérologiques.
+        Vous trouverez ici les significations de
+        ces Nombres "Primordiaux".
     </header>
 
-{% for number in numbers|slice(0, 9) %}
-
+    {% for number in numbers|slice(0, 9) %}
     <section class="card-primary container-90lg-80xl-70wd">
         <h2>Nombre {{ number.number }}</h2>
         <p>{{ number.description }}</p>
     </section>
-
-{% endfor %}
+    {% endfor %}
 
 </main>
 {% endblock %}
