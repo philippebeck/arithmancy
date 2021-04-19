@@ -6,58 +6,68 @@
         <legend>Découvrez tout votre Potentiel</legend>
         <ul>
             <li>
-                <label for="usual-first-name">
+                <label for="usualFirstName">
                 Prénom Usuel
                 </label>
-                <input id="usual-first-name" 
-                    name="usual-first-name"
+                <input id="usualFirstName" 
+                    name="usualFirstName"
                     type="text" 
+                    minlength="2"
+                    maxlength="50"
                     placeholder="Prénom-Usuel"
                     required>
             </li>
             <li>
-                <label for="middle-name">
+                <label for="middleName">
                 Second Prénom
                 </label>
-                <input id="middle-name" 
-                    name="middle-name"
+                <input id="middleName" 
+                    name="middleName"
                     type="text" 
+                    minlength="2"
+                    maxlength="50"
                     placeholder="Optionnel">
             </li>
             <li>
-                <label for="third-name">
+                <label for="thirdName">
                 Troisième Prénom
                 </label>
-                <input id="third-name" 
-                    name="third-name"
+                <input id="thirdName" 
+                    name="thirdName"
                     type="text" 
+                    minlength="2"
+                    maxlength="50"
                     placeholder="Optionnel">
             </li>
             <li>
-                <label for="last-name">
+                <label for="lastName">
                 Nom de Famille
                 </label>
-                <input id="last-name" 
-                    name="last-name"
+                <input id="lastName" 
+                    name="lastName"
                     type="text" 
+                    minlength="2"
+                    maxlength="50"
                     placeholder="Nom-de-Famille"
                     required>
             </li>
             <li>
-                <label for="birthdate">
+                <label for="birthDate">
                     Votre Date de Naissance 
                 </label>
-                <input id="birthdate" 
-                    name="birthdate"
+                <input id="birthDate" 
+                    name="birthDate"
                     type="date"
                     required>
             </li>
         </ul>
-        <ul>
-        <li>
-            <input type="submit" 
-                value="Interpréter">
-        </li>
-        </ul>
+
+        <input 
+            name="visitDate"
+            type="hidden"
+            value="{{ date()|date('Y-m-d H:i:s') }}">
+
+        <input type="submit" 
+            value="Interpréter">
     </fieldset>
 </form>
