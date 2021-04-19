@@ -35,6 +35,10 @@
     <form class="form"
         method="post" 
         action={{ url('home') }}>
+        <input 
+            name="visitDate"
+            type="hidden"
+            value="{{ date()|date('Y-m-d H:i:s') }}">
         <fieldset>
             <legend>
                 Découvrez votre Chemin de Vie
