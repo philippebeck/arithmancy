@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block main %}
-<main>
+<main id="home">
     <header class="head">
         <a class="button-primary"
             href="https://fr.wikipedia.org/wiki/Num%C3%A9rologie"
@@ -37,6 +37,31 @@
         </a>, 
         il y a plus de 2000 ans.
     </header>
+
+    <nav class="sidebar">
+        <input id="sidebar-home"
+            class="sidebar-check" 
+            type="checkbox">
+        <label for="sidebar-home"
+            class="sidebar-open" 
+            title="Voir la barre de navigation">
+            <i class="far fa-eye fa-lg fa-fw"></i>
+        </label>
+        <label for="sidebar-home"
+            title="Cacher la barre de navigation">
+            <i class="far fa-eye-slash fa-lg fa-fw"></i>
+        </label>
+
+        <a href="#lifePath" 
+            title="Le Chemin de Vie">
+            <i class="fas fa-road fa-lg fa-fw"></i>
+        </a>
+
+        <a href="#home" 
+            title="Retour en haut de page">
+            <i class="fas fa-chevron-circle-up fa-lg fa-fw"></i>
+        </a>
+    </nav>
 
     <ul class="flex">
         <li>

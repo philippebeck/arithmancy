@@ -96,7 +96,7 @@ abstract class CalculationManager extends MainController
     {
         $birthDate = DateTime::createFromFormat(
             "Y-m-d",
-            $this->getPost()->getPostVar("birthdate")
+            $this->getPost()->getPostVar("birthDate")
         );
 
         $this->birthDate["day"]     = $birthDate->format("d");
@@ -109,22 +109,22 @@ abstract class CalculationManager extends MainController
     private function setFullName()
     {
         $this->fullName["usual"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("usual-first-name"), "alpha"
+            $this->getPost()->getPostVar("usualFirstName"), "alpha"
         );
 
         $this->fullName["last"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("last-name"), "alpha"
+            $this->getPost()->getPostVar("lastName"), "alpha"
         );
 
-        if ($this->getPost()->getPostVar("middle-name") !== null) {
+        if ($this->getPost()->getPostVar("middleName") !== null) {
             $this->fullName["middle"] = $this->getString()->cleanString(
-                $this->getPost()->getPostVar("middle-name"), "alpha"
+                $this->getPost()->getPostVar("middleName"), "alpha"
             );
         }
 
-        if ($this->getPost()->getPostVar("third-name") !== null) {
+        if ($this->getPost()->getPostVar("thirdName") !== null) {
             $this->fullName["third"] = $this->getString()->cleanString(
-                $this->getPost()->getPostVar("third-name"), "alpha"
+                $this->getPost()->getPostVar("thirdName"), "alpha"
             );
         }
 

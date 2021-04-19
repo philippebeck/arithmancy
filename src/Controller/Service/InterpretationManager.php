@@ -161,7 +161,10 @@ abstract class InterpretationManager extends CalculationManager
 
         $this->setNumberData($lifePathNumbers, "lifePath");
         $this->checkQuadrupleNumber($lifePathNumbers[1], "lifePath");
-        $this->checkQuadrupleNumber($lifePathNumbers[2], "lifePath", "Third");
+
+        if ($lifePathNumbers[1] !== $lifePathNumbers[2]) {
+            $this->checkQuadrupleNumber($lifePathNumbers[2], "lifePath", "Third");
+        }
     }
 
     protected function setExpressionData()

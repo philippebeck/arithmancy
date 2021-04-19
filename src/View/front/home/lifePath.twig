@@ -1,4 +1,4 @@
-<section>
+<section id="lifePath">
     <h2>
         Le Chemin de Vie
     </h2>
@@ -11,8 +11,11 @@
     <section class="card-primary container-90lg-80xl-70wd">
         <h2>
             Chemin de Vie {{ numbers.lifePathDigit }} /
-            {{ numbers.lifePathNumber }} /
-            {{ numbers.lifePathSecondNumber }}
+            {{ numbers.lifePathNumber }} 
+            
+            {% if numbers.lifePathNumber != numbers.lifePathSecondNumber %}
+                / {{ numbers.lifePathSecondNumber }}
+            {% endif %}
         </h2>
         
         <p>
@@ -32,17 +35,22 @@
     <form class="form"
         method="post" 
         action={{ url('home') }}>
+        <input 
+            name="visitDate"
+            type="hidden"
+            value="{{ date()|date('Y-m-d H:i:s') }}">
+            
         <fieldset>
             <legend>
                 Découvrez votre Chemin de Vie
             </legend>
             <ul>
                 <li>
-                    <label for="birthdate">
+                    <label for="birthDate">
                         Date de Naissance 
                     </label>
-                    <input id="birthdate" 
-                        name="birthdate"
+                    <input id="birthDate" 
+                        name="birthDate"
                         type="date"
                         required>
                 </li>

@@ -28,11 +28,15 @@ class AdminController extends MainController
 
         $numbers        = ModelFactory::getModel("Number")->listData();
         $calculations   = ModelFactory::getModel("Calculation")->listData();
+        $visitors       = ModelFactory::getModel("Visitor")->listData();
+        $customers      = ModelFactory::getModel("Customer")->listData();
         $users          = ModelFactory::getModel("User")->listData();
 
         return $this->render("back/admin/admin.twig", [
             "numbers"       => $numbers,
             "calculations"  => $calculations,
+            "visitors"      => $visitors,
+            "customers"     => $customers,
             "users"         => $users
         ]);
     }
