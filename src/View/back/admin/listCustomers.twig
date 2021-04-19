@@ -1,0 +1,41 @@
+<section class="menu-target4">
+    <h2>
+        <i class="fas fa-user-tie"></i> 
+        Clients
+    </h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date de Visite</th>
+                <th>Données</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for customer in customers %}
+            <tr>
+                <td>
+                    {{ customer.visitDate }}
+                </td>
+                <td>
+                    {{ customer.usualFirstName }}
+
+                    {% if customer.middleName %}
+                        {{ customer.middleName }}
+                    {% endif %}
+
+                    {% if customer.thirdName %}
+                        {{ customer.thirdName }}
+                    {% endif %}
+
+                    {{ customer.lastName }}
+                <hr>
+                    {{ customer.birthDate }}
+                 </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+</section>

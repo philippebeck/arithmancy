@@ -22,6 +22,10 @@
     class="menu-radio4" 
     type="radio" 
     name="menu">
+<input id="menu-radio5" 
+    class="menu-radio5" 
+    type="radio" 
+    name="menu">
 
 <nav class="menu">
     <label for="menu-radio1" 
@@ -46,8 +50,15 @@
         </span>
     </label>
     <label for="menu-radio4" 
+        title="Voir les Clients">
+        <i class="fas fa-user-tie"></i>
+        <span>
+            Clients
+        </span>
+    </label>
+    <label for="menu-radio5" 
         title="Voir les Utilisateurs">
-        <i class="fas fa-users"></i>
+        <i class="fas fa-user-cog"></i>
         <span>
             Utilisateurs
         </span>
@@ -59,6 +70,7 @@
     {{ include("back/admin/listNumbers.twig") }}
     {{ include("back/admin/listCalculations.twig") }}
     {{ include("back/admin/listVisitors.twig") }}
+    {{ include("back/admin/listCustomers.twig") }}
     {{ include("back/admin/listUsers.twig") }}
 
 </main>
