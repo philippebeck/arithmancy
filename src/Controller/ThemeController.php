@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Controller\Service\InterpretationManager;
+use Pam\Model\Factory\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -31,6 +32,9 @@ class ThemeController extends InterpretationManager
         }
 
         if (!empty($this->getPost()->getPostArray())) {
+            ModelFactory::getModel("Customer")->createData(
+                $this->getPost()->getPostArray()
+            );
 
             return $this->render("front/theme/theme.twig", [
                 "numbers" => $this->numbers
