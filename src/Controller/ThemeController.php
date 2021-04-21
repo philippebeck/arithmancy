@@ -32,9 +32,7 @@ class ThemeController extends InterpretationManager
         }
 
         if (!empty($this->getPost()->getPostArray())) {
-            ModelFactory::getModel("Customer")->createData(
-                $this->getPost()->getPostArray()
-            );
+            $this->createCustomerData();
 
             return $this->render("front/theme/theme.twig", [
                 "numbers" => $this->numbers
@@ -42,5 +40,29 @@ class ThemeController extends InterpretationManager
         }
 
         return $this->render("front/theme/theme.twig");
+    }
+
+    private function createCustomerData()
+    {
+        $customerData["usualFirstName"] = $this->getString()->cleanString(
+            $this->getPost()->getPostVar("usualFirstName"), "alpha"
+        );
+
+        $customerData["middleName"] = $this->getString()->cleanString(
+            $this->getPost()->getPostVar("middleName"), "alpha"
+        );
+
+        $customerData["thirdName"] = $this->getString()->cleanString(
+            $this->getPost()->getPostVar("thirdName"), "alpha"
+        );
+
+        $customerData["lastName"] = $this->getString()->cleanString(
+            $this->getPost()->getPostVar("lastName"), "alpha"
+        );
+
+        $customerData["birthDate"]  = $this->getPost()->getPostVar("birthDate");
+        $customerData["visitDate"]  = date('Y-m-d H:i:s');
+
+        ModelFactory::getModel("Customer")->createData($customerData);
     }
 }
