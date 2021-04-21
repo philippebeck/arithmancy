@@ -17,6 +17,12 @@
             <tr>
                 <td>
                     {{ customer.visitDate }}
+                    <br>
+                    <a class="btn-red" 
+                        href="{{ url('customer!delete', {'id': customer.id}) }}"
+                        title="Supprimer le Client">
+                        <i class="fas fa-times-circle fa-fw fa-lg"></i>
+                    </a>
                 </td>
                 <td>
                     {{ customer.usualFirstName }}
