@@ -37,30 +37,46 @@ class AuthController extends MainController
 
     private function checkSecurity()
     {
-        if (isset($this->user["g-recaptcha-response"]) && !empty($this->user["g-recaptcha-response"])) {
+        if (isset($this->user["g-recaptcha-response"]) && 
+            !empty($this->user["g-recaptcha-response"])) {
 
-            if ($this->getSecurity()->checkRecaptcha($this->user["g-recaptcha-response"])) {
+            if ($this->getSecurity()->checkRecaptcha(
+                $this->user["g-recaptcha-response"] )) {
                 $this->checkLogin();
             }
         }
 
-        $this->getSession()->createAlert("Check the reCAPTCHA !", "red");
+        $this->getSession()->createAlert(
+            "Check the reCAPTCHA !", 
+            "red"
+        );
 
         $this->redirect("auth");
     }
 
     private function checkLogin()
     {
-        $user = ModelFactory::getModel("User")->readData($this->user["email"], "email");
+        $user = ModelFactory::getModel("User")->readData(
+            $this->user["email"], 
+            "email"
+        );
 
         if (!password_verify($this->user["pass"], $user["pass"])) {
-            $this->getSession()->createAlert("Failed authentication !", "black");
+            
+            $this->getSession()->createAlert(
+                "Failed authentication !", 
+                "black"
+            );
 
             $this->redirect("auth");
         }
 
         $this->getSession()->createSession($user);
-        $this->getSession()->createAlert("Successful authentication, welcome " . $user["name"] . " !", "violet");
+
+        $this->getSession()->createAlert(
+            "Successful authentication, welcome " . $user["name"] . " !", 
+            "violet"
+        );
 
         $this->redirect("admin");
     }

@@ -138,7 +138,8 @@ abstract class InterpretationManager extends CalculationManager
         string $order = "Second")
     {
         if ($number < 79) {
-            if ($number === 11 || $number === 22 || $number === 33 || $number === 44) {
+            if ($number === 11 || $number === 22 || 
+                $number === 33 || $number === 44) {
 
                 $this->numbers[$category . $order . "Text"] = 
                 $this->allNumbers[$number - 1][$category];
@@ -163,7 +164,11 @@ abstract class InterpretationManager extends CalculationManager
         $this->checkQuadrupleNumber($lifePathNumbers[1], "lifePath");
 
         if ($lifePathNumbers[1] !== $lifePathNumbers[2]) {
-            $this->checkQuadrupleNumber($lifePathNumbers[2], "lifePath", "Third");
+            $this->checkQuadrupleNumber(
+                $lifePathNumbers[2], 
+                "lifePath", 
+                "Third"
+            );
         }
     }
 

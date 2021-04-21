@@ -25,7 +25,8 @@ class ThemeController extends InterpretationManager
         // TODO: remove redirect when ready for com (+ links title info)
         if ($this->getSecurity()->checkIsAdmin() !== true) {
             $this->getSession()->createAlert(
-                "Partie Thème très prochainement disponible!", "red"
+                "Partie Thème très prochainement disponible!", 
+                "red"
             );
 
             $this->redirect("home");
@@ -44,25 +45,33 @@ class ThemeController extends InterpretationManager
 
     private function createCustomerData()
     {
+        $customerData["visitDate"]  = date('Y-m-d H:i:s');
+        $customerData["birthDate"]  = $this->getPost()->getPostVar(
+            "birthDate"
+        );
+
         $customerData["usualFirstName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("usualFirstName"), "alpha"
+            $this->getPost()->getPostVar("usualFirstName"), 
+            "alpha"
         );
 
         $customerData["middleName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("middleName"), "alpha"
+            $this->getPost()->getPostVar("middleName"), 
+            "alpha"
         );
 
         $customerData["thirdName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("thirdName"), "alpha"
+            $this->getPost()->getPostVar("thirdName"), 
+            "alpha"
         );
 
         $customerData["lastName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("lastName"), "alpha"
+            $this->getPost()->getPostVar("lastName"), 
+            "alpha"
         );
 
-        $customerData["birthDate"]  = $this->getPost()->getPostVar("birthDate");
-        $customerData["visitDate"]  = date('Y-m-d H:i:s');
-
-        ModelFactory::getModel("Customer")->createData($customerData);
+        ModelFactory::getModel("Customer")->createData(
+            $customerData
+        );
     }
 }
