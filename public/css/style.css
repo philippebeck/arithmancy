@@ -32,3 +32,12 @@ body {
   --card-child-text-align: justify;
   --card-hover-transform: unset;
 }
+
+div {
+  border: unset !important;
+}
+
+div:hover {
+  box-shadow: unset !important;
+  background-color: initial !important;
+}
