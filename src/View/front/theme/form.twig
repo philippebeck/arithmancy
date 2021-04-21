@@ -3,7 +3,7 @@
     action={{ url('theme') }}>
 
     <fieldset>
-        <legend>Découvrez tout votre Potentiel</legend>
+        <legend>Votre Thème Complet: 10€ TTC</legend>
         <ul>
             <li>
                 <label for="usualFirstName">
@@ -62,12 +62,10 @@
             </li>
         </ul>
 
-        <input 
-            name="visitDate"
-            type="hidden"
-            value="{{ date()|date('Y-m-d H:i:s') }}">
+        {# <input type="submit" 
+            value="Interpréter"> #}
 
-        <input type="submit" 
-            value="Interpréter">
+        <div id="paypal-button">
+        </div>
     </fieldset>
 </form>

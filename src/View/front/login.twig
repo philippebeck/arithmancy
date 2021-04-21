@@ -4,14 +4,6 @@
 
 {% block description %}{% endblock %}
 
-{% block script %}
-<script src="js/recaptcha.js"></script>
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" 
-    async 
-    defer>
-</script>
-{% endblock %}
-
 {% block main %}
 <main>
     <form class="form" 
@@ -68,4 +60,12 @@
         Quitter
     </a>
 </main>
+{% endblock %}
+
+{% block script %}
+    <script src="js/recaptcha.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" 
+        async 
+        defer>
+    </script>
 {% endblock %}

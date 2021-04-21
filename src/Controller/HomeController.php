@@ -23,9 +23,7 @@ class HomeController extends InterpretationManager
     public function defaultMethod()
     {
         if (!empty($this->getPost()->getPostArray())) {
-            ModelFactory::getModel("Visitor")->createData(
-                $this->getPost()->getPostArray()
-            );
+            $this->createVisitorData();
 
             return $this->render("front/home/home.twig", [
                 "numbers" => $this->numbers
@@ -33,5 +31,13 @@ class HomeController extends InterpretationManager
         }
 
         return $this->render("front/home/home.twig");
+    }
+
+    private function createVisitorData()
+    {
+        $visitorData["birthDate"] = $this->getPost()->getPostVar("birthDate");
+        $visitorData["visitDate"] = date('Y-m-d H:i:s');
+
+        ModelFactory::getModel("Visitor")->createData($visitorData);
     }
 }

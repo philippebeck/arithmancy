@@ -3,7 +3,7 @@
 {% block title %}Thème Numérologique{% endblock %}
 
 {% block description %}
-
+    Interprétations du Chemin de Vie & des Nombres d'Expression, Intime, de Réalisation, du Jour, du But, Personnel, Héréditaire, de Pouvoir & Spirituel.
 {% endblock %}
 
 {% block main %}
@@ -26,4 +26,11 @@
         {{ include("front/theme/form.twig") }}
     </section>
 </main>
+{% endblock %}
+
+{% block script %}
+    <script src="https://www.paypal.com/sdk/js?client-id=AeQ518PBKxESsaKl4mWKyyLQ43pCdWM2TKC_KFdPIC4g1mZKx35-dl0gmDmBzoQDqU2lk8d1IQ6EoY9p&locale=fr_FR&currency=EUR">
+    </script>
+    <script src="js/paypal.js">
+    </script>
 {% endblock %}
