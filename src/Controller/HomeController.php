@@ -35,8 +35,10 @@ class HomeController extends InterpretationManager
 
     private function createVisitorData()
     {
-        $visitorData["birthDate"] = $this->getPost()->getPostVar("birthDate");
         $visitorData["visitDate"] = date('Y-m-d H:i:s');
+        $visitorData["birthDate"] = $this->getPost()->getPostVar(
+            "birthDate"
+        );
 
         ModelFactory::getModel("Visitor")->createData($visitorData);
     }

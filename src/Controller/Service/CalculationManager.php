@@ -81,10 +81,17 @@ abstract class CalculationManager extends MainController
         parent::__construct();
 
         if (!empty($this->getPost()->getPostArray())) {
-            $this->setBirthDate();
 
-            if ($this->getGet()->getGetVar("access") === "theme") {
-                $this->setFullName();
+            if ($this->getPost()->getPostVar("birthDate") !== "") {
+
+                $this->setBirthDate();
+    
+                if ($this->getGet()->getGetVar("access") === "theme" &&
+                $this->getPost()->getPostVar("usualFirstName") !== ""  &&
+                $this->getPost()->getPostVar("lastName") !== "") {
+
+                    $this->setFullName();
+                }
             }
         }
     }
@@ -109,22 +116,26 @@ abstract class CalculationManager extends MainController
     private function setFullName()
     {
         $this->fullName["usual"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("usualFirstName"), "alpha"
+            $this->getPost()->getPostVar("usualFirstName"), 
+            "alpha"
         );
 
         $this->fullName["last"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("lastName"), "alpha"
+            $this->getPost()->getPostVar("lastName"), 
+            "alpha"
         );
 
         if ($this->getPost()->getPostVar("middleName") !== null) {
             $this->fullName["middle"] = $this->getString()->cleanString(
-                $this->getPost()->getPostVar("middleName"), "alpha"
+                $this->getPost()->getPostVar("middleName"), 
+                "alpha"
             );
         }
 
         if ($this->getPost()->getPostVar("thirdName") !== null) {
             $this->fullName["third"] = $this->getString()->cleanString(
-                $this->getPost()->getPostVar("thirdName"), "alpha"
+                $this->getPost()->getPostVar("thirdName"), 
+                "alpha"
             );
         }
 
@@ -225,7 +236,9 @@ abstract class CalculationManager extends MainController
             }         
         }
 
-        $this->intimateNumber = $this->getNumberFromName(implode($vowels));
+        $this->intimateNumber = $this->getNumberFromName(
+            implode($vowels)
+        );
     }
 
      // ************************************************************ \\
@@ -291,8 +304,11 @@ abstract class CalculationManager extends MainController
             }         
         }
 
-        $realizationNumber  = $this->getNumberFromName(implode($consonants));
-        $realizationDigit   = $this->getDigitFromNumber($realizationNumber);
+        $realizationNumber = $this->getNumberFromName(
+            implode($consonants)
+        );
+
+        $realizationDigit = $this->getDigitFromNumber($realizationNumber);
 
         return [$realizationDigit, $realizationNumber];
     }
@@ -321,8 +337,11 @@ abstract class CalculationManager extends MainController
      */
     protected function getPersonalNumbers()
     {
-        $personalNumber = $this->getNumberFromName($this->fullName["usual"]);
-        $personalDigit  = $this->getDigitFromNumber($personalNumber);
+        $personalNumber = $this->getNumberFromName(
+            $this->fullName["usual"]
+        );
+
+        $personalDigit = $this->getDigitFromNumber($personalNumber);
 
         return [$personalDigit, $personalNumber];
     }
@@ -332,8 +351,11 @@ abstract class CalculationManager extends MainController
      */
     protected function getHereditaryNumbers()
     {
-        $hereditaryNumber   = $this->getNumberFromName($this->fullName["last"]);
-        $hereditaryDigit    = $this->getDigitFromNumber($hereditaryNumber);
+        $hereditaryNumber = $this->getNumberFromName(
+            $this->fullName["last"]
+        );
+
+        $hereditaryDigit = $this->getDigitFromNumber($hereditaryNumber);
 
         return [$hereditaryDigit, $hereditaryNumber];
     }

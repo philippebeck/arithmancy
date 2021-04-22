@@ -28,21 +28,26 @@ abstract class InterpretationManager extends CalculationManager
         parent::__construct();
 
         if (!empty($this->getPost()->getPostArray())) {
-            $this->allNumbers = ModelFactory::getModel("Number")->listData();
 
-            $this->setLifePathData();
+            if ($this->getPost()->getPostVar("birthDate") !== "") {
+                $this->allNumbers = ModelFactory::getModel("Number")->listData();
 
-            if ($this->getGet()->getGetVar("access") === "theme") {
+                $this->setLifePathData();
 
-                $this->setExpressionData();
-                $this->setIntimateData();
-                $this->setRealizationData();       
-                $this->setDayData();       
-                $this->setGoalData();       
-                $this->setPersonalData();       
-                $this->setHereditaryData();       
-                $this->setPowerData();       
-                $this->setSpiritualData();
+                if ($this->getGet()->getGetVar("access") === "theme" &&
+                $this->getPost()->getPostVar("usualFirstName") !== ""  &&
+                $this->getPost()->getPostVar("lastName") !== "") {
+
+                    $this->setExpressionData();
+                    $this->setIntimateData();
+                    $this->setRealizationData();       
+                    $this->setDayData();       
+                    $this->setGoalData();       
+                    $this->setPersonalData();       
+                    $this->setHereditaryData();       
+                    $this->setPowerData();       
+                    $this->setSpiritualData();
+                }
             }
         }
     }
@@ -138,7 +143,8 @@ abstract class InterpretationManager extends CalculationManager
         string $order = "Second")
     {
         if ($number < 79) {
-            if ($number === 11 || $number === 22 || $number === 33 || $number === 44) {
+            if ($number === 11 || $number === 22 || 
+                $number === 33 || $number === 44) {
 
                 $this->numbers[$category . $order . "Text"] = 
                 $this->allNumbers[$number - 1][$category];
@@ -163,7 +169,11 @@ abstract class InterpretationManager extends CalculationManager
         $this->checkQuadrupleNumber($lifePathNumbers[1], "lifePath");
 
         if ($lifePathNumbers[1] !== $lifePathNumbers[2]) {
-            $this->checkQuadrupleNumber($lifePathNumbers[2], "lifePath", "Third");
+            $this->checkQuadrupleNumber(
+                $lifePathNumbers[2], 
+                "lifePath", 
+                "Third"
+            );
         }
     }
 

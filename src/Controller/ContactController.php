@@ -36,17 +36,27 @@ class ContactController extends MainController
 
     private function checkSecurity()
     {
-        if (isset($this->mail["g-recaptcha-response"]) && !empty($this->mail["g-recaptcha-response"])) {
+        if (isset($this->mail["g-recaptcha-response"]) && 
+            !empty($this->mail["g-recaptcha-response"])) {
 
-            if ($this->getSecurity()->checkRecaptcha($this->mail["g-recaptcha-response"])) {
+            if ($this->getSecurity()->checkRecaptcha(
+                $this->mail["g-recaptcha-response"])) {
+
                 $this->getMail()->sendMessage($this->mail);
-                $this->getSession()->createAlert("Message Envoyé avec Succès à " . MAIL_USERNAME . " !", "green");
+
+                $this->getSession()->createAlert(
+                    "Message Envoyé avec Succès à " . MAIL_USERNAME . " !",
+                     "green"
+                );
 
                 $this->redirect("home");
             }
         }
 
-        $this->getSession()->createAlert("Vérifier le reCAPTCHA !", "red");
+        $this->getSession()->createAlert(
+            "Vérifier le reCAPTCHA !", 
+            "red"
+        );
 
         $this->redirect("contact");
     }

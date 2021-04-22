@@ -54,7 +54,8 @@ class NumberController extends MainController
             );
 
             $this->getSession()->createAlert(
-                "Nouveau Nombre créé !", "green"
+                "Nouveau Nombre créé !", 
+                "green"
             );
 
             $this->redirect("admin");
@@ -134,11 +135,13 @@ class NumberController extends MainController
             $this->setNumberData();
 
             ModelFactory::getModel("Number")->updateData(
-                $this->getGet()->getGetVar("id"), $this->number
+                $this->getGet()->getGetVar("id"), 
+                $this->number
             );
 
             $this->getSession()->createAlert(
-                "Nombre sélectionné modifié !", "blue"
+                "Nombre sélectionné modifié !", 
+                "blue"
             );
 
             $this->redirect("admin");
@@ -160,7 +163,8 @@ class NumberController extends MainController
         );
 
         $this->getSession()->createAlert(
-            "Nombre sélectionné supprimé !", "red"
+            "Nombre sélectionné supprimé !", 
+            "red"
         );
 
         $this->redirect("admin");

@@ -54,7 +54,8 @@ class CalculationController extends MainController
             );
 
             $this->getSession()->createAlert(
-                "Nouveau Nombre Calculé créé !", "green"
+                "Nouveau Nombre Calculé créé !", 
+                "green"
             );
 
             $this->redirect("admin");
@@ -98,7 +99,8 @@ class CalculationController extends MainController
             );
 
             $this->getSession()->createAlert(
-                "Nombre Calculé sélectionné modifié !", "blue"
+                "Nombre Calculé sélectionné modifié !", 
+                "blue"
             );
 
             $this->redirect("admin");
@@ -120,7 +122,8 @@ class CalculationController extends MainController
         );
 
         $this->getSession()->createAlert(
-            "Nombre Calculé sélectionné supprimé !", "red"
+            "Nombre Calculé sélectionné supprimé !", 
+            "red"
         );
 
         $this->redirect("admin");
