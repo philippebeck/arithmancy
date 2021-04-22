@@ -79,14 +79,21 @@ paypal.Buttons({
         " " + 
         details.payer.name.surname);
 
-        document.getElementById("form").submit(); 
+        if (required()) {
+          document.getElementById("form").submit();
+        }
       }
     );
   },
 
   onCancel : function (data) {
     alert("Transaction annulée !");
-  }
+  },
 
+  onError: function(err) {
+    alert("Transaction invalide !");
+
+    throw new Error(err);
+  }
 })
 .render("#paypal-button");
