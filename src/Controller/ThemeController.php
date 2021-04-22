@@ -22,16 +22,6 @@ class ThemeController extends InterpretationManager
      */
     public function defaultMethod()
     {
-        // TODO: remove redirect when ready for com (+ links title info)
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
-            $this->getSession()->createAlert(
-                "Partie Thème très prochainement disponible!", 
-                "red"
-            );
-
-            $this->redirect("home");
-        }
-
         if (!empty($this->getPost()->getPostArray())) {
             $this->createCustomerData();
 
