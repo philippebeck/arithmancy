@@ -23,11 +23,17 @@ class ThemeController extends InterpretationManager
     public function defaultMethod()
     {
         if (!empty($this->getPost()->getPostArray())) {
-            $this->createCustomerData();
 
-            return $this->render("front/theme/theme.twig", [
-                "numbers" => $this->numbers
-            ]);
+            if ($this->getPost()->getPostVar("birthDate") !== "" &&
+            $this->getPost()->getPostVar("usualFirstName") !== ""  &&
+            $this->getPost()->getPostVar("lastName") !== "") {
+
+                $this->createCustomerData();
+
+                return $this->render("front/theme/theme.twig", [
+                    "numbers" => $this->numbers
+                ]);
+            }
         }
 
         return $this->render("front/theme/theme.twig");
