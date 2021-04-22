@@ -5,31 +5,46 @@ paypal.Buttons({
     label:  "pay"
   },
 
-  createOrder : function (data, actions) {
+  createOrder: function() {
 
-    return actions.order.create({
+    return fetch("index.php?access=order!create", {
 
-      purchase_units : [{
-        amount : {
-          value : "10.00",
-          currency_code : "EUR"
-        }
-      }]
+      method: "post",
+      headers: {
+        "content-type": "application/json"
+      }
+    })
+    .then(function(res) {
+
+      return res.json();
+    })
+    .then(function(data) {
+
+      return data.id;
     });
   },
 
-  onApprove : function (data, actions) {
+  onApprove: function(data) {
 
-    return actions.order.capture().then(
+    return fetch("index.php?access=order!capture", {
 
-      function(details) {
-        console.log(details);
-        
-        alert("Transaction validée par " + 
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        orderID: data.orderID
+      })
+    })
+    .then(function(res) {
+
+      return res.json();
+    })
+    .then(function(details) {
+
+      alert("Transaction validée par " + 
         details.payer.name.given_name + 
         details.payer.name.surname);
-      }
-    );
+    })
   },
 
   onCancel : function (data) {
