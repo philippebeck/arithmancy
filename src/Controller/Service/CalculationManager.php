@@ -81,10 +81,17 @@ abstract class CalculationManager extends MainController
         parent::__construct();
 
         if (!empty($this->getPost()->getPostArray())) {
-            $this->setBirthDate();
 
-            if ($this->getGet()->getGetVar("access") === "theme") {
-                $this->setFullName();
+            if ($this->getPost()->getPostVar("birthDate") !== "") {
+
+                $this->setBirthDate();
+    
+                if ($this->getGet()->getGetVar("access") === "theme" &&
+                $this->getPost()->getPostVar("usualFirstName") !== ""  &&
+                $this->getPost()->getPostVar("lastName") !== "") {
+
+                    $this->setFullName();
+                }
             }
         }
     }
