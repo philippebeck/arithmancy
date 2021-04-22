@@ -28,6 +28,8 @@ paypal.Buttons({
         alert("Transaction validée par " + 
         details.payer.name.given_name + 
         details.payer.name.surname);
+
+        document.getElementById("form").submit(); 
       }
     );
   },
