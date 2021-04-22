@@ -1,3 +1,29 @@
+function required() {
+  let firstName = document.getElementById("usualFirstName").value;
+  let lastName  = document.getElementById("lastName").value;
+  let birthDate = document.getElementById("birthDate").value;
+
+  if (firstName === "") {
+    alert("Insérer votre Prénom svp !");
+    
+    return false;
+
+  } else if (lastName === "") {
+      alert("Insérer votre Nom svp !");
+      
+      return false;
+  
+  } else if (birthDate === "") {
+      alert("Insérer votre Date de Naissance svp !");
+      
+      return false;
+  
+  } else {
+    
+    return true; 
+  }
+}
+
 paypal.Buttons({
   style: {
     color:  "blue",
