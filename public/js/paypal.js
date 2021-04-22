@@ -31,6 +31,29 @@ paypal.Buttons({
     label:  "pay"
   },
 
+  onInit: function(data, actions) {
+
+    actions.disable();
+
+    document.getElementById("birthDate")
+    .addEventListener("change", function(event) {
+
+      if (event.target.value !== "") {
+        actions.enable();
+
+      } else {
+        actions.disable();
+      }
+    });
+  },
+
+  onClick: function() {
+
+    if (!required()) {
+      alert("Transaction annulée !");
+    }
+  },
+
   createOrder : function (data, actions) {
 
     return actions.order.create({
