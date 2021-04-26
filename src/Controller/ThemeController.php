@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Controller\Service\InterpretationManager;
-use Pam\Model\Factory\ModelFactory;
+use App\Controller\InterpretationManager;
+use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -22,12 +22,13 @@ class ThemeController extends InterpretationManager
      */
     public function defaultMethod()
     {
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
 
-            if ($this->getPost()->getPostVar("birthDate") !== "" &&
-            $this->getPost()->getPostVar("usualFirstName") !== ""  &&
-            $this->getPost()->getPostVar("lastName") !== "") {
-
+            if (
+                $this->getPost("birthDate") !== "" 
+                && $this->getPost("usualFirstName") !== ""  
+                && $this->getPost("lastName") !== ""
+            ) {
                 $this->createCustomerData();
 
                 return $this->render("front/theme/theme.twig", [
@@ -36,38 +37,34 @@ class ThemeController extends InterpretationManager
             }
         }
 
-        return $this->render("front/theme/theme.twig");
+        return $this->render("front/theme.twig");
     }
 
     private function createCustomerData()
     {
         $customerData["visitDate"]  = date('Y-m-d H:i:s');
-        $customerData["birthDate"]  = $this->getPost()->getPostVar(
-            "birthDate"
-        );
+        $customerData["birthDate"]  = $this->getPost("birthDate");
 
-        $customerData["usualFirstName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("usualFirstName"), 
+        $customerData["usualFirstName"] = $this->getString(
+            $this->getPost("usualFirstName"), 
             "alpha"
         );
 
-        $customerData["middleName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("middleName"), 
+        $customerData["middleName"] = $this->getString(
+            $this->getPost("middleName"), 
             "alpha"
         );
 
-        $customerData["thirdName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("thirdName"), 
+        $customerData["thirdName"] = $this->getString(
+            $this->getPost("thirdName"), 
             "alpha"
         );
 
-        $customerData["lastName"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("lastName"), 
+        $customerData["lastName"] = $this->getString(
+            $this->getPost("lastName"), 
             "alpha"
         );
 
-        ModelFactory::getModel("Customer")->createData(
-            $customerData
-        );
+        ModelFactory::getModel("Customer")->createData($customerData);
     }
 }

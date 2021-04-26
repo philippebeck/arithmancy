@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Pam\Controller\MainController;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -29,7 +29,7 @@ class CalculationController extends MainController
     {
         $calculations = ModelFactory::getModel("Calculation")->listData();
 
-        return $this->render("front/calculation/calculation.twig", [
+        return $this->render("front/calculation.twig", [
             "calculations" => $calculations
         ]);
     }
@@ -42,37 +42,32 @@ class CalculationController extends MainController
      */
     public function createMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setCalculationData();
 
             ModelFactory::getModel("Calculation")->createData(
                 $this->calculation
             );
 
-            $this->getSession()->createAlert(
-                "Nouveau Nombre Calculé créé !", 
-                "green"
-            );
+            $this->setSession([
+                "message"   => "Nouveau Nombre Calculé créé !", 
+                "type"      => "green"
+            ]);
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/calculation/createCalculation.twig");
+        return $this->render("back/createCalculation.twig");
     }
 
     private function setCalculationData()
     {
-        $this->calculation["name"] = (string) trim(
-            $this->getPost()->getPostVar("name")
-        );
-
-        $this->calculation["description"] = (string) trim(
-            $this->getPost()->getPostVar("description")
-        );
+        $this->calculation["name"]          = (string) trim($this->getPost("name"));
+        $this->calculation["description"]   = (string) trim($this->getPost("description"));
     }
 
     /**
@@ -83,48 +78,45 @@ class CalculationController extends MainController
      */
     public function updateMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        $calculation = ModelFactory::getModel("Calculation")->readData(
-            $this->getGet()->getGetVar("id")
-        );
+        $calculation = ModelFactory::getModel("Calculation")->readData($this->getGet("id"));
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setCalculationData();
 
             ModelFactory::getModel("Calculation")->updateData(
-                $this->getGet()->getGetVar("id"), $this->calculation
+                $this->getGet("id"), 
+                $this->calculation
             );
 
-            $this->getSession()->createAlert(
-                "Nombre Calculé sélectionné modifié !", 
-                "blue"
-            );
+            $this->setSession([
+                "message"   => "Nombre Calculé sélectionné modifié !", 
+                "type"      => "blue"
+            ]);
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/calculation/updateCalculation.twig", [
+        return $this->render("back/updateCalculation.twig", [
             "calculation" => $calculation
         ]);
     }
 
     public function deleteMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Calculation")->deleteData(
-            $this->getGet()->getGetVar("id")
-        );
+        ModelFactory::getModel("Calculation")->deleteData($this->getGet("id"));
 
-        $this->getSession()->createAlert(
-            "Nombre Calculé sélectionné supprimé !", 
-            "red"
-        );
+        $this->setSession([
+            "message"   => "Nombre Calculé sélectionné supprimé !", 
+            "type"      => "red"
+        ]);
 
         $this->redirect("admin");
     }

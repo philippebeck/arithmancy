@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Pam\Controller\MainController;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 
 /**
  * Class VisitorController
@@ -18,18 +18,16 @@ class VisitorController extends MainController
 
     public function deleteMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Visitor")->deleteData(
-            $this->getGet()->getGetVar("id")
-        );
+        ModelFactory::getModel("Visitor")->deleteData($this->getGet("id"));
 
-        $this->getSession()->createAlert(
-            "Suppression du visiteur effectuée !", 
-            "red"
-        );
+        $this->setSession([
+            "message"   => "Suppression du visiteur effectuée !", 
+            "type"      => "red"
+        ]);
 
         $this->redirect("admin");
     }
