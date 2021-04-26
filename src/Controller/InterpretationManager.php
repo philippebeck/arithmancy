@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controller\Service;
+namespace App\Controller;
 
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 
 /**
  * Class InterpretationManager
@@ -27,17 +27,18 @@ abstract class InterpretationManager extends CalculationManager
     {
         parent::__construct();
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
 
-            if ($this->getPost()->getPostVar("birthDate") !== "") {
+            if ($this->getPost("birthDate") !== "") {
                 $this->allNumbers = ModelFactory::getModel("Number")->listData();
 
                 $this->setLifePathData();
 
-                if ($this->getGet()->getGetVar("access") === "theme" &&
-                $this->getPost()->getPostVar("usualFirstName") !== ""  &&
-                $this->getPost()->getPostVar("lastName") !== "") {
-
+                if (
+                    $this->getGet("access") === "theme"
+                    && $this->getPost("usualFirstName") !== ""
+                    && $this->getPost("lastName") !== ""
+                ) {
                     $this->setExpressionData();
                     $this->setIntimateData();
                     $this->setRealizationData();       
