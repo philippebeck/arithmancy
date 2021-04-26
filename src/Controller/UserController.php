@@ -30,50 +30,7 @@ class UserController extends MainController
         $this->redirect("auth");
     }
 
-    /**
-     * @return string
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
-    public function createMethod()
-    {
-        if ($this->checkAdmin() !== true) {
-            $this->redirect("home");
-        }
-
-        if ($this->checkArray($this->getPost())) {
-
-            $this->setUserData();
-            $this->setUserImage();
-
-            if ($this->getPost("pass") !== $this->getPost("conf-pass")) {
-                    
-                $this->setSession([
-                    "message"   => "Les mots de passe ne correspondent pas !", 
-                    "type"      => "red"
-                ]);
-
-                $this->redirect("user!create");
-            }
-
-            $this->user["pass"] = password_hash(
-                $this->getPost("pass"), 
-                PASSWORD_DEFAULT
-            );
-
-            ModelFactory::getModel("User")->createData($this->user);
-
-            $this->setSession([
-                "message"   => "Nouvel utilisateur créé avec succès !", 
-                "type"      => "green"
-            ]);
-
-            $this->redirect("admin");
-        }
-
-        return $this->render("back/createUser.twig");
-    }
+    // ******************** SETTERS ******************** \\
 
     private function setUserData()
     {
@@ -100,32 +57,11 @@ class UserController extends MainController
         );
     }
 
-    /**
-     * @return string
-     * @throws LoaderError
-     * @throws RuntimeError
-     * @throws SyntaxError
-     */
-    public function updateMethod()
-    {
-        if ($this->checkAdmin() !== true) {
-            $this->redirect("home");
-        }
-
-        if ($this->checkArray($this->getPost())) {
-            $this->setUpdateData();
-        }
-
-        $user = ModelFactory::getModel("User")->readData($this->getGet("id"));
-
-        return $this->render("back/updateUser.twig", ["user" => $user]);
-    }
-
     private function setUpdateData()
     {
         $this->setUserData();
 
-        if ($this->checkArray($this->getFiles(), "name")) {
+        if ($this->checkArray($this->getFiles("file"), "name")) {
             $this->setUserImage();
         }
 
@@ -174,6 +110,74 @@ class UserController extends MainController
             $this->getPost("new-pass"), 
             PASSWORD_DEFAULT
         );
+    }
+
+    // ******************** CRUD ******************** \\
+
+    /**
+     * @return string
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function createMethod()
+    {
+        if ($this->checkAdmin() !== true) {
+            $this->redirect("home");
+        }
+
+        if ($this->checkArray($this->getPost())) {
+
+            $this->setUserData();
+            $this->setUserImage();
+
+            if ($this->getPost("pass") !== $this->getPost("conf-pass")) {
+                    
+                $this->setSession([
+                    "message"   => "Les mots de passe ne correspondent pas !", 
+                    "type"      => "red"
+                ]);
+
+                $this->redirect("user!create");
+            }
+
+            $this->user["pass"] = password_hash(
+                $this->getPost("pass"), 
+                PASSWORD_DEFAULT
+            );
+
+            ModelFactory::getModel("User")->createData($this->user);
+
+            $this->setSession([
+                "message"   => "Nouvel utilisateur créé avec succès !", 
+                "type"      => "green"
+            ]);
+
+            $this->redirect("admin");
+        }
+
+        return $this->render("back/createUser.twig");
+    }
+
+    /**
+     * @return string
+     * @throws LoaderError
+     * @throws RuntimeError
+     * @throws SyntaxError
+     */
+    public function updateMethod()
+    {
+        if ($this->checkAdmin() !== true) {
+            $this->redirect("home");
+        }
+
+        if ($this->checkArray($this->getPost())) {
+            $this->setUpdateData();
+        }
+
+        $user = ModelFactory::getModel("User")->readData($this->getGet("id"));
+
+        return $this->render("back/updateUser.twig", ["user" => $user]);
     }
 
     public function deleteMethod()
