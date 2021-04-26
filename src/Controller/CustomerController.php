@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Pam\Controller\MainController;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 
 /**
  * Class CustomerController
@@ -18,18 +18,16 @@ class CustomerController extends MainController
 
     public function deleteMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Customer")->deleteData(
-            $this->getGet()->getGetVar("id")
-        );
+        ModelFactory::getModel("Customer")->deleteData($this->getGet("id"));
 
-        $this->getSession()->createAlert(
-            "Suppression du client effectuée !", 
-            "red"
-        );
+        $this->setSession([
+            "message"   => "Suppression du client effectuée !", 
+            "type"      => "red"
+        ]);
 
         $this->redirect("admin");
     }

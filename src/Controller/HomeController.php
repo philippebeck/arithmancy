@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\Service\InterpretationManager;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -22,23 +21,21 @@ class HomeController extends InterpretationManager
      */
     public function defaultMethod()
     {
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
             $this->createVisitorData();
 
-            return $this->render("front/home/home.twig", [
+            return $this->render("front/home.twig", [
                 "numbers" => $this->numbers
             ]);
         }
 
-        return $this->render("front/home/home.twig");
+        return $this->render("front/home.twig");
     }
 
     private function createVisitorData()
     {
         $visitorData["visitDate"] = date('Y-m-d H:i:s');
-        $visitorData["birthDate"] = $this->getPost()->getPostVar(
-            "birthDate"
-        );
+        $visitorData["birthDate"] = $this->getPost("birthDate");
 
         ModelFactory::getModel("Visitor")->createData($visitorData);
     }

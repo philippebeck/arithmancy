@@ -72,8 +72,7 @@ paypal.Buttons({
     return actions.order.capture().then(
 
       function(details) {
-        console.log(details);
-        
+             
         alert("Transaction validée par " + 
         details.payer.name.given_name + 
         " " + 

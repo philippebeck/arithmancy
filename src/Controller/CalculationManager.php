@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Service;
+namespace App\Controller;
 
 use DateTime;
 use Pam\Controller\MainController;
@@ -80,15 +80,16 @@ abstract class CalculationManager extends MainController
     {
         parent::__construct();
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
 
-            if ($this->getPost()->getPostVar("birthDate") !== "") {
-
+            if ($this->getPost("birthDate") !== "") {
                 $this->setBirthDate();
     
-                if ($this->getGet()->getGetVar("access") === "theme" &&
-                $this->getPost()->getPostVar("usualFirstName") !== ""  &&
-                $this->getPost()->getPostVar("lastName") !== "") {
+                if (
+                    $this->getGet("access") === "theme" 
+                    && $this->getPost("usualFirstName") !== "" 
+                    && $this->getPost("lastName") !== ""
+                ) {
 
                     $this->setFullName();
                 }
@@ -103,7 +104,7 @@ abstract class CalculationManager extends MainController
     {
         $birthDate = DateTime::createFromFormat(
             "Y-m-d",
-            $this->getPost()->getPostVar("birthDate")
+            $this->getPost("birthDate")
         );
 
         $this->birthDate["day"]     = $birthDate->format("d");
@@ -115,26 +116,26 @@ abstract class CalculationManager extends MainController
 
     private function setFullName()
     {
-        $this->fullName["usual"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("usualFirstName"), 
+        $this->fullName["usual"] = $this->getString(
+            $this->getPost("usualFirstName"), 
             "alpha"
         );
 
-        $this->fullName["last"] = $this->getString()->cleanString(
-            $this->getPost()->getPostVar("lastName"), 
+        $this->fullName["last"] = $this->getString(
+            $this->getPost("lastName"), 
             "alpha"
         );
 
-        if ($this->getPost()->getPostVar("middleName") !== null) {
-            $this->fullName["middle"] = $this->getString()->cleanString(
-                $this->getPost()->getPostVar("middleName"), 
+        if ($this->getPost("middleName") !== null) {
+            $this->fullName["middle"] = $this->getString(
+                $this->getPost("middleName"), 
                 "alpha"
             );
         }
 
-        if ($this->getPost()->getPostVar("thirdName") !== null) {
-            $this->fullName["third"] = $this->getString()->cleanString(
-                $this->getPost()->getPostVar("thirdName"), 
+        if ($this->getPost("thirdName") !== null) {
+            $this->fullName["third"] = $this->getString(
+                $this->getPost("thirdName"), 
                 "alpha"
             );
         }

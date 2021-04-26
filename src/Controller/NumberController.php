@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use Pam\Controller\MainController;
-use Pam\Model\Factory\ModelFactory;
+use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -42,77 +42,43 @@ class NumberController extends MainController
      */
     public function createMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if ($this->checkArray($this->getPost())) {
             $this->setNumberData();
 
             ModelFactory::getModel("Number")->createData(
                 $this->number
             );
 
-            $this->getSession()->createAlert(
-                "Nouveau Nombre créé !", 
-                "green"
-            );
+            $this->setSession([
+                "message"   => "Nouveau Nombre créé !", 
+                "type"      => "green"
+            ]);
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/number/createNumber.twig");
+        return $this->render("back/createNumber.twig");
     }
 
     private function setNumberData()
     {
-        $this->number["number"] = (int) trim(
-            $this->getPost()->getPostVar("number")
-        );
+        $this->number["number"] = (int) trim($this->getPost("number"));
 
-        $this->number["description"] = (string) trim(
-            $this->getPost()->getPostVar("description")
-        );
-
-        $this->number["astral"] = (string) trim(
-            $this->getPost()->getPostVar("astral")
-        );
-
-        $this->number["expression"] = (string) trim(
-            $this->getPost()->getPostVar("expression")
-        );
-
-        $this->number["soul"] = (string) trim(
-            $this->getPost()->getPostVar("soul")
-        );
-
-        $this->number["day"] = (string) trim(
-            $this->getPost()->getPostVar("day")
-        );
-
-        $this->number["realization"] = (string) trim(
-            $this->getPost()->getPostVar("realization")
-        );
-
-        $this->number["personal"] = (string) trim(
-            $this->getPost()->getPostVar("personal")
-        );
-
-        $this->number["hereditary"] = (string) trim(
-            $this->getPost()->getPostVar("hereditary")
-        );
-
-        $this->number["goal"] = (string) trim(
-            $this->getPost()->getPostVar("goal")
-        );
-
-        $this->number["power"] = (string) trim(
-            $this->getPost()->getPostVar("power")
-        );
-
-        $this->number["spiritual"] = (string) trim(
-            $this->getPost()->getPostVar("spiritual")
-        );
+        $this->number["description"]    = (string) trim($this->getPost("description"));
+        $this->number["astral"]         = (string) trim($this->getPost("astral"));
+        $this->number["expression"]     = (string) trim($this->getPost("expression"));
+        $this->number["soul"]           = (string) trim($this->getPost("soul"));
+        $this->number["day"]            = (string) trim($this->getPost("day"));
+        $this->number["realization"]    = (string) trim($this->getPost("realization"));
+        $this->number["personal"]       = (string) trim($this->getPost("personal"));
+        $this->number["hereditary"]     = (string) trim($this->getPost("hereditary"));
+        $this->number["goal"]           = (string) trim($this->getPost("goal"));
+        $this->number["power"]          = (string) trim($this->getPost("power"));
+        $this->number["spiritual"]      = (string) trim($this->getPost("spiritual"));
     }
 
     /**
@@ -123,49 +89,43 @@ class NumberController extends MainController
      */
     public function updateMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        $number = ModelFactory::getModel("Number")->readData(
-            $this->getGet()->getGetVar("id")
-        );
+        $number = ModelFactory::getModel("Number")->readData($this->getGet("id"));
 
-        if (!empty($this->getPost()->getPostArray())) {
+        if (!empty($this->getPost())) {
             $this->setNumberData();
 
             ModelFactory::getModel("Number")->updateData(
-                $this->getGet()->getGetVar("id"), 
+                $this->getGet("id"), 
                 $this->number
             );
 
-            $this->getSession()->createAlert(
-                "Nombre sélectionné modifié !", 
-                "blue"
-            );
+            $this->setSession([
+                "message"   => "Nombre sélectionné modifié !", 
+                "type"      => "blue"
+            ]);
 
             $this->redirect("admin");
         }
 
-        return $this->render("back/number/updateNumber.twig", [
-            "number" => $number
-        ]);
+        return $this->render("back/updateNumber.twig", ["number" => $number]);
     }
 
     public function deleteMethod()
     {
-        if ($this->getSecurity()->checkIsAdmin() !== true) {
+        if ($this->checkAdmin() !== true) {
             $this->redirect("home");
         }
 
-        ModelFactory::getModel("Number")->deleteData(
-            $this->getGet()->getGetVar("id")
-        );
+        ModelFactory::getModel("Number")->deleteData($this->getGet("id"));
 
-        $this->getSession()->createAlert(
-            "Nombre sélectionné supprimé !", 
-            "red"
-        );
+        $this->setSession([
+            "message"   => "Nombre sélectionné supprimé !", 
+            "type"      => "red"
+        ]);
 
         $this->redirect("admin");
     }
