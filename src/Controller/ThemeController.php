@@ -31,6 +31,20 @@ class ThemeController extends InterpretationManager
             ) {
                 $this->createCustomerData();
 
+                if ($this->getPost("email")) {
+                    $mail["email"]    = $this->getPost("email");
+                    $mail["name"]     = $this->getPost("usualFirstName");
+                    $mail["subject"]  = "Thème Numérologique";
+                    $mail["message"]  = implode("\n", $this->numbers);
+
+                    $this->sendMail($mail);
+    
+                    $this->setSession([
+                        "message"   => "Thème Envoyé avec Succès à " . $mail["name"] . " !",
+                        "type"      => "green"
+                    ]);
+                }
+
                 return $this->render("front/theme.twig", [
                     "numbers" => $this->numbers
                 ]);
