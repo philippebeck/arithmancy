@@ -62,7 +62,20 @@
                     required>
             </li>
         </ul>
+    </fieldset>
 
+    <fieldset>
+        <legend>Pour recevoir le Thème par Courriel</legend>
+
+        <label for="email">
+            Courriel (optionnel)
+        </label>
+        <input id="email" 
+            name="email"
+            type="email">
+    </fieldset>
+
+    <fieldset>
         {% if (checkUser()) %}
             <input type="submit" 
                 value="Interpréter">
