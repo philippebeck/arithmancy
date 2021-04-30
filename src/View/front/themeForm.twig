@@ -63,7 +63,13 @@
             </li>
         </ul>
 
-        <div id="paypal-button">
-        </div>
+        {% if (checkUser()) %}
+            <input type="submit" 
+                value="Interpréter">
+
+        {% else %}
+            <div id="paypal-button">
+            </div>
+        {% endif %}
     </fieldset>
 </form>
