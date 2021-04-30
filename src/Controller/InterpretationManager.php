@@ -53,6 +53,9 @@ abstract class InterpretationManager extends CalculationManager
         }
     }
 
+     // *************************************************** \\
+    // ******************** MAIN SETTER ******************** \\
+
     /**
      * @param array $numbers
      * @param string $category
@@ -67,8 +70,8 @@ abstract class InterpretationManager extends CalculationManager
             $this->allNumbers[$numbers[0] - 1][$category];
     }
 
-     // ******************************************************* \\
-    // ******************** NUMBER CHECKERS ******************** \\
+     // ************************************************ \\
+    // ******************** CHECKERS ******************** \\
 
     /**
      * @param int $number
@@ -163,8 +166,8 @@ abstract class InterpretationManager extends CalculationManager
         }
     }
 
-     // *********************************************************** \\
-    // ******************** NUMBER DATA SETTERS ******************** \\
+     // ******************************************************* \\
+    // ******************** NUMBERS SETTERS ******************** \\
 
     protected function setLifePathData()
     {
