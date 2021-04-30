@@ -53,60 +53,65 @@ abstract class InterpretationManager extends CalculationManager
         }
     }
 
+     // *************************************************** \\
+    // ******************** MAIN SETTER ******************** \\
+
     /**
      * @param array $numbers
      * @param string $category
      */
     private function setNumberData(
         array $numbers,
-        string $category)
+        string $category,
+        string $name)
     {
-        $this->numbers[$category . "Digit"]   = $numbers[0];
-        $this->numbers[$category . "Number"]  = $numbers[1];
-
-        $this->numbers[$category . "MainText"] = 
-        $this->allNumbers[$numbers[0] - 1][$category];
+        $this->numbers[$category . "Digit"] = 
+            $name . " " . $numbers[0] . " : " .
+            $this->allNumbers[$numbers[0] - 1][$category];
     }
 
-     // ******************************************************* \\
-    // ******************** NUMBER CHECKERS ******************** \\
+     // ************************************************ \\
+    // ******************** CHECKERS ******************** \\
 
     /**
      * @param int $number
      * @param string $category
-     * @param string $order
+     * @param string $suffix
      */
     private function checkSimpleNumber(
         int $number, 
         string $category,
-        string $order = "Second")
+        string $suffix = "Number")
     {
         if ($number < 79) {
 
-            $this->numbers[$category . $order . "Text"] = 
-            $this->allNumbers[$number - 1]["description"];
+            $this->numbers[$category . $suffix] = 
+                $number . " : " .
+                $this->allNumbers[$number - 1]["description"];
         }  
     }
 
     /**
      * @param int $number
      * @param string $category
-     * @param string $order
+     * @param string $suffix
      */
     private function checkDoubleNumber(
         int $number, 
         string $category,
-        string $order = "Second")
+        string $suffix = "Number")
     {
         if ($number < 79) {
             if ($number === 11 || $number === 22) {
 
-                $this->numbers[$category . $order . "Text"] = 
-                $this->allNumbers[$number - 1][$category];
+                $this->numbers[$category . $suffix] = 
+                    $number . " : " .
+                    $this->allNumbers[$number - 1][$category];
 
             } else {
-                $this->numbers[$category . $order . "Text"] = 
-                $this->allNumbers[$number - 1]["description"];
+                $this->numbers[$category . $suffix] = 
+                    $number . " : " .
+                    $this->allNumbers[$number - 1]["description"];
             }
         }
     }
@@ -114,22 +119,24 @@ abstract class InterpretationManager extends CalculationManager
     /**
      * @param int $number
      * @param string $category
-     * @param string $order
+     * @param string $suffix
      */
     private function checkTripleNumber(
         int $number, 
         string $category,
-        string $order = "Second")
+        string $suffix = "Number")
     {
         if ($number < 79) {
             if ($number === 11 || $number === 22 || $number === 33) {
 
-                $this->numbers[$category . $order . "Text"] = 
-                $this->allNumbers[$number - 1][$category];
+                $this->numbers[$category . $suffix] = 
+                    $number . " : " .
+                    $this->allNumbers[$number - 1][$category];
 
             } else {
-                $this->numbers[$category . $order . "Text"] = 
-                $this->allNumbers[$number - 1]["description"];
+                $this->numbers[$category . $suffix] = 
+                    $number . " : " .
+                    $this->allNumbers[$number - 1]["description"];
             }
         }
     }
@@ -137,43 +144,51 @@ abstract class InterpretationManager extends CalculationManager
     /**
      * @param int $number
      * @param string $category
+     * @param string $suffix
      */
     private function checkQuadrupleNumber(
         int $number, 
         string $category,
-        string $order = "Second")
+        string $suffix = "Number")
     {
         if ($number < 79) {
-            if ($number === 11 || $number === 22 || 
-                $number === 33 || $number === 44) {
+            if ($number === 11 || $number === 22 || $number === 33 || $number === 44) {
 
-                $this->numbers[$category . $order . "Text"] = 
-                $this->allNumbers[$number - 1][$category];
+                $this->numbers[$category . $suffix] = 
+                    $number . " : " .
+                    $this->allNumbers[$number - 1][$category];
 
             } else {
-                $this->numbers[$category . $order . "Text"] = 
-                $this->allNumbers[$number - 1]["description"];
+                $this->numbers[$category . $suffix] = 
+                    $number . " : " .
+                    $this->allNumbers[$number - 1]["description"];
             }
         }
     }
 
-     // *********************************************************** \\
-    // ******************** NUMBER DATA SETTERS ******************** \\
+     // ******************************************************* \\
+    // ******************** NUMBERS SETTERS ******************** \\
 
     protected function setLifePathData()
     {
         $lifePathNumbers = $this->getLifePathNumbers();
 
-        $this->numbers["lifePathSecondNumber"] = $lifePathNumbers[2];
+        $this->setNumberData(
+            $lifePathNumbers, 
+            "lifePath", 
+            "Chemin de Vie"
+        );
 
-        $this->setNumberData($lifePathNumbers, "lifePath");
-        $this->checkQuadrupleNumber($lifePathNumbers[1], "lifePath");
+        $this->checkQuadrupleNumber(
+            $lifePathNumbers[1], 
+            "lifePath"
+        );
 
         if ($lifePathNumbers[1] !== $lifePathNumbers[2]) {
             $this->checkQuadrupleNumber(
                 $lifePathNumbers[2], 
                 "lifePath", 
-                "Third"
+                "SecondNumber"
             );
         }
     }
@@ -182,73 +197,136 @@ abstract class InterpretationManager extends CalculationManager
     {
         $expressionNumbers = $this->getExpressionNumbers();
 
-        $this->setNumberData($expressionNumbers, "expression");
-        $this->checkDoubleNumber($expressionNumbers[1], "expression");
+        $this->setNumberData(
+            $expressionNumbers, 
+            "expression", 
+            "Nombre d'Expression"
+        );
+
+        $this->checkDoubleNumber(
+            $expressionNumbers[1], 
+            "expression"
+        );
     }
 
     protected function setIntimateData()
     {
         $intimateNumbers = $this->getIntimateNumbers();
 
-        $this->setNumberData($intimateNumbers, "intimate");
-        $this->checkDoubleNumber($intimateNumbers[1], "intimate");
+        $this->setNumberData(
+            $intimateNumbers, 
+            "intimate",
+            "Nombre Intime"
+        );
+
+        $this->checkDoubleNumber(
+            $intimateNumbers[1], 
+            "intimate"
+        );
     }
 
     protected function setRealizationData()
     {
         $realizationNumbers = $this->getRealizationNumbers();
 
-        $this->setNumberData($realizationNumbers, "realization");
-        $this->checkDoubleNumber($realizationNumbers[1], "realization");
+        $this->setNumberData(
+            $realizationNumbers, 
+            "realization",
+            "Nombre de Réalisation"
+        );
+
+        $this->checkDoubleNumber(
+            $realizationNumbers[1], 
+            "realization"
+        );
     }
 
     protected function setDayData()
     {
         $dayNumber = $this->getDayNumber();
-
-        $this->numbers["dayNumber"] = $dayNumber;
-        
-        $this->numbers["dayText"] = 
-        $this->allNumbers[$dayNumber - 1]["day"];
+       
+        $this->numbers["dayNumber"] = 
+            "Nombre du Jour " . $dayNumber . " : " .
+            $this->allNumbers[$dayNumber - 1]["day"];
     }
 
     protected function setGoalData()
     {
         $goalNumbers = $this->getGoalNumbers();
 
-        $this->setNumberData($goalNumbers, "goal");
-        $this->checkTripleNumber($goalNumbers[1], "goal");
+        $this->setNumberData(
+            $goalNumbers, 
+            "goal",
+            "Nombre du But"
+        );
+
+        $this->checkTripleNumber(
+            $goalNumbers[1], 
+            "goal"
+        );
     }
 
     protected function setPersonalData()
     {
         $personalNumbers = $this->getPersonalNumbers();
 
-        $this->setNumberData($personalNumbers, "personal");
-        $this->checkSimpleNumber($personalNumbers[1], "personal");        
+        $this->setNumberData(
+            $personalNumbers, 
+            "personal",
+            "Nombre Personnel"
+        );
+
+        $this->checkSimpleNumber(
+            $personalNumbers[1], 
+            "personal"
+        );        
     }
 
     protected function setHereditaryData()
     {
         $hereditaryNumbers = $this->getHereditaryNumbers();
 
-        $this->setNumberData($hereditaryNumbers, "hereditary");
-        $this->checkSimpleNumber($hereditaryNumbers[1], "hereditary");
+        $this->setNumberData(
+            $hereditaryNumbers, 
+            "hereditary",
+            "Nombre Héréditaire"
+        );
+
+        $this->checkSimpleNumber(
+            $hereditaryNumbers[1], 
+            "hereditary"
+        );
     }
 
     protected function setPowerData()
     {
         $powerNumbers = $this->getPowerNumbers();
 
-        $this->setNumberData($powerNumbers, "power");
-        $this->checkDoubleNumber($powerNumbers[1], "power");
+        $this->setNumberData(
+            $powerNumbers, 
+            "power",
+            "Nombre de Pouvoir"
+        );
+
+        $this->checkDoubleNumber(
+            $powerNumbers[1], 
+            "power"
+        );
     }
 
     protected function setSpiritualData()
     {
         $spiritualNumbers = $this->getSpiritualNumbers();
 
-        $this->setNumberData($spiritualNumbers, "spiritual");
-        $this->checkQuadrupleNumber($spiritualNumbers[1], "spiritual");
+        $this->setNumberData(
+            $spiritualNumbers, 
+            "spiritual",
+            "Nombre Spirituel"
+        );
+
+        $this->checkQuadrupleNumber(
+            $spiritualNumbers[1], 
+            "spiritual"
+        );
     }
 }

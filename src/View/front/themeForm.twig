@@ -62,8 +62,28 @@
                     required>
             </li>
         </ul>
+    </fieldset>
 
-        <div id="paypal-button">
-        </div>
+    <fieldset>
+        <legend>Pour recevoir le Thème par Message</legend>
+
+        <label for="email">
+            Courriel
+        </label>
+        <input id="email" 
+            name="email"
+            type="email"
+            placeholder="(Optionnel)">
+    </fieldset>
+
+    <fieldset>
+        {% if (checkUser()) %}
+            <input type="submit" 
+                value="Interpréter">
+
+        {% else %}
+            <div id="paypal-button">
+            </div>
+        {% endif %}
     </fieldset>
 </form>

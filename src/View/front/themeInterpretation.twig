@@ -2,128 +2,93 @@
     <h2>Votre Thème Numérologique</h2>
 
     <p>
-        Chemin de Vie {{ numbers.lifePathDigit }} /
-        {{ numbers.lifePathNumber }}
-        
-        {% if numbers.lifePathNumber != numbers.lifePathSecondNumber %}
-            / {{ numbers.lifePathSecondNumber }}
-        {% endif %}
-
-        :
-        <br>
-        {{ numbers.lifePathMainText }}
+        {{ numbers.lifePathDigit }}
         <br>
 
-        {% if numbers.lifePathSecondText %}
-            {{ numbers.lifePathSecondText }}
+        {% if numbers.lifePathNumber %}
+            {{ numbers.lifePathNumber }}
         {% endif %}
 
         <br>
 
-        {% if numbers.lifePathThirdText %}
-            {{ numbers.lifePathThirdText }}
+        {% if numbers.lifePathSecondNumber %}
+            {{ numbers.lifePathSecondNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre d'Expression {{ numbers.expressionDigit }} /
-        {{ numbers.expressionNumber }} :
-        <br>
-        {{ numbers.expressionMainText }}
+        {{ numbers.expressionDigit }}
         <br>
 
-        {% if numbers.expressionSecondText %}
-            {{ numbers.expressionSecondText }}
+        {% if numbers.expressionNumber %}
+            {{ numbers.expressionNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre Intime {{ numbers.intimateDigit }} /
-        {{ numbers.intimateNumber }} :
-        <br>
-        {{ numbers.intimateMainText }}
+        {{ numbers.intimateDigit }}
         <br>
 
-        {% if numbers.intimateSecondText %}
-            {{ numbers.intimateSecondText }}
+        {% if numbers.intimateNumber %}
+            {{ numbers.intimateNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre de Réalisation {{ numbers.realizationDigit }} /
-        {{ numbers.realizationNumber }} :
-        <br>
-        {{ numbers.realizationMainText }}
+        {{ numbers.realizationDigit }}
         <br>
 
-        {% if numbers.realizationSecondText %}
-            {{ numbers.realizationSecondText }}
+        {% if numbers.realizationNumber %}
+            {{ numbers.realizationNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre du Jour {{ numbers.dayNumber }} :
-        <br>
-        {{ numbers.dayText }}
+        {{ numbers.dayNumber }}
     </p>
 
     <p>
-        Nombre du But {{ numbers.goalDigit }} /
-        {{ numbers.goalNumber }} :
-        <br>
-        {{ numbers.goalMainText }}
+        {{ numbers.goalDigit }}
         <br>
 
-        {% if numbers.goalSecondText %}
-            {{ numbers.goalSecondText }}
+        {% if numbers.goalNumber %}
+            {{ numbers.goalNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre Personnel {{ numbers.personalDigit }} /
-        {{ numbers.personalNumber }} :
-        <br>
-        {{ numbers.personalMainText }}
+        {{ numbers.personalDigit }}
         <br>
 
-        {% if numbers.personalSecondText %}
-            {{ numbers.personalSecondText }}
+        {% if numbers.personalNumber %}
+            {{ numbers.personalNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre Héréditaire {{ numbers.hereditaryDigit }} /
-        {{ numbers.hereditaryNumber }} :
-        <br>
-        {{ numbers.hereditaryMainText }}
+        {{ numbers.hereditaryDigit }}
         <br>
 
-        {% if numbers.hereditarySecondText %}
-            {{ numbers.hereditarySecondText }}
+        {% if numbers.hereditaryNumber %}
+            {{ numbers.hereditaryNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre de Pouvoir {{ numbers.powerDigit }} /
-        {{ numbers.powerNumber }} :
-        <br>
-        {{ numbers.powerMainText }}
+        {{ numbers.powerDigit }}
         <br>
 
-        {% if numbers.powerSecondText %}
-            {{ numbers.powerSecondText }}
+        {% if numbers.powerNumber %}
+            {{ numbers.powerNumber }}
         {% endif %}
     </p>
 
     <p>
-        Nombre Spirituel {{ numbers.spiritualDigit }} /
-        {{ numbers.spiritualNumber }} :
-        <br>
-        {{ numbers.spiritualMainText }}
+        {{ numbers.spiritualDigit }}
         <br>
         
-        {% if numbers.spiritualSecondText %}
-            {{ numbers.spiritualSecondText }}
+        {% if numbers.spiritualNumber %}
+            {{ numbers.spiritualNumber }}
         {% endif %}
     </p>
 </article>
