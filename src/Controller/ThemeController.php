@@ -31,7 +31,7 @@ class ThemeController extends InterpretationManager
             ) {
                 $this->createCustomerData();
 
-                return $this->render("front/theme/theme.twig", [
+                return $this->render("front/theme.twig", [
                     "numbers" => $this->numbers
                 ]);
             }
