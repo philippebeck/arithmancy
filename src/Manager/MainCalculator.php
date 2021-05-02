@@ -148,7 +148,7 @@ abstract class MainCalculator extends MainController
     protected function getFullNameLetters()
     {
         return array_merge(
-            str_split($this->fullName["usual"]), 
+            str_split($this->fullName["first"]), 
             str_split($this->fullName["middle"]), 
             str_split($this->fullName["third"]), 
             str_split($this->fullName["last"])

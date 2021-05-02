@@ -38,7 +38,7 @@ class DateCalculator extends MainCalculator
             return $this->dateNumbers;
         }
 
-        return $this->dateNumbers[$key] ?? "";
+        return $this->dateNumbers[$key] ?? [];
         
     }
 
