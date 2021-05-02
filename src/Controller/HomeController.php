@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Manager\MainInterpreter;
 use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -11,7 +12,7 @@ use Twig\Error\SyntaxError;
  * Class HomeController
  * @package App\Controller
  */
-class HomeController extends InterpretationManager
+class HomeController extends MainInterpreter
 {
     /**
      * @return string

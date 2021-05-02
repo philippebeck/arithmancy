@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Controller\InterpretationManager;
+use App\Manager\MainInterpreter;
 use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -12,7 +12,7 @@ use Twig\Error\SyntaxError;
  * Class ThemeController
  * @package App\Controller
  */
-class ThemeController extends InterpretationManager
+class ThemeController extends MainInterpreter
 {
     /**
      * @var string
