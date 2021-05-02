@@ -18,13 +18,10 @@ class NameInterpreter extends MainInterpreter
      */
     private $nameData = [];
 
-    /**
-     * Set all Interpretation Data from Name
-     */
     public function __construct()
     {
         parent::__construct();
-        
+       
         if (
             $this->checkArray($this->getPost(), "firstName")
             && $this->checkArray($this->getPost(), "lastName")
@@ -40,7 +37,6 @@ class NameInterpreter extends MainInterpreter
     }
 
     /**
-     * Return all Interpretation Data from Name
      * @return array
      */
     public function getNameData()
@@ -51,9 +47,6 @@ class NameInterpreter extends MainInterpreter
      // *********************************************** \\
     // ******************** SETTERS ******************** \\
 
-    /**
-     * Set Interpretation of Expression Numbers to Name Data
-     */
     private function setExpressionData()
     {
         $expressionNumbers = $this->nameCalculator->getNameNumbers("expression");
@@ -70,9 +63,6 @@ class NameInterpreter extends MainInterpreter
         );
     }
 
-    /**
-     * Set Interpretation of Intimate Numbers to Name Data
-     */
     private function setIntimateData()
     {
         $intimateNumbers = $this->nameCalculator->getNameNumbers("intimate");
@@ -89,9 +79,6 @@ class NameInterpreter extends MainInterpreter
         );
     }
 
-    /**
-     * Set Interpretation of Realization Numbers to Name Data
-     */
     private function setRealizationData()
     {
         $realizationNumbers = $this->nameCalculator->getNameNumbers("realization");
@@ -108,9 +95,6 @@ class NameInterpreter extends MainInterpreter
         );
     }
 
-    /**
-     * Set Interpretation of Personal Numbers to Name Data
-     */
     private function setPersonalData()
     {
         $personalNumbers = $this->nameCalculator->getNameNumbers("personal");
@@ -127,9 +111,6 @@ class NameInterpreter extends MainInterpreter
         );        
     }
 
-    /**
-     * Set Interpretation of Hereditary Numbers to Name Data
-     */
     private function setHereditaryData()
     {
         $hereditaryNumbers = $this->nameCalculator->getNameNumbers("hereditary");

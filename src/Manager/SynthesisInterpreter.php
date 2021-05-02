@@ -18,9 +18,6 @@ class SynthesisInterpreter extends MainInterpreter
      */
     private $synthesisData = [];
 
-    /**
-     * Set all Interpretation Data from Synthesis
-     */
     public function __construct()
     {
         parent::__construct();
@@ -38,7 +35,6 @@ class SynthesisInterpreter extends MainInterpreter
     }
 
     /**
-     * Return all Interpretation Data from Synthesis
      * @return array
      */
     public function getSynthesisData()
@@ -49,9 +45,6 @@ class SynthesisInterpreter extends MainInterpreter
      // *********************************************** \\
     // ******************** SETTERS ******************** \\
 
-    /**
-     * Set Interpretation of Power Numbers to Synthesis Data
-     */
     private function setPowerData()
     {
         $powerNumbers = $this->synthesisCalculator->getSynthesisNumbers("power");
@@ -68,9 +61,6 @@ class SynthesisInterpreter extends MainInterpreter
         );
     }
 
-    /**
-     * Set Interpretation of Spiritual Numbers to Synthesis Data
-     */
     private function setSpiritualData()
     {
         $spiritualNumbers = $this->synthesisCalculator->getSynthesisNumbers("spiritual");

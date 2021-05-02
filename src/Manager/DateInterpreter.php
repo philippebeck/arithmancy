@@ -18,9 +18,6 @@ class DateInterpreter extends MainInterpreter
      */
     private $dateData = [];
 
-    /**
-     * Set all Interpretation Data from Date
-     */
     public function __construct()
     {
         parent::__construct();
@@ -35,7 +32,6 @@ class DateInterpreter extends MainInterpreter
     }
 
     /**
-     * Return all Interpretation Data from Date
      * @return array
      */
     public function getDateData()
@@ -46,9 +42,6 @@ class DateInterpreter extends MainInterpreter
      // *********************************************** \\
     // ******************** SETTERS ******************** \\
 
-    /**
-     * Set Interpretation of LifePath Numbers to Date Data
-     */
     private function setLifePathData()
     {
         $lifePathNumbers = $this->dateCalculator->getDateNumbers("lifePath");
@@ -65,9 +58,6 @@ class DateInterpreter extends MainInterpreter
         );
     }
 
-    /**
-     * Set Interpretation of Day Number to Date Data
-     */
     private function setDayData()
     {
         $dayNumber = $this->dateCalculator->getDateNumbers("day");
@@ -79,9 +69,6 @@ class DateInterpreter extends MainInterpreter
         );
     }
 
-    /**
-     * Set Interpretation of Goal Numbers to Date Data
-     */
     private function setGoalData()
     {
         $goalNumbers = $this->dateCalculator->getDateNumbers("goal");
