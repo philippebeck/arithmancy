@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Manager\DateInterpreter;
+use App\Manager\MainInterpreter;
 use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -11,7 +13,7 @@ use Twig\Error\SyntaxError;
  * Class HomeController
  * @package App\Controller
  */
-class HomeController extends InterpretationManager
+class HomeController extends MainInterpreter
 {
     /**
      * @return string
@@ -21,11 +23,14 @@ class HomeController extends InterpretationManager
      */
     public function defaultMethod()
     {
-        if ($this->checkArray($this->getPost())) {
+        if ($this->checkArray($this->getPost(), "birthDate")) {
             $this->createVisitorData();
 
+            $dateInterpreter    = new DateInterpreter();
+            $dateData           = $dateInterpreter->getDateData();
+
             return $this->render("front/home.twig", [
-                "numbers" => $this->numbers
+                "dateData" => $dateData
             ]);
         }
 

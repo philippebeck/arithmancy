@@ -24,6 +24,7 @@ body {
 }
 
 [class*="card"] {
+  --card-margin: 5px;
   --card-border-radius: 5px;
   --card-max-width: auto;
   --card-box-shadow: unset;
