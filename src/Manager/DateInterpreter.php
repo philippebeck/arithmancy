@@ -6,7 +6,7 @@ namespace App\Manager;
  * Class DateInterpreter
  * @package App\Manager
  */
-class DateInterpreter extends InterpretationManager
+class DateInterpreter extends MainInterpreter
 {
     /**
      * @var DateCalculator $dateCalculator
@@ -23,9 +23,10 @@ class DateInterpreter extends InterpretationManager
      */
     public function __construct()
     {
-        $this->dateCalculator = new DateCalculator();
-
+        parent::__construct();
+        
         if ($this->checkArray($this->getPost(), "birthDate")) {
+            $this->dateCalculator = new DateCalculator();
             
             $this->setLifePathData();       
             $this->setDayData();       
@@ -50,7 +51,7 @@ class DateInterpreter extends InterpretationManager
      */
     private function setLifePathData()
     {
-        $lifePathNumbers = $this->dateCalculator->getLifePathNumbers();
+        $lifePathNumbers = $this->dateCalculator->getDateNumbers("lifePath");
 
         $this->dateData["lifePathDigit"] = $this->getDigitData(
             $lifePathNumbers, 
@@ -69,11 +70,9 @@ class DateInterpreter extends InterpretationManager
      */
     private function setDayData()
     {
-        $dayNumber = $this->dateCalculator->getDayNumber();
+        $dayNumber = $this->dateCalculator->getDateNumbers("day");
        
-        $this->dateData["dayNumber"] = 
-            "Nombre du Jour " . $dayNumber . " : " .
-            $this->allNumbers[$dayNumber - 1]["day"];
+        $this->dateData["dayNumber"] = "Nombre du Jour " . $dayNumber . " : " . $this->allNumbers[$dayNumber - 1]["day"];
     }
 
     /**
@@ -81,7 +80,7 @@ class DateInterpreter extends InterpretationManager
      */
     private function setGoalData()
     {
-        $goalNumbers = $this->dateCalculator->getGoalNumbers();
+        $goalNumbers = $this->dateCalculator->getDateNumbers("goal");
 
         $this->dateData["goalDigit"] = $this->getDigitData(
             $goalNumbers, 

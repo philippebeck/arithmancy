@@ -6,7 +6,7 @@ namespace App\Manager;
  * Class NameInterpreter
  * @package App\Manager
  */
-class NameInterpreter extends InterpretationManager
+class NameInterpreter extends MainInterpreter
 {
     /**
      * @var NameCalculator $nameCalculator
@@ -23,12 +23,14 @@ class NameInterpreter extends InterpretationManager
      */
     public function __construct()
     {
-        $this->nameCalculator = new NameCalculator();
-
+        parent::__construct();
+        
         if (
             $this->checkArray($this->getPost(), "firstName")
             && $this->checkArray($this->getPost(), "lastName")
         ) {
+            $this->nameCalculator = new NameCalculator();
+            
             $this->setExpressionData();
             $this->setIntimateData();
             $this->setRealizationData();
@@ -54,7 +56,7 @@ class NameInterpreter extends InterpretationManager
      */
     private function setExpressionData()
     {
-        $expressionNumbers = $this->nameCalculator->getExpressionNumbers();
+        $expressionNumbers = $this->nameCalculator->getNameNumbers("expression");
 
         $this->nameData["expressionDigit"] = $this->getDigitData(
             $expressionNumbers, 
@@ -73,7 +75,7 @@ class NameInterpreter extends InterpretationManager
      */
     private function setIntimateData()
     {
-        $intimateNumbers = $this->nameCalculator->getIntimateNumbers();
+        $intimateNumbers = $this->nameCalculator->getNameNumbers("intimate");
 
         $this->nameData["intimateDigit"] = $this->getDigitData(
             $intimateNumbers, 
@@ -92,7 +94,7 @@ class NameInterpreter extends InterpretationManager
      */
     private function setRealizationData()
     {
-        $realizationNumbers = $this->nameCalculator->getRealizationNumbers();
+        $realizationNumbers = $this->nameCalculator->getNameNumbers("realization");
 
         $this->nameData["realizationDigit"] = $this->getDigitData(
             $realizationNumbers, 
@@ -111,7 +113,7 @@ class NameInterpreter extends InterpretationManager
      */
     private function setPersonalData()
     {
-        $personalNumbers = $this->nameCalculator->getPersonalNumbers();
+        $personalNumbers = $this->nameCalculator->getNameNumbers("personal");
 
         $this->nameData["personalDigit"] = $this->getDigitData(
             $personalNumbers, 
@@ -130,7 +132,7 @@ class NameInterpreter extends InterpretationManager
      */
     private function setHereditaryData()
     {
-        $hereditaryNumbers = $this->nameCalculator->getHereditaryNumbers();
+        $hereditaryNumbers = $this->nameCalculator->getNameNumbers("hereditary");
 
         $this->nameData["hereditaryDigit"] = $this->getDigitData(
             $hereditaryNumbers, 

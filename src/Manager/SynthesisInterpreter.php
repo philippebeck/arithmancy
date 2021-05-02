@@ -6,7 +6,7 @@ namespace App\Manager;
  * Class SynthesisInterpreter
  * @package App\Manager
  */
-class SynthesisInterpreter extends InterpretationManager
+class SynthesisInterpreter extends MainInterpreter
 {
     /**
      * @var SynthesisCalculator $synthesisCalculator
@@ -23,13 +23,15 @@ class SynthesisInterpreter extends InterpretationManager
      */
     public function __construct()
     {
-        $this->synthesisCalculator = new SynthesisCalculator();
-
+        parent::__construct();
+        
         if (
             $this->checkArray($this->getPost(), "birthDate")
             && $this->checkArray($this->getPost(), "firstName")
             && $this->checkArray($this->getPost(), "lastName")
         ) {
+            $this->synthesisCalculator = new SynthesisCalculator();
+
             $this->setPowerData();
             $this->setSpiritualData();
         }
@@ -52,7 +54,7 @@ class SynthesisInterpreter extends InterpretationManager
      */
     private function setPowerData()
     {
-        $powerNumbers = $this->synthesisCalculator->getPowerNumbers();
+        $powerNumbers = $this->synthesisCalculator->getSynthesisNumbers("power");
 
         $this->synthesisData["powerDigit"] = $this->getDigitData(
             $powerNumbers, 
@@ -71,7 +73,7 @@ class SynthesisInterpreter extends InterpretationManager
      */
     private function setSpiritualData()
     {
-        $spiritualNumbers = $this->synthesisCalculator->getSpiritualNumbers();
+        $spiritualNumbers = $this->synthesisCalculator->getSynthesisNumbers("spiritual");
 
         $this->synthesisData["spiritualDigit"] = $this->getDigitData(
             $spiritualNumbers, 
