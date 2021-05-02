@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
-use App\Manager\MainInterpreter;
+use App\Manager\DateInterpreter;
+use App\Manager\NameInterpreter;
+use App\Manager\SynthesisInterpreter;
+use Pam\Controller\MainController;
 use Pam\Model\ModelFactory;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -12,7 +15,7 @@ use Twig\Error\SyntaxError;
  * Class ThemeController
  * @package App\Controller
  */
-class ThemeController extends MainInterpreter
+class ThemeController extends MainController
 {
     /**
      * @var string
@@ -51,12 +54,22 @@ class ThemeController extends MainInterpreter
             $this->setCustomerData();
 
             if ($this->firstName !== "" && $this->lastName !== "" && $this->birthDate !== "") {
-
                 $this->createCustomerData();
+
+                $dateInterpreter        = new DateInterpreter();
+                $nameInterpreter        = new NameInterpreter();
+                $synthesisInterpreter   = new SynthesisInterpreter();
+
+                $dateData       = $dateInterpreter->getDateData();
+                $nameData       = $nameInterpreter->getNameData();
+                $synthesisData  = $synthesisInterpreter->getSynthesisData();
+
                 $this->sendTheme();                
     
                 return $this->render("front/theme.twig", [
-                    "numbers" => $this->numbers
+                    "dateData"      => $dateData,
+                    "nameData"      => $nameData,
+                    "synthesisData" => $synthesisData
                 ]);
             }
     
@@ -72,7 +85,7 @@ class ThemeController extends MainInterpreter
     private function setCustomerData()
     {
         $this->firstName = $this->getString(
-            $this->getPost("usualFirstName"), 
+            $this->getPost("firstName"), 
             "alpha"
         );
 
