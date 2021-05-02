@@ -7,26 +7,15 @@
         Le Chemin de Vie révèle la destinée d'une personne & vous pouvez ici en prendre connaissance!
     </header>
 
-    {% if numbers %}
+    {% if dateData %}
     <section class="card-primary container-90lg-80xl-70wd">
-        <h2>
-            Chemin de Vie {{ numbers.lifePathDigit }} /
-            {{ numbers.lifePathNumber }} 
-            
-            {% if numbers.lifePathNumber != numbers.lifePathSecondNumber %}
-                / {{ numbers.lifePathSecondNumber }}
-            {% endif %}
-        </h2>
+        <h2>Votre Chemin de Vie</h2>
         
         <p>
-            {{ numbers.lifePathMainText }}
+            {{ dateData.lifePathDigit }}
             <br>
-            {% if numbers.lifePathSecondText %}
-                {{ numbers.lifePathSecondText }}
-            {% endif %}
-            <br>
-            {% if numbers.lifePathThirdText %}
-                {{ numbers.lifePathThirdText }}
+            {% if dateData.lifePathNumber %}
+                {{ dateData.lifePathNumber }}
             {% endif %}
         </p>
     </section>

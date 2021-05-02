@@ -2,93 +2,87 @@
     <h2>Votre Thème Numérologique</h2>
 
     <p>
-        {{ numbers.lifePathDigit }}
+        {{ dateData.lifePathDigit }}
         <br>
 
-        {% if numbers.lifePathNumber %}
-            {{ numbers.lifePathNumber }}
-        {% endif %}
-
-        <br>
-
-        {% if numbers.lifePathSecondNumber %}
-            {{ numbers.lifePathSecondNumber }}
+        {% if dateData.lifePathNumber %}
+            {{ dateData.lifePathNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.expressionDigit }}
+        {{ nameData.expressionDigit }}
         <br>
 
-        {% if numbers.expressionNumber %}
-            {{ numbers.expressionNumber }}
+        {% if nameData.expressionNumber %}
+            {{ nameData.expressionNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.intimateDigit }}
+        {{ nameData.intimateDigit }}
         <br>
 
-        {% if numbers.intimateNumber %}
-            {{ numbers.intimateNumber }}
+        {% if nameData.intimateNumber %}
+            {{ nameData.intimateNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.realizationDigit }}
+        {{ nameData.realizationDigit }}
         <br>
 
-        {% if numbers.realizationNumber %}
-            {{ numbers.realizationNumber }}
+        {% if nameData.realizationNumber %}
+            {{ nameData.realizationNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.dayNumber }}
+        {{ dateData.dayNumber }}
     </p>
 
     <p>
-        {{ numbers.goalDigit }}
+        {{ dateData.goalDigit }}
         <br>
 
-        {% if numbers.goalNumber %}
-            {{ numbers.goalNumber }}
+        {% if dateData.goalNumber %}
+            {{ dateData.goalNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.personalDigit }}
+        {{ nameData.personalDigit }}
         <br>
 
-        {% if numbers.personalNumber %}
-            {{ numbers.personalNumber }}
+        {% if nameData.personalNumber %}
+            {{ nameData.personalNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.hereditaryDigit }}
+        {{ nameData.hereditaryDigit }}
         <br>
 
-        {% if numbers.hereditaryNumber %}
-            {{ numbers.hereditaryNumber }}
+        {% if nameData.hereditaryNumber %}
+            {{ nameData.hereditaryNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.powerDigit }}
+        {{ synthesisData.powerDigit }}
         <br>
 
-        {% if numbers.powerNumber %}
-            {{ numbers.powerNumber }}
+        {% if synthesisData.powerNumber %}
+            {{ synthesisData.powerNumber }}
         {% endif %}
     </p>
 
     <p>
-        {{ numbers.spiritualDigit }}
+        {{ synthesisData.spiritualDigit }}
         <br>
         
-        {% if numbers.spiritualNumber %}
-            {{ numbers.spiritualNumber }}
+        {% if synthesisData.spiritualNumber %}
+            {{ synthesisData.spiritualNumber }}
         {% endif %}
     </p>
 </article>
