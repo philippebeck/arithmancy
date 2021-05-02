@@ -54,7 +54,7 @@ class DateInterpreter extends MainInterpreter
         $lifePathNumbers = $this->dateCalculator->getDateNumbers("lifePath");
 
         $this->dateData["lifePathDigit"] = $this->getDigitData(
-            $lifePathNumbers, 
+            $lifePathNumbers[0], 
             "lifePath", 
             "Chemin de Vie"
         );
@@ -71,8 +71,12 @@ class DateInterpreter extends MainInterpreter
     private function setDayData()
     {
         $dayNumber = $this->dateCalculator->getDateNumbers("day");
-       
-        $this->dateData["dayNumber"] = "Nombre du Jour " . $dayNumber . " : " . $this->allNumbers[$dayNumber - 1]["day"];
+      
+        $this->dateData["dayNumber"] = $this->getDigitData(
+            $dayNumber,
+            "day",
+            "Nombre du Jour"
+        );
     }
 
     /**
@@ -83,7 +87,7 @@ class DateInterpreter extends MainInterpreter
         $goalNumbers = $this->dateCalculator->getDateNumbers("goal");
 
         $this->dateData["goalDigit"] = $this->getDigitData(
-            $goalNumbers, 
+            $goalNumbers[0], 
             "goal",
             "Nombre du But"
         );

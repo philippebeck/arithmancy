@@ -57,7 +57,7 @@ class SynthesisInterpreter extends MainInterpreter
         $powerNumbers = $this->synthesisCalculator->getSynthesisNumbers("power");
 
         $this->synthesisData["powerDigit"] = $this->getDigitData(
-            $powerNumbers, 
+            $powerNumbers[0], 
             "power",
             "Nombre de Pouvoir"
         );
@@ -76,7 +76,7 @@ class SynthesisInterpreter extends MainInterpreter
         $spiritualNumbers = $this->synthesisCalculator->getSynthesisNumbers("spiritual");
 
         $this->synthesisData["spiritualDigit"] = $this->getDigitData(
-            $spiritualNumbers, 
+            $spiritualNumbers[0], 
             "spiritual",
             "Nombre Spirituel"
         );

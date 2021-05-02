@@ -59,7 +59,7 @@ class NameInterpreter extends MainInterpreter
         $expressionNumbers = $this->nameCalculator->getNameNumbers("expression");
 
         $this->nameData["expressionDigit"] = $this->getDigitData(
-            $expressionNumbers, 
+            $expressionNumbers[0], 
             "expression", 
             "Nombre d'Expression"
         );
@@ -78,7 +78,7 @@ class NameInterpreter extends MainInterpreter
         $intimateNumbers = $this->nameCalculator->getNameNumbers("intimate");
 
         $this->nameData["intimateDigit"] = $this->getDigitData(
-            $intimateNumbers, 
+            $intimateNumbers[0], 
             "intimate",
             "Nombre Intime"
         );
@@ -97,7 +97,7 @@ class NameInterpreter extends MainInterpreter
         $realizationNumbers = $this->nameCalculator->getNameNumbers("realization");
 
         $this->nameData["realizationDigit"] = $this->getDigitData(
-            $realizationNumbers, 
+            $realizationNumbers[0], 
             "realization",
             "Nombre de Réalisation"
         );
@@ -116,7 +116,7 @@ class NameInterpreter extends MainInterpreter
         $personalNumbers = $this->nameCalculator->getNameNumbers("personal");
 
         $this->nameData["personalDigit"] = $this->getDigitData(
-            $personalNumbers, 
+            $personalNumbers[0], 
             "personal",
             "Nombre Personnel"
         );
@@ -135,7 +135,7 @@ class NameInterpreter extends MainInterpreter
         $hereditaryNumbers = $this->nameCalculator->getNameNumbers("hereditary");
 
         $this->nameData["hereditaryDigit"] = $this->getDigitData(
-            $hereditaryNumbers, 
+            $hereditaryNumbers[0], 
             "hereditary",
             "Nombre Héréditaire"
         );

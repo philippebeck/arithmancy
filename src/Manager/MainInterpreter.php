@@ -28,17 +28,19 @@ abstract class MainInterpreter extends MainController
 
     /**
      * Get Interpretation Data for Digit
-     * @param array $numbers
+     * @param int $number
      * @param string $category
      * @param string $name
+     * @return string
      */
-    protected function getDigitData(array $numbers, string $category, string $name)
+    protected function getDigitData(int $number, string $category, string $name)
     {
-        return $name . " " . $numbers[0] . " : " . $this->numbers[$numbers[0] - 1][$category];
+        return $name . " " . $number . " : " . $this->numbers[$number - 1][$category];
     }
 
     /**
      * @param int $number
+     * @return string
      */
     protected function getSimpleNumber(int $number)
     {
@@ -51,6 +53,7 @@ abstract class MainInterpreter extends MainController
     /**
      * @param int $number
      * @param string $category
+     * @return string
      */
     protected function getDoubleNumber(int $number, string $category)
     {
@@ -67,6 +70,7 @@ abstract class MainInterpreter extends MainController
     /**
      * @param int $number
      * @param string $category
+     * @return string
      */
     protected function getTripleNumber(int $number, string $category)
     {
@@ -83,6 +87,7 @@ abstract class MainInterpreter extends MainController
     /**
      * @param int $number
      * @param string $category
+     * @return string
      */
     protected function getQuadrupleNumber(int $number, string $category)
     {
