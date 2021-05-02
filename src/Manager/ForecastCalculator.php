@@ -8,15 +8,13 @@ namespace App\Manager;
  */
 class ForecastCalculator extends MainCalculator
 {
-    // TODO -> create property & setters
-
     /**
      * @param int $year
      * @return array
      */
     public function getPersonalYearNumbers(int $year)
     {
-        $personalYearNumber = $this->birthDate["day"] + $this->birthDate["month"] + $year;
+        $personalYearNumber = $this->getBirthDate("day") + $this->getBirthDate("month") + $year;
         $personalYearDigit  = $this->getDigitFromNumber($personalYearNumber);
 
         return [$personalYearDigit, $personalYearNumber];
