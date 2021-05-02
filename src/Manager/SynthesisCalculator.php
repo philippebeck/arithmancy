@@ -11,6 +11,16 @@ class SynthesisCalculator extends MainCalculator
     /**
      * @var array
      */
+    private $dateNumbers =  [];
+
+    /**
+     * @var array
+     */
+    private $nameNumbers =  [];
+
+    /**
+     * @var array
+     */
     private $synthesisNumbers =  [];
 
     public function __construct()
@@ -22,6 +32,12 @@ class SynthesisCalculator extends MainCalculator
             && $this->checkArray($this->getPost(), "firstName")
             && $this->checkArray($this->getPost(), "lastName")
         ) {
+            $dateCalculator    = new DateCalculator();
+            $nameCalculator    = new NameCalculator();
+
+            $this->dateNumbers = $dateCalculator->getDateNumbers();
+            $this->nameNumbers = $nameCalculator->getNameNumbers();
+
             $this->setPowerNumbers();
             $this->setSpiritualNumbers();
         }
@@ -45,14 +61,12 @@ class SynthesisCalculator extends MainCalculator
      // *********************************************** \\
     // ******************** SETTERS ******************** \\
 
-    // TODO -> switch old $this->properties to object usage
-
     /**
      * @return array
      */
     public function setPowerNumbers()
     {
-        $this->synthesisNumbers["power"][1] = $this->lifePathNumber + $this->expressionNumber;
+        $this->synthesisNumbers["power"][1] = $this->dateNumbers["lifePath"][1] + $this->nameNumbers["expression"][1];
         $this->synthesisNumbers["power"][0] = $this->getDigitFromNumber($this->synthesisNumbers["power"][1]);
     }
 
@@ -61,7 +75,7 @@ class SynthesisCalculator extends MainCalculator
      */
     public function setSpiritualNumbers()
     {
-        $this->synthesisNumbers["spiritual"][1] = $this->lifePathNumber + $this->expressionNumber + $this->intimateNumber + $this->getBirthDate("day");
+        $this->synthesisNumbers["spiritual"][1] = $this->dateNumbers["lifePath"][1] + $this->nameNumbers["expression"][1] + $this->nameNumbers["intimate"][1] + $this->dateNumbers["day"];
         $this->synthesisNumbers["spiritual"][0] = $this->getDigitFromNumber($this->synthesisNumbers["spiritual"][1]);
     }
 }
