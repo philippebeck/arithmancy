@@ -43,7 +43,7 @@ class NameCalculator extends MainCalculator
 
     /**
      * @param string $key
-     * @return array|string
+     * @return array
      */
     public function getNameNumbers(string $key = "")
     {
@@ -52,7 +52,7 @@ class NameCalculator extends MainCalculator
             return $this->nameNumbers;
         }
 
-        return $this->nameNumbers[$key] ?? "";
+        return $this->nameNumbers[$key] ?? [];
         
     }
 
@@ -62,7 +62,7 @@ class NameCalculator extends MainCalculator
     private function setExpressionNumbers()
     {
         $this->nameNumbers["expression"][1] = $this->getNumberFromName(implode($this->fullLetters));
-        $this->nameNumbers["expression"][0] = $this->getDigitFromNumber($this->expressionNumber[1]);
+        $this->nameNumbers["expression"][0] = $this->getDigitFromNumber($this->nameNumbers["expression"][1]);
     }
 
     private function setIntimateNumbers() 
@@ -77,7 +77,7 @@ class NameCalculator extends MainCalculator
         }
 
         $this->nameNumbers["intimate"][1]   = $this->getNumberFromName(implode($vowels));
-        $this->nameNumbers["intimate"][0]   = $this->getDigitFromNumber($this->intimateNumber[1]);
+        $this->nameNumbers["intimate"][0]   = $this->getDigitFromNumber($this->nameNumbers["intimate"][1]);
     }
 
     private function setRealizationNumbers()
@@ -92,18 +92,18 @@ class NameCalculator extends MainCalculator
         }
 
         $this->nameNumbers["realization"][1]    = $this->getNumberFromName(implode($consonants));
-        $this->nameNumbers["realization"][0]    = $this->getDigitFromNumber($this->realizationNumber[1]);
+        $this->nameNumbers["realization"][0]    = $this->getDigitFromNumber($this->nameNumbers["realization"][1]);
     }
 
     private function setPersonalNumbers()
     {
         $this->nameNumbers["personal"][1]   = $this->getNumberFromName($this->getFullName("first"));
-        $this->nameNumbers["personal"][0]   = $this->getDigitFromNumber($this->personalNumber[1]);
+        $this->nameNumbers["personal"][0]   = $this->getDigitFromNumber($this->nameNumbers["personal"][1]);
     }
 
     private function setHereditaryNumbers()
     {
         $this->nameNumbers["hereditary"][1] = $this->getNumberFromName($this->getFullName("last"));
-        $this->nameNumbers["hereditary"][0] = $this->getDigitFromNumber($this->hereditaryNumber[1]);
+        $this->nameNumbers["hereditary"][0] = $this->getDigitFromNumber($this->nameNumbers["hereditary"][1]);
     }
 }
