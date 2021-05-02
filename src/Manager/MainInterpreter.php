@@ -2,35 +2,35 @@
 
 namespace App\Manager;
 
+use Pam\Controller\MainController;
 use Pam\Model\ModelFactory;
 
 /**
- * Class InterpretationManager
+ * Class MainInterpreter
  * @package App\Controller\Service
  */
-abstract class InterpretationManager extends CalculationManager
+abstract class MainInterpreter extends MainController
 {
     /**
      * @var array
      */
-    protected $numbers = [];
+    private $numbers = [];
 
     /**
-     * InterpretationManager constructor
+     * Set all Numbers Data from DB
      */
     public function __construct()
     {
         parent::__construct();
-
-        if ($this->checkArray($this->getPost())) {
-            
-            $this->numbers = ModelFactory::getModel("Number")->listData();
-        }
+    
+        $this->numbers = ModelFactory::getModel("Number")->listData();
     }
 
     /**
+     * Get Interpretation Data for Digit
      * @param array $numbers
      * @param string $category
+     * @param string $name
      */
     protected function getDigitData(array $numbers, string $category, string $name)
     {
