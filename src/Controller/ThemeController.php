@@ -64,7 +64,7 @@ class ThemeController extends MainController
                 $nameData       = $nameInterpreter->getNameData();
                 $synthesisData  = $synthesisInterpreter->getSynthesisData();
 
-                //$this->sendTheme();                
+                $this->sendTheme();                
     
                 return $this->render("front/theme.twig", [
                     "dateData"      => $dateData,
