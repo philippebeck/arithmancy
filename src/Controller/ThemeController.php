@@ -64,7 +64,10 @@ class ThemeController extends MainController
                 $nameData       = $nameInterpreter->getNameData();
                 $synthesisData  = $synthesisInterpreter->getSynthesisData();
 
-                //$this->sendTheme();                
+                $theme = array_merge($dateData, $nameData, $synthesisData);
+                $theme = implode("\n\t", $theme);
+
+                $this->sendTheme($theme);                
     
                 return $this->render("front/theme.twig", [
                     "dateData"      => $dateData,
@@ -120,14 +123,17 @@ class ThemeController extends MainController
         ModelFactory::getModel("Customer")->createData($customerData);
     }
 
-    private function sendTheme()
+    /**
+     * @param string $theme
+     */
+    private function sendTheme(string $theme)
     {
         if ($this->checkArray($this->getPost(), "email")) {
 
             $mail["email"]    = $this->getPost("email");
             $mail["name"]     = $this->firstName . " " . $this->lastName;
             $mail["subject"]  = "Thème Numérologique";
-            $mail["message"]  = $this->getMessage();
+            $mail["message"]  = $this->getMessage($theme);
 
             $this->sendMail($mail);
 
@@ -139,12 +145,11 @@ class ThemeController extends MainController
     }
 
     /**
+     * @param string $theme
      * @return string
      */
-    private function getMessage()
+    private function getMessage(string $theme)
     {
-        $theme = implode("\R", $this->numbers);
-
         $message = "
             Bonjour $this->firstName $this->lastName !\n
             Voici les informations fournies :\n

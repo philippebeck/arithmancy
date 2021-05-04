@@ -1,5 +1,5 @@
 function required() {
-  let firstName = document.getElementById("usualFirstName").value;
+  let firstName = document.getElementById("firstName").value;
   let lastName  = document.getElementById("lastName").value;
   let birthDate = document.getElementById("birthDate").value;
 
