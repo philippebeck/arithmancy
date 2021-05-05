@@ -29,6 +29,7 @@ class AuthController extends MainController
     {
         if ($this->checkArray($this->getPost())) {
             $this->user = $this->getPost();
+
             $this->checkSecurity();
         }
 
@@ -37,11 +38,9 @@ class AuthController extends MainController
 
     private function checkSecurity()
     {
-        if (isset($this->user["g-recaptcha-response"]) && 
-            !empty($this->user["g-recaptcha-response"])) {
+        if (isset($this->user["g-recaptcha-response"]) && !empty($this->user["g-recaptcha-response"])) {
+            if ($this->checkRecaptcha($this->user["g-recaptcha-response"] )) {
 
-            if ($this->checkRecaptcha(
-                $this->user["g-recaptcha-response"] )) {
                 $this->checkLogin();
             }
         }
@@ -71,7 +70,10 @@ class AuthController extends MainController
             $this->redirect("auth");
         }
 
-        $this->setSession($user, true);
+        $this->setSession(
+            $user, 
+            true
+        );
 
         $this->setSession([
             "message"   => "Successful authentication, welcome " . $user["name"] . " !", 
