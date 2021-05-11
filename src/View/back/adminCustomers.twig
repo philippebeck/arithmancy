@@ -38,6 +38,11 @@
                     {{ customer.lastName }}
                 <hr>
                     {{ customer.birthDate }}
+
+                    {% if customer.email %}
+                    <hr>
+                        {{ customer.email }}
+                    {% endif %}
                  </td>
             </tr>
         {% endfor %}

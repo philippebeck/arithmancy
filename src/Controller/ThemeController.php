@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Manager\DateInterpreter;
 use App\Manager\NameInterpreter;
 use App\Manager\SynthesisInterpreter;
+
 use Pam\Controller\MainController;
 use Pam\Model\ModelFactory;
+
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
@@ -41,6 +43,11 @@ class ThemeController extends MainController
      * @var string
      */
     private $birthDate = "";
+
+    /**
+     * @var string
+     */
+    private $email = "";
 
     /**
      * @return string
@@ -92,23 +99,31 @@ class ThemeController extends MainController
             "alpha"
         );
 
-        $this->middleName = $this->getString(
-            $this->getPost("middleName"), 
-            "alpha"
-        );
-
-        $this->thirdName = $this->getString(
-            $this->getPost("thirdName"), 
-            "alpha"
-        );
-
         $this->lastName = $this->getString(
             $this->getPost("lastName"), 
             "alpha"
 
         );
 
-        $this->birthDate = $this->getPost("birthDate");
+        $this->birthDate = (string) trim($this->getPost("birthDate"));
+
+        if ($this->checkArray($this->getPost(), "middleName")) {
+            $this->middleName = $this->getString(
+                $this->getPost("middleName"), 
+                "alpha"
+            );
+        }
+
+        if ($this->checkArray($this->getPost(), "thirdName")) {
+            $this->thirdName = $this->getString(
+                $this->getPost("thirdName"), 
+                "alpha"
+            );
+        }
+
+        if ($this->checkArray($this->getPost(), "email")) {
+            $this->email = (string) trim($this->getPost("email"));
+        }
     }
 
     private function createCustomerData()
@@ -118,6 +133,7 @@ class ThemeController extends MainController
         $customerData["thirdName"]  = $this->thirdName;
         $customerData["lastName"]   = $this->lastName;
         $customerData["birthDate"]  = $this->birthDate;
+        $customerData["email"]      = $this->email;
         $customerData["visitDate"]  = date('Y-m-d H:i:s');
 
         ModelFactory::getModel("Customer")->createData($customerData);
@@ -130,7 +146,7 @@ class ThemeController extends MainController
     {
         if ($this->checkArray($this->getPost(), "email")) {
 
-            $mail["email"]    = $this->getPost("email");
+            $mail["email"]    = $this->email;
             $mail["name"]     = $this->firstName . " " . $this->lastName;
             $mail["subject"]  = "Thème Numérologique";
             $mail["message"]  = $this->getMessage($theme);
