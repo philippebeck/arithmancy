@@ -2,9 +2,6 @@
 
 Website about Arithmancie
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/337b9cf5343d49819d49b0487a17736a)](https://www.codacy.com/gh/philippebeck/arithmancie/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=philippebeck/arithmancie&amp;utm_campaign=Badge_Grade)
-[![Maintainability](https://api.codeclimate.com/v1/badges/980d7c7a9629f47abcf7/maintainability)](https://codeclimate.com/github/philippebeck/arithmancie/maintainability)
-
 ---
 
 ## Download
@@ -12,14 +9,6 @@ Website about Arithmancie
 `git clone https://github.com/philippebeck/arithmancie.git`  
   
 [![Repo Size](https://img.shields.io/github/repo-size/philippebeck/arithmancie.svg?label=Repo+Size)](https://github.com/philippebeck/arithmancie/tree/master)
-
----
-
-## Support
-
-Arithmancie has continuous support !
-
-[![GitHub Last Commit](https://img.shields.io/github/last-commit/philippebeck/arithmancie.svg?label=Last+Commit)](https://github.com/philippebeck/arithmancie/commits/master)
 
 ---
 
