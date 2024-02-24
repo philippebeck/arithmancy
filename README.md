@@ -1,20 +1,20 @@
-# Arithmancie
+# Arithmancy
 
-Website about Arithmancie
+Website about Arithmancy
 
 ---
 
 ## Download
 
-`git clone https://github.com/philippebeck/arithmancie.git`  
+`git clone https://github.com/philippebeck/arithmancy.git`  
   
-[![Repo Size](https://img.shields.io/github/repo-size/philippebeck/arithmancie.svg?label=Repo+Size)](https://github.com/philippebeck/arithmancie/tree/master)
+[![Repo Size](https://img.shields.io/github/repo-size/philippebeck/arithmancy.svg?label=Repo+Size)](https://github.com/philippebeck/arithmancy/tree/master)
 
 ---
 
 ## Open-Source
 
-[![GitHub Stars](https://img.shields.io/github/stars/philippebeck/arithmancie.svg?label=GitHub+:+Arithmancie+|+Stars)](https://github.com/philippebeck/arithmancie)
+[![GitHub Stars](https://img.shields.io/github/stars/philippebeck/arithmancy.svg?label=GitHub+:+Arithmancy+|+Stars)](https://github.com/philippebeck/arithmancy)
 
 ---
 
@@ -32,4 +32,4 @@ Philippe Beck
 
 Code released under the Apache-2.0 License
 
-[![GitHub License](https://img.shields.io/github/license/philippebeck/arithmancie.svg?label=License)](https://github.com/philippebeck/arithmancie/blob/master/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/philippebeck/arithmancy.svg?label=License)](https://github.com/philippebeck/arithmancy/blob/master/LICENSE)
